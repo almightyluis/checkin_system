@@ -11,10 +11,7 @@ if(!isset($_GET['client_view_click'])){
 	$stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
 	$result = mysqli_query($connection , $stmt);
 }
-
-
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -28,14 +25,55 @@ if(!isset($_GET['client_view_click'])){
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.js"></script>             
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" />
   	<link href="/updated_php_project/static/client_view_style.css" rel="stylesheet">
-
 </head>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+      refreshTable();
+    });
+
+    function refreshTable(){
+        $('#main_table').load('refresh_client_table.php', function(){
+           setTimeout(refreshTable, 5000);
+        });
+    }
+
+
+    $(function() {
+    var prevAjaxReturned = true;
+    var xhr = null;
+
+    setInterval(function() {
+        if( prevAjaxReturned ) {
+            prevAjaxReturned = false;
+        } else if( xhr ) {
+            xhr.abort();
+        }
+
+        xhr = $.ajax({
+            type: "POST",
+            data: null,
+            url: "refresh_client_table.php",
+            success: function(html) {
+                 // html is a string of all output of the server script.
+                $("#main_table").html(html);
+                prevAjaxReturned = true;
+           }
+
+        });
+
+    }, 5000);
+    xhr.abort();
+});
+
+</script>
+
 
 <div class = "jumbotron">
 	<h1 class="display-4" style = "color: #FFFFFF">Welcome, wait here to be checked in.</mark>.</h1>
-     <?php date_default_timezone_set('America/Los_Angeles');  $current_date = date("l, M-d-Y"); echo '<h2 class = "display-6" style = "color: #FFFFFF"> '.$current_date.'</h2>'; ?>
+     <?php date_default_timezone_set('America/Los_Angeles');  $current_date = date("l, M-d-Y"); echo '<h2 class = "display-6" style = "color: #FFFFFF"> '.$current_date.'</h2>';?>
 </div>
-
 <div class = main_table id = "table_id">
 	<table class="table table-striped">
 	  <thead class="thead-light">
@@ -53,9 +91,7 @@ if(!isset($_GET['client_view_click'])){
 	  		if( mysqli_num_rows($result) > 0){
 
 	  			while( $row = mysqli_fetch_assoc($result) ) {
-
 		  			$name = $row['Name'];
-		  			
 		  			$guest = $row['Guest'];
 		  			$status = $row['Status'];
 		  			if($status == 1){
