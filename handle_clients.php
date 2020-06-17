@@ -87,7 +87,8 @@ if(isset($_POST['cc_id'])){
 		die();
 	}
 } 
-	
+
+// This does not work as of June 16, 2020
 function send_email($address, $name) {
 	$body = '<h2>Welcome To The Best Online HTML Web Editor!</h2>
 	<p style="font-size: 1.5em;">Hi, <strong style="background-color: #317399; padding: 0 5px; color: #fff;">$name</strong> You are currently at the front of the virual line. Please make your way to the front counter. We can allow up to 10 min otherwise we are obligated to serve guest in attendance.</p>
