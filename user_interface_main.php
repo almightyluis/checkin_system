@@ -2,10 +2,9 @@
 
 	session_start();
 	if(!isset($_SESSION['user-login-success'])){
-		header('Location: design.html');
+		header('Location: design.php');
     die();
 	}
-
 	include('server_connect.php');
 
   	$stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
@@ -128,8 +127,6 @@ function call_func() {
   console.log("Called call_func");
 }
 
-
-
 $(function(){
     $(document).on('click','.remove',function(){
       var del_id= $(this).attr('id');
@@ -159,12 +156,12 @@ $(function(){
 $(function () {
   $(document).on('click', '.email_send', function() {
     var cc_id = $(this).attr('id');
+    console.log(cc_id);
     $.ajax({
       type: 'POST',
       url: 'handle_clients.php',
       data: {'cc_id': cc_id },
       success: function (responce) {
-        console.log(responce);
         if(responce){
           if(responce == "Error: Email is empty"){
             $("#email_error_modal").modal("show");
@@ -173,7 +170,7 @@ $(function () {
             console.log("else if");
             $("#email_send_modal").modal("show");
           }else {
-            console.log("Else");
+            console.log(responce);
           }
           
         }

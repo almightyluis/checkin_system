@@ -40,55 +40,29 @@ if(isset($_POST['check_in'])){
 if(isset($_POST['cc_id'])){
 
 	$cc_id = $_POST['cc_id'];
-	$find_stm = "SELECT FROM * `client_information` WHERE 1; ";
-	$stmt = mysqli_stmt_init($connection);
+	$find_stm = "SELECT * FROM `client_information` WHERE id = '$cc_id'; ";
 
-	if( !mysqli_stmt_prepare($stmt, $find_stm) ){
-			// Error is here.
-			header("Location: error_message_login.html");
-			exit();
+	if($result = mysqli_query($connection,$find_stm)){
+		if(mysqli_num_rows($result) == 1){
+			$row = mysqli_fetch_assoc($result);
+			$email = $row['Email'];
+			$name = $row['Name'];
+			send_email($email,$name);
 
-	}else {
-
-		mysqli_stmt_bind_param($stmt, "i", $cc_id);
-
-		mysqli_stmt_execute($stmt);
-
-		$result = mysqli_stmt_get_result($stmt);
-		$row = mysqli_fetch_assoc($result);
-
-		if(mysqli_num_rows($row) > 0){
-			if($row['id'] == $cc_id){
-
-				if(empty($row['Email'])){
-					echo "Error: Email is empty";
-					die();
-				}else{
-					send_email($row['Email'], $row['Name']);
-				}
-			}else {
-				echo "Error: Email is empty";
-				die();
-			}
-		}
-	}
-
-	if( $row = mysqli_fetch_assoc($result) ){
-
-		if(empty($row['Email']) || empty($row['Name']) ){
+		}else {
 			echo 'Error: Email is empty';
-
-		}else{
-			send_email($row['Email'], $row['Name']);
+			exit();
 		}
-		
-	} else {
-		echo 'rows are not being selected';
-		die();
+	}else {
+		echo 'Not found';
+		exit();
 	}
+
 } 
 
-// This does not work as of June 16, 2020
+// This error is in part of SMTP
+// Using a local host could be the problem of not being able to send.
+
 function send_email($address, $name) {
 	$body = '<h2>Welcome To The Best Online HTML Web Editor!</h2>
 	<p style="font-size: 1.5em;">Hi, <strong style="background-color: #317399; padding: 0 5px; color: #fff;">$name</strong> You are currently at the front of the virual line. Please make your way to the front counter. We can allow up to 10 min otherwise we are obligated to serve guest in attendance.</p>
@@ -99,12 +73,15 @@ function send_email($address, $name) {
     'Reply-To: NOREPLY' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
+
+
+
     $mail_st = mail($address, $subject, $body, $headers);
     if($mail_st){
-    	echo "Success";
+    	echo 'Success';
     	die();
     }else {
-    	echo "Error: Email is empty";
+    	echo 'Error: Email is empty';
     	die();
     }
 
