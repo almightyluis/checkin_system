@@ -1,0 +1,54 @@
+
+html {
+	background-color: #ECECEC;
+}
+
+.navbar-expand-md {
+	background: #ECECEC! important;
+}
+
+
+.button-holder {
+  margin: 0 auto;
+  align-self: center;
+  text-align: center;
+  background-color: #ECECEC;
+}
+.button-holder button {
+	width: 300px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	background-color: #4F6979;
+	border-color: #427493;
+}
+
+
+.button-holder button:hover {
+	color: #FFFFFF;
+	background-color: #5DACC0;
+}
+
+
+.main_table {
+  display: flex;
+  justify-content: center;
+  background-color: #ECECEC;
+}
+.main_table table {
+	margin: 0 auto;
+	align-self: center;
+	width: 85%;
+	background-color: #FFFFFF;
+}
+
+
+
+.jumbotron {
+
+	background-image: url("../static/img/user_interface.jpg");
+	background-size: cover;
+	border-radius: 0 !important;
+	margin-bottom: 0px;
+	height: 100%;
+
+}

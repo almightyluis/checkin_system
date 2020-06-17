@@ -1,0 +1,25 @@
+
+
+.jumbotron {
+	background-image: url("../static/img/client_main.jpg");
+	background-size: contain;
+	background-color: #4F6979;
+	border-radius: 0 !important;
+	margin-bottom: 0px;
+	height: 100%;
+
+}
+
+
+.main_table {
+  display: flex;
+  justify-content: center;
+  background-color: #FFFFFF;
+}
+.main_table table {
+	margin: 0 auto;
+	align-self: center;
+	width: 95%;
+	background-color: #FFFFFF;
+	border-color: #000000;
+}
