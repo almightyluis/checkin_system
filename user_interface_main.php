@@ -3,9 +3,7 @@
 	session_start();
 	if(!isset($_SESSION['user-login-success'])){
 		header('Location: design.html');
-
     die();
-
 	}
 
 	include('server_connect.php');
