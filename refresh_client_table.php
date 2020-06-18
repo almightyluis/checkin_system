@@ -1,23 +1,22 @@
 <?php
 
 
-include_once 'server_connect.php';
+include('server_connect.php');
 
-
+/*
 if(!isset($_POST['client_reload'])){
 	header("Location: error_restricted.html");
 	exit();
 }
+*/
 
 $stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
 $result = mysqli_query($connection , $stmt);
 
 if(!$result){
-	echo "Fatal Error, Refresh current table";
+	echo 'Fatal Error, Refresh current table';
 }
-
 $output = '';  
-
 $output .= '<table class="table table-hover">
 	  <thead class="thead-light">
 	    <tr>
@@ -30,36 +29,36 @@ $output .= '<table class="table table-hover">
 	  <tbody>';
 
 	$itter = 1;
-		if( mysqli_num_rows($result) > 0){
-			while( $row = mysqli_fetch_assoc($result) ) {
-  			$status = $row['Status'];
-  			if($status == 1){
-  				$current_status = "Checked in";
-  			}else if($status == 0){
-  				$current_status = "Not Checked in";
-  			}else {
-  				$error = "Major Error";
-  				break;
-  			}
-  			$output .= ' <tr>
-				<td>'.$itter++.'</td>
-				<td>'.$row['Name'].'</td>
-				<td>'.$row['Guest'].'</td>
-				<td><p class="text-success"> '.$current_status.' </p> </td>
-				</tr>';
-
+	if( mysqli_num_rows($result) > 0){
+		while( $row = mysqli_fetch_assoc($result) ) {
+			$status = $row['Status'];
+			if($status == 1){
+				$current_status = "Checked in";
+			}else if($status == 0){
+				$current_status = "Not Checked in";
+			}else {
+				$error = "Major Error";
+				break;
 			}
-		} else {
-			$output .= '
-			<tr>
-			<td>Empty list</td>
-			</tr></tbody></table>
-			';
+			$output .= ' <tr>
+			<td>'.$itter++.'</td>
+			<td>'.$row['Name'].'</td>
+			<td>'.$row['Guest'].'</td>
+			<td><p class="text-success"> '.$current_status.' </p> </td>
+			</tr>';
 
 		}
-		$output .= '</tbody></table>';
-		
-		echo $output;
+	} else {
+		$output .= '
+		<tr>
+		<td>Empty list</td>
+		</tr></tbody></table>
+		';
+
+	}
+	$output .= '</tbody></table>';
+	
+	echo $output;
 
 
 

@@ -3,7 +3,7 @@
 include_once 'server_connect.php';
 
 if(!isset($_GET['client_view_click'])){
-	echo 'Nope';
+	echo 'No Click Error';
 	Header("Location: error_message_login.html");
 	die();
 }else {
@@ -22,32 +22,30 @@ if(!isset($_GET['client_view_click'])){
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.js"></script>             
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" />
-
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" />
   	<link href="/updated_php_project/static/client_view_style.css" rel="stylesheet">
 </head>
 
 <script type="text/javascript">
-	setInterval(function(){
-	//retrive data from fetch_comments.php page
-	var client_reload = "client_reload";
-	$.ajax({
-        type:'POST',
-        url:'refresh_client_table.php',
-        data:{'client_reload':client_reload},
-        success: function(responce){
-          	$("#main_table").html(responce);
-         }
-     });
-	}, 5000);
+// 1 min = 60000
+// 3 min = 180000
+// 5 min = 300000
 
+$(document).ready(function(){
+      refreshTable();
+    });
+    function refreshTable(){
+        $('#table_id').load('refresh_client_table.php', function(){
+           setTimeout(refreshTable, 180000);
+        });
+    }	
 </script>
 
 <div class = "jumbotron">
 	<h1 class="display-4" style = "color: #FFFFFF">Welcome, wait here to be checked in.</mark>.</h1>
      <?php date_default_timezone_set('America/Los_Angeles');  $current_date = date("l, M-d-Y"); echo '<h2 class = "display-6" style = "color: #FFFFFF"> '.$current_date.'</h2>';?>
 </div>
-<div class = main_table id = "table_id">
+<div class = main_table id ="table_id">
 	<table class="table table-striped">
 	  <thead class="thead-light">
 	    <tr>
