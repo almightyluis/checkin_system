@@ -3,6 +3,12 @@
 
 include_once 'server_connect.php';
 
+
+if(!isset($_POST['client_reload'])){
+	header("Location: error_restricted.html");
+	exit();
+}
+
 $stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
 $result = mysqli_query($connection , $stmt);
 

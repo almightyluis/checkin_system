@@ -17,58 +17,31 @@ if(!isset($_GET['client_view_click'])){
 <html>
 <head>
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>   
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>        
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.js"></script>             
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" />
+
   	<link href="/updated_php_project/static/client_view_style.css" rel="stylesheet">
 </head>
 
 <script type="text/javascript">
-
-$(document).ready(function(){
-      refreshTable();
-    });
-
-    function refreshTable(){
-        $('#main_table').load('refresh_client_table.php', function(){
-           setTimeout(refreshTable, 5000);
-        });
-    }
-
-
-    $(function() {
-    var prevAjaxReturned = true;
-    var xhr = null;
-
-    setInterval(function() {
-        if( prevAjaxReturned ) {
-            prevAjaxReturned = false;
-        } else if( xhr ) {
-            xhr.abort();
-        }
-
-        xhr = $.ajax({
-            type: "POST",
-            data: null,
-            url: "refresh_client_table.php",
-            success: function(html) {
-                 // html is a string of all output of the server script.
-                $("#main_table").html(html);
-                prevAjaxReturned = true;
-           }
-
-        });
-
-    }, 5000);
-    xhr.abort();
-});
+	setInterval(function(){
+	//retrive data from fetch_comments.php page
+	var client_reload = "client_reload";
+	$.ajax({
+        type:'POST',
+        url:'refresh_client_table.php',
+        data:{'client_reload':client_reload},
+        success: function(responce){
+          	$("#main_table").html(responce);
+         }
+     });
+	}, 5000);
 
 </script>
-
 
 <div class = "jumbotron">
 	<h1 class="display-4" style = "color: #FFFFFF">Welcome, wait here to be checked in.</mark>.</h1>
@@ -86,38 +59,36 @@ $(document).ready(function(){
 	  </thead>
 	  <tbody>
 	  	<?php
-
 	  	$itter = 1;
-	  		if( mysqli_num_rows($result) > 0){
+  		if( mysqli_num_rows($result) > 0){
 
-	  			while( $row = mysqli_fetch_assoc($result) ) {
-		  			$name = $row['Name'];
-		  			$guest = $row['Guest'];
-		  			$status = $row['Status'];
-		  			if($status == 1){
-		  				$current_status = "Checked in.";
-		  			}else if($status == 0){
-		  				$current_status = "Not Checked in.";
-		  			}else {
-		  				$error = "Major Error";
-		  				break;
-		  			}
-		  			echo '<tr>
-	  				<td> <h4>'.$itter++.' </h4></td>
-	  				<td> <h4>'.$row['Name'].' </h4></td>
-	  				<td> <h4>'.$row['Guest'].'</h4></td>
-	  				<td> <h4><p class="text-success">'.$current_status.'</p> </h4> </td>
-	  			</tr>';
+  			while( $row = mysqli_fetch_assoc($result) ) {
+	  			$name = $row['Name'];
+	  			$guest = $row['Guest'];
+	  			$status = $row['Status'];
+	  			if($status == 1){
+	  				$current_status = "Checked in.";
+	  			}else if($status == 0){
+	  				$current_status = "Not Checked in.";
+	  			}else {
+	  				$error = "Major Error";
+	  				break;
 	  			}
-	  		} else {
-	  			echo '
-	  			<tr>
-	  			<td>Empty list</td>
-	  			</tr>';
+	  			echo '<tr>
+  				<td> <h4>'.$itter++.' </h4></td>
+  				<td> <h4>'.$row['Name'].' </h4></td>
+  				<td> <h4>'.$row['Guest'].'</h4></td>
+  				<td> <h4><p class="text-success">'.$current_status.'</p> </h4> </td>
+  			</tr>';
+  			}
+  		} else {
+  			echo '
+  			<tr>
+  			<td>Empty list</td>
+  			</tr>';
 
-	  		}
+  		}
 	  	?>
-
 	  </tbody>
 </table>
 </div>
