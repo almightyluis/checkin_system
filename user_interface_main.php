@@ -204,6 +204,40 @@ $(function(){
     });
 });
 
+
+// 1 min = 60000
+// 3 min = 180000
+// 5 min = 300000
+$(function() {
+  $("#holder :input").change(function() {
+    switch(this.id){
+      case "option1":
+        var increment = 60000;
+        refresh_table_counter(increment);
+      break;
+      case "option2":
+        var increment = 180000;
+        refresh_table_counter(increment);
+      break;
+        case "option3":
+        var increment = 300000;
+        refresh_table_counter(increment);
+      break;
+    }
+
+  });
+});
+
+
+function refresh_table_counter(interval){
+        var interval = 'interval';
+        $('#table_id').load('refresh_current_table_ctd.php',{'interval':'interval'}, function(){
+           setTimeout(refresh_table_counter,interval);
+        });
+}
+
+
+
 $(function() {
   var value = 'value';
     $(document).on('click', '.reload', function(){
@@ -308,8 +342,19 @@ $(function() {
 
 
 <div class = "button-holder" id = "holder">
-<button class = "reload btn btn-info btn-sm" id = "reload" name = "refresh">Refresh Table</button>
-<button class = "add_new btn btn-info btn-sm" id = "add_new" data-target="#add_new_modal" data-toggle="modal">Add New Client</button>
+<button class = "reload btn btn-info" id = "reload" name = "refresh">Refresh Table</button>
+<button class = "add_new btn btn-info" id = "add_new" data-target="#add_new_modal" data-toggle="modal">Add New Client</button>
+<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option1" autocomplete="off"> 1 Min
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option2" autocomplete="off"> 3 Min
+  </label>
+  <label class="btn btn-secondary">
+    <input type="radio" name="options" id="option3" autocomplete="off"> 5 Min
+  </label>
+</div>
 </div>
 
 <div class = main_table id = "table_id">

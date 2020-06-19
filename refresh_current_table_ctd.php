@@ -1,24 +1,27 @@
 <?php 
 
 include_once 'server_connect.php';
+$stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
+$result = mysqli_query($connection , $stmt);
+
 
 
 if(!isset($_POST['value'])){
 	header("Location: error_restricted.html");
-	die();
+	exit();
+}else if (isset($_POST['interval'])){
+	echo 'Rad';
+	exit();
 }
-
-$stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
-$result = mysqli_query($connection , $stmt);
 
 if(!$result){
 	echo "Fatal Error, Refresh current table";
 }
 
-
-
+function return_list(){
+global $stmt;
+global $result;
 $output = '';  
-
 $output .= '<table class="table table-hover">
 	  <thead class="thead-light">
 	    <tr>
@@ -32,47 +35,47 @@ $output .= '<table class="table table-hover">
 	    </tr>
 	  </thead>
 	  <tbody>';
-
 	$itter = 1;
-		if( mysqli_num_rows($result) > 0){
-
-			while( $row = mysqli_fetch_assoc($result) ) {
-
-  			$name = $row['Name'];
-  			$phone = $row['Phone'];
-  			$guest = $row['Guest'];
-  			$status = $row['Status'];
-  			if($status == 1){
-  				$current_status = "Checked in";
-  			}else if($status == 0){
-  				$current_status = "Not Checked in";
-  			}else {
-  				$error = "Major Error";
-  				break;
-  			}
-  			$output .= ' <tr>
-				<td>'.$itter++.'</td>
-				<td>'.$row['Name'].'</td>
-				<td>'.$row['Phone'].'</td>
-				<td>'.$row['Guest'].'</td>
-				<td>'.$row['Email'].'</td>
-				<td><p class="text-success"> '.$current_status.' </p> </td>
-				<td>
-				<input type = "submit" class = "check btn btn-success btn-sm" id ='.$row['id'].' name = "check" value = "Check-in">
-				<input type = "submit" value ="Send Email" name = "email_send" id = '.$row['id'].' class = "email_send btn btn-info btn-sm">
-				<input type="submit" value="Remove" name ="remove" id ='.$row['id'].' class ="remove btn btn-danger btn-sm">
-				</td>
-				</tr>';
-
+	if( mysqli_num_rows($result) > 0){
+		while( $row = mysqli_fetch_assoc($result) ) {
+			$name = $row['Name'];
+			$phone = $row['Phone'];
+			$guest = $row['Guest'];
+			$status = $row['Status'];
+			if($status == 1){
+				$current_status = "Checked in";
+			}else if($status == 0){
+				$current_status = "Not Checked in";
+			}else {
+				$error = "Major Error";
+				break;
 			}
-		} else {
-			$output .= '
-			<tr>
-			<td>Empty list</td>
-			</tr></tbody></table>
-			';
-
+			$output .= ' <tr>
+			<td>'.$itter++.'</td>
+			<td>'.$row['Name'].'</td>
+			<td>'.$row['Phone'].'</td>
+			<td>'.$row['Guest'].'</td>
+			<td>'.$row['Email'].'</td>
+			<td><p class="text-success"> '.$current_status.' </p> </td>
+			<td>
+			<input type = "submit" class = "check btn btn-success btn-sm" id ='.$row['id'].' name = "check" value = "Check-in">
+			<input type = "submit" value ="Send Email" name = "email_send" id = '.$row['id'].' class = "email_send btn btn-info btn-sm">
+			<input type="submit" value="Remove" name ="remove" id ='.$row['id'].' class ="remove btn btn-danger btn-sm">
+			</td>
+			</tr>';
 		}
-		$output .= '</tbody></table>';
-		
-		echo $output;
+	} else {
+		$output .= '
+		<tr>
+		<td>Empty list</td>
+		</tr></tbody></table>
+		';
+	}
+	$output .= '</tbody></table>';
+	return $output;
+}
+
+
+
+
+echo return_list();

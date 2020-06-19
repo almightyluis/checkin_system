@@ -36,7 +36,7 @@ $(document).ready(function(){
     });
     function refreshTable(){
         $('#table_id').load('refresh_client_table.php', function(){
-           setTimeout(refreshTable, 180000);
+           setTimeout(refreshTable, 60000);
         });
     }	
 </script>
