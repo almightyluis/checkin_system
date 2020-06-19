@@ -230,10 +230,8 @@ $(function() {
 
 
 function refresh_table_counter(interval){
-        var interval = 'interval';
-        $('#table_id').load('refresh_current_table_ctd.php',{'interval':'interval'}, function(){
-           setTimeout(refresh_table_counter,interval);
-        });
+
+        
 }
 
 
