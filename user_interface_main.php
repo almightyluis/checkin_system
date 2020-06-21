@@ -230,6 +230,7 @@ $(function() {
 
 
 function refresh_table_counter(interval){
+  
 
         
 }
