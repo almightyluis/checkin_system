@@ -109,23 +109,47 @@
 <!-- Handle client side removals and Check -->
 <!-- Also attemt to reload the service -->
 <script type="text/javascript">
-function reload_table_click() {
-          var value = "value"; 
-          $.ajax({
-          type: 'POST',
-          url: "refresh_current_table_ctd.php",
-          data:{'value':value},
-            success: function(responce){
-             $("#table_id").html(responce);
-             
-            } 
-          }); 
+function reload_table() {
+    var value = "value"; 
+    $.ajax({
+    type: 'POST',
+    timeout: 5000,
+    url: "refresh_current_table_ctd.php",
+    data:{'value':value},
+      success: function(responce){
+       $("#table_id").html(responce);
+       console.log("Reload pages Successfull");
+      }, 
+      error: function(){
+        $("#timeout_error").modal("show");
+        console.log("Timeout error");
+      }
+    }); 
 }
 
+// 1 min = 60000
+// 3 min = 180000
+// 5 min = 300000
+$(function() {
+  $("#holder :input").change(function() {
+    switch(this.id){
+      case "option1":
+        var increment = 60000;
+        setTimeout(reload_table, increment);
+      break;
+      case "option2":
+        var increment = 180000;
+        setTimeout(reload_table, increment);
+      break;
+        case "option3":
+        var increment = 300000;
+        setTimeout(reload_table, increment);
+      break;
+    }
 
-function call_func() {
-  console.log("Called call_func");
-}
+  });
+});
+
 
 $(function(){
     $(document).on('click','.remove',function(){
@@ -134,6 +158,7 @@ $(function(){
       $.ajax({
         type:'POST',
         url:'handle_clients.php',
+        timeout: 5000,
         data:{'del_id':del_id},
         success: function(responce){
           	if(responce == "YES"){
@@ -142,13 +167,16 @@ $(function(){
           		$ele.closest('tr').css('background','#ff2b2b');
           		$ele.closest('tr').find('td').fadeOut(1000,function(){ 
               $ele.remove();
-              reload_table_click();        
+              reload_table();        
             }); 
 
           	}else{
           		console.log("Error, PHP not able to add to remove or recived something other than YES");
           	}
-         }
+         },
+         error: function(){
+          $("#timeout_error").modal("show");
+        }
           });
       });
 });
@@ -159,6 +187,7 @@ $(function () {
     console.log(cc_id);
     $.ajax({
       type: 'POST',
+      timeout: 5000,
       url: 'handle_clients.php',
       data: {'cc_id': cc_id },
       success: function (responce) {
@@ -189,65 +218,41 @@ $(function(){
       $.ajax({
         type:'POST',
         url:'handle_clients.php',
+        timeout: 5000,
         data:{'check_in':check_in},
         success: function(responce){
           	if(responce == "YES"){
           		//$ele.closest("tr").remove();
           		$ele.closest('tr').find('td').fadeIn(1000, function(){
           		});
-              reload_table_click();
+              reload_table();
           	}else{
           		console.log("Error, PHP not able to add to remove or recived something other than YES");
           	}
-         }
+         },
+         error: function(){
+          $("#timeout_error").modal("show");
+      }
         });
     });
 });
 
 
-// 1 min = 60000
-// 3 min = 180000
-// 5 min = 300000
 $(function() {
-  $("#holder :input").change(function() {
-    switch(this.id){
-      case "option1":
-        var increment = 60000;
-        refresh_table_counter(increment);
-      break;
-      case "option2":
-        var increment = 180000;
-        refresh_table_counter(increment);
-      break;
-        case "option3":
-        var increment = 300000;
-        refresh_table_counter(increment);
-      break;
-    }
-
-  });
-});
-
-
-function refresh_table_counter(interval){
-  
-
-        
-}
-
-
-
-$(function() {
-  var value = 'value';
+    var value = 'value';
     $(document).on('click', '.reload', function(){
-      console.log("reload button clicked");
       var xhr = $.ajax({
       type: 'POST',
+      timeout: 5000,
       url: "refresh_current_table_ctd.php",
       data:{'value':value},
       success: function(responce){
          $("#table_id").html(responce);
-         
+         console.log("Reload success");
+      },
+      error: function(){
+        $("#timeout_error").modal("show");
+        console.log("Reload success");
       }
     });  
 
@@ -255,6 +260,27 @@ $(function() {
 
 });
 </script>
+
+<div class="modal fade" id="timeout_error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Refresh Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Looks like we have a timeout error, please check if you are connected to the internet. Or try to refresh the entire page.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <div class="modal fade" id="email_error_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

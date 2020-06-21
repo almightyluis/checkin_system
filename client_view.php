@@ -32,13 +32,26 @@ if(!isset($_GET['client_view_click'])){
 // 5 min = 300000
 
 $(document).ready(function(){
-      refreshTable();
-    });
-    function refreshTable(){
-        $('#table_id').load('refresh_client_table.php', function(){
-           setTimeout(refreshTable, 60000);
-        });
-    }	
+     setTimeout(reload_table, 60000);
+});
+
+function reload_table() {
+    var client_reload = "client_reload"; 
+    $.ajax({
+    type: 'POST',
+    timeout: 5000,
+    url: "refresh_client_table.php",
+    data:{'client_reload':client_reload},
+      success: function(responce){
+       $("#table_id").html(responce);
+       console.log("Auto Refresh success");
+      }, 
+      error: function(){
+        $("#timeout_error").modal("show");
+        console.log("Timeout error");
+      }
+    }); 
+}	
 </script>
 
 <div class = "jumbotron">
