@@ -9,7 +9,6 @@ if(!isset($_POST['client_reload'])){
 	exit();
 }
 
-
 $stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
 $result = mysqli_query($connection , $stmt);
 

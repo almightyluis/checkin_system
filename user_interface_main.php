@@ -105,7 +105,6 @@
   ?>
 </div>
 
-
 <!-- Handle client side removals and Check -->
 <!-- Also attemt to reload the service -->
 <script type="text/javascript">
@@ -162,14 +161,12 @@ $(function(){
         data:{'del_id':del_id},
         success: function(responce){
           	if(responce == "YES"){
-
           		//$ele.closest("tr").remove();
           		$ele.closest('tr').css('background','#ff2b2b');
           		$ele.closest('tr').find('td').fadeOut(1000,function(){ 
               $ele.remove();
               reload_table();        
             }); 
-
           	}else{
           		console.log("Error, PHP not able to add to remove or recived something other than YES");
           	}
@@ -177,8 +174,8 @@ $(function(){
          error: function(){
           $("#timeout_error").modal("show");
         }
-          });
       });
+    });
 });
 
 $(function () {
@@ -201,7 +198,6 @@ $(function () {
           }else {
             console.log(responce);
           }
-          
         }
       }
     });
@@ -254,10 +250,8 @@ $(function() {
         $("#timeout_error").modal("show");
         console.log("Reload success");
       }
-    });  
-
+      });  
     });
-
 });
 </script>
 
