@@ -89,33 +89,41 @@
 	<div class="carousel-item active">
 		<img src="/updated_php_project/static/img/barbershop.jpg"/>
 		<div class="carousel-caption">
-			<?php 
-			 
+		<?php
 
-			 if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] ){
-			 		echo '<h1 class= "display-2">Reserve your place in line</h1>';
-					echo '<button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
+function check_date(){
+global $day_off, $current_time_client;
+$var = false;
+for ($i = 0; $i <sizeof($day_off); $i++) {
+	if((int)$day_off[$i] == (int)$current_time_client){
+		$var = true;
+		break;
+	 }
+}
+return $var;
+}
 
-				} else {
-					echo '
-					<h2 class= "display-1" id= "closed_txt" style ="color: #d1000a;">Appointments are currently closed till open hours</h2>
-					<button type="button" class ="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>
-					';
-				} 
-			?>
+	 if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == true){
+	 		echo '<h1 class= "display-2">Reserve your place in line</h1>';
+			echo '<button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
+
+	 }else {
+			echo '
+			<h2 class= "display-1" id= "closed_txt" style ="color: #d1000a;">Appointments are currently closed till open hours</h2>
+			<button type="button" class ="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>
+			';
+		} 
+		?>
 		</div>
 	</div>
 	<div class="carousel-item">
 		<img src="/updated_php_project/static/img/storefront2.jpg"/>
 	</div>
-
 	<div class="carousel-item">
 		<img src="/updated_php_project/static/img/storefront.jpg"/>
 	</div>
-
 </div>
 </div>
-
 
 <!-- Error Modal --->
 <div class="modal fade" id="error_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

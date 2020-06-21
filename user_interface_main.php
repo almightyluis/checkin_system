@@ -92,7 +92,7 @@
     $current_date = date("l, M-d-Y");
 
   if($today == $_SESSION['day_off']){
-    echo '<h1 class="display-4" style = "color: #FFFFFF">Not accepting clients today, day off <mark>'.$date.' </mark>.</h1>
+    echo '<h1 class="display-4" style = "color: #FFFFFF">Not accepting clients today, day off '.$date.'.</h1>
           <h2 class = "display-6" style = "color: #FFFFFF"> '.$current_date.'</h2>
     ';
     die();
