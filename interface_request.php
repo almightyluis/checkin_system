@@ -21,7 +21,7 @@ $client_carrier = $_POST['carrier-id'];
 
 $check_in = 0;
 
-  if ( empty($client_name) || empty($client_email) || empty($client_phone) || empty($client_guest) ) {
+  if ( empty($client_name) || empty($client_email) || empty($client_phone) ) {
     echo "Error Values Are Empty";
     exit();
   } else {

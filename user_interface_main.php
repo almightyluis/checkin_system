@@ -331,7 +331,7 @@ $(function() {
         <form action ="interface_request.php" method= "post">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="client-name" name = "client-name" required>
+            <input type="text" class="form-control" id="client-name" name ="client-name" required>
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Email:</label>
@@ -339,11 +339,11 @@ $(function() {
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Phone Number:</label>
-            <input type="phone-number" class="form-control" id="client-phone" name = "client-phone" required>
+            <input type="phone-number" class="form-control" id="client-phone" name ="client-phone" required>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label"> Number of guest: </label>
-            <input type="number" class = "form-control" id="client-guest" min="0" name= "client-guest" required>
+            <input type="number" class = "form-control" id="client-guest" min="0" name="client-guest" required>
           </div>
           <div class="form-group">
         <label for="carrier_id">Mobile Phone Carrier</label>
@@ -360,7 +360,7 @@ $(function() {
       </div>
       <div class="modal-footer">
         <input type="button" class="btn btn-secondary" data-dismiss="modal" value = "Close">
-        <input type="submit" value= "Confirm Appointment" name = "clicked" class = "btn btn-primary">
+        <input type="submit" value= "Confirm Appointment" name ="clicked" class = "btn btn-primary">
       </div>
       </form>
     </div>

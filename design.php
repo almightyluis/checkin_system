@@ -222,7 +222,7 @@
           </div>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label"> Number of guest (0 if it's just yourself :) </label>
-            <input type="number" class ="form-control" id="client-guest" min="0" name= "client-guest" required>
+            <input type="number" class ="form-control" id="client-guest" min="0"name= "client-guest">
           </div>
           <div class="form-group">
 		    <label for="carrier_id">Mobile Phone Carrier</label>
