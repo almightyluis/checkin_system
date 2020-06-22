@@ -327,8 +327,6 @@ $(function() {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
-<!---   Need to handle if values are empty  May 26 2020 --->
       <div class="modal-body">
         <form action ="interface_request.php" method= "post">
           <div class="form-group">
@@ -343,12 +341,22 @@ $(function() {
             <label for="recipient-name" class="col-form-label">Phone Number:</label>
             <input type="phone-number" class="form-control" id="client-phone" name = "client-phone" required>
           </div>
-
           <div class="form-group">
             <label for="message-text" class="col-form-label"> Number of guest: </label>
             <input type="number" class = "form-control" id="client-guest" min="0" name= "client-guest" required>
           </div>
-
+          <div class="form-group">
+        <label for="carrier_id">Mobile Phone Carrier</label>
+          <select class="form-control" id="carrier-id" name="carrier-id" required="">
+            <option value="">Please select</option>
+            <option value="1">AT&T</option>
+            <option value="2">T-Mobile</option>
+            <option value="3">Verizon</option>
+            <option value="4">Metro-PCS</option>
+            <option value="5">Sprint</option>
+            <option value="6">Boost-Mobile</option>
+          </select>
+        </div>
       </div>
       <div class="modal-footer">
         <input type="button" class="btn btn-secondary" data-dismiss="modal" value = "Close">

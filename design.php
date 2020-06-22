@@ -7,7 +7,7 @@
 	$start_time = "08:00:00";
 	$end_time = "23:00:00";
 	// Days off according to BClient
-	$day_off = [6,7]; 
+	$day_off = array(6,7); 
 
 
 	date_default_timezone_set('America/Los_Angeles');
@@ -22,7 +22,6 @@
 
 <!-- Email and phone number should now be able to match to current DB list -->
 <!-- If the email or phone match we need to promp the user that that email is already in the system -->
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -90,29 +89,27 @@
 		<img src="/updated_php_project/static/img/barbershop.jpg"/>
 		<div class="carousel-caption">
 		<?php
+		
+		function check_date() {
+			global $day_off, $current_date_client;
+			if(in_array($current_date_client, $day_off)){
+				return TRUE;
+			}else{
+				return FALSE;
+			}
+		}
+		 if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE){
+		 		echo '<h1 class= "display-2">Reserve your place in line</h1>';
+				echo '<button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
 
-function check_date(){
-global $day_off, $current_time_client;
-$var = false;
-for ($i = 0; $i <sizeof($day_off); $i++) {
-	if((int)$day_off[$i] == (int)$current_time_client){
-		$var = true;
-		break;
-	 }
-}
-return $var;
-}
+		 }else {
+				echo '
+				<h2 class= "display-1" id= "closed_txt" style ="color: #d1000a;">Appointments are currently closed till open hours</h2>
+				<button type="button" class ="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>
+				';
+		}
 
-	 if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == true){
-	 		echo '<h1 class= "display-2">Reserve your place in line</h1>';
-			echo '<button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
-
-	 }else {
-			echo '
-			<h2 class= "display-1" id= "closed_txt" style ="color: #d1000a;">Appointments are currently closed till open hours</h2>
-			<button type="button" class ="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>
-			';
-		} 
+	 
 		?>
 		</div>
 	</div>
@@ -166,10 +163,9 @@ return $var;
 				$final = $row_count * $multiplier;	
 				}
 			}
-
 			mysqli_close($connection);
 		
-		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] ){
+		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE){
 
 			echo'<h2> Current wait time is <mark>'.$final.'</mark> mins.</h2>';
 			echo '<p class="lead">We have a number of hair stylist working for us. Come on by and get a haircut!</p>';
@@ -185,16 +181,14 @@ return $var;
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
 		<a href="#">
-			<?php 
+		<?php 
 
-				if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] ){
-
-					echo '<button type="button" class ="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
-
-				} else {
-					echo '<button type="button" class ="btn btn-outline-danger" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>';
-				}
-			 ?>
+			if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE){
+				echo '<button type="button" class ="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
+			} else {
+				echo '<button type="button" class ="btn btn-outline-danger" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>';
+			}
+		 ?>
 		</a>
 	</div>
 
@@ -212,10 +206,7 @@ return $var;
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
-<!---   Need to handle if values are empty  May 26 2020 --->
       <div class="modal-body">
-
         <form action ="send_to_buisness.php" method= "post">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Name:</label>
@@ -229,21 +220,32 @@ return $var;
             <label for="recipient-name" class="col-form-label">Phone Number:</label>
             <input type="phone-number" class="form-control" id="client-phone" name = "client-phone" required>
           </div>
-
           <div class="form-group">
-            <label for="message-text" class="col-form-label"> Number of guest (0 if it's just yourself :) </label>
-            <input type="number" class = "form-control" id="client-guest" min="0" name= "client-guest" required>
+            <label for="recipient-name" class="col-form-label"> Number of guest (0 if it's just yourself :) </label>
+            <input type="number" class ="form-control" id="client-guest" min="0" name= "client-guest" required>
           </div>
-
+          <div class="form-group">
+		    <label for="carrier_id">Mobile Phone Carrier</label>
+		    <select class="form-control" id="carrier-id" name="carrier-id" required="">
+		      <option value="">Please select</option>
+		      <option value="1">AT&T</option>
+		      <option value="2">T-Mobile</option>
+		      <option value="3">Verizon</option>
+		      <option value="4">Metro-PCS</option>
+		      <option value="5">Sprint</option>
+		      <option value="6">Boost-Mobile</option>
+		    </select>
+		  </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 		<input type="submit" value= "Confirm Appointment" name = "clicked" class = "btn btn-primary">
-    	</div>
-			</form>
+      </div>
+  </form>
     </div>
   </div>
 </div>
+
 
 
 
