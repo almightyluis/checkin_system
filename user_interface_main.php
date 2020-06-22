@@ -1,14 +1,44 @@
 <?php 
 
-	session_start();
-	if(!isset($_SESSION['user-login-success'])){
-		header('Location: design.php');
-    die();
-	}
-	include('server_connect.php');
+session_start();
+if(!isset($_SESSION['user-login-success'])){
+	header('Location: design.php');
+  die();
+}
+include('server_connect.php');
 
-  	$stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
-  	$result = mysqli_query($connection , $stmt);
+	$stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
+	$result = mysqli_query($connection , $stmt);
+
+  date_default_timezone_set("America/Los_Angeles");
+  $current_date = date("o-m-d");
+
+function check_invalid_dates(){
+  global $connection, $result, $current_date;
+  $instances = (array) null;
+  if( mysqli_num_rows($result) > 0){
+      while( $row = mysqli_fetch_assoc($result) ) {
+          $date = $row['Date'];
+          $time = $row['Time'];
+          $id = $row['id'];
+          if($row === $current_date){
+            array_push($instances, $id);
+          }else{
+            continue;
+          }
+        }
+
+    }
+    mysqli_close($connection);
+    exit();
+    return $instances;
+}
+
+
+     
+
+ 
+
 ?>
 
 <!DOCTYPE html>
@@ -360,7 +390,7 @@ $(function() {
       </div>
       <div class="modal-footer">
         <input type="button" class="btn btn-secondary" data-dismiss="modal" value = "Close">
-        <input type="submit" value= "Confirm Appointment" name ="clicked" class = "btn btn-primary">
+        <input type="submit" value= "Confirm Appointment" name = "clicked" class = "btn btn-primary">
       </div>
       </form>
     </div>
@@ -399,11 +429,24 @@ $(function() {
 	  </thead>
 	  <tbody>
 	  	<?php
-	  	$itter = 1;
+	  	  $itter = 1;
+
+      if(sizeof(check_invalid_dates()) > 0){
+        for ($i = 0; $i< sizeof(check_invalid_dates()) ; $i++){
+          $id_c = check_invalid_dates()[$i];
+          $remove = "DELETE FROM `client_information` WHERE id = '$id_c'; ";
+
+          if(!$result = mysqli_query($connection, $remove)){
+            echo 'Error removing repeating date';
+            mysqli_close($connection);
+          }
+        }
+      }
+
+
+
 	  		if( mysqli_num_rows($result) > 0){
-
 	  			while( $row = mysqli_fetch_assoc($result) ) {
-
 		  			$name = $row['Name'];
 		  			$phone = $row['Phone'];
 		  			$guest = $row['Guest'];

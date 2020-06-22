@@ -24,29 +24,27 @@ $client_carrier = $_POST['carrier-id'];
 
 $check_in = 0;
 
-  if ( empty($client_name) || empty($client_email) || empty($client_phone) || empty($client_carrier) ) {
+  if ( empty($client_name) || empty($client_email) || empty($client_phone) || empty($client_carrier) || empty($current_date) || empty($current_time) ){
     echo "Error Values Are Empty";
     exit();
   } else {
-  		// INSERT INTO `client_information`(`id`, `Carrier`, `Time`, `Date`, `Status`, `Name`, `Email`, `Phone`, `Guest`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8],[value-9])
+  	$sqlStr = "INSERT INTO client_information(`id`,`Carrier`,`Time`,`Date`,`Status`,`Name`,`Email`,`Phone`,`Guest`) VALUES (NULL,'$client_carrier','$current_time','$current_date','$check_in','$client_name','$client_email','$client_phone','$client_guest'); ";
 
-	  	$sqlStr = "INSERT INTO client_information(`id`,`Carrier`,`Time`,`Date`,`Status`,`Name`,`Email`,`Phone`,`Guest`) VALUES (NULL,'$client_carrier','$current_time','$current_date','$check_in','$client_name','$client_email','$client_phone','$client_guest'); ";
-
-		if ($sqlResult = mysqli_query($connection, $sqlStr)) {
-			session_start();
-			echo "Recorded Successfully";
-			header("Location: app_made_confirmation.php");
-			$_SESSION['client-name'] = $client_name;
-			$_SESSION['number-guest'] = mysqli_num_rows($sqlResult);
-			mysqli_close($connection);
-			exit();
-		}else if(!$sqlResult) {
-	    // Send user back home display message to try again.
-			echo "Error DB inserting ";
-			mysqli_error($connection);
-			mysqli_close($connection);
-			exit();
-		}
+	if ($sqlResult = mysqli_query($connection, $sqlStr)) {
+		session_start();
+		echo "Recorded Successfully";
+		header("Location: app_made_confirmation.php");
+		$_SESSION['client-name'] = $client_name;
+		$_SESSION['number-guest'] = mysqli_num_rows($sqlResult);
+		mysqli_close($connection);
+		exit();
+	}else if(!$sqlResult) {
+    // Send user back home display message to try again.
+		echo "Error DB inserting ";
+		mysqli_error($connection);
+		mysqli_close($connection);
+		exit();
+	}
   }
 
 

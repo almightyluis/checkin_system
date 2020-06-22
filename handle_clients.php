@@ -6,8 +6,6 @@ include_once 'server_connect.php';
 if(isset($_POST['del_id'])){
 	$id = $_POST['del_id'];
 	$delete = "DELETE FROM `client_information` WHERE id = '$id'; ";
-	
-
 	if ($result = mysqli_query($connection, $delete) ) {
 		echo "YES";
 		die();

@@ -262,7 +262,6 @@
 		<h3>Normal Cut</h3>
 		<p>Simple hair cut no fade Etc..</p>
 	</div>
-
 	<div class="col-xs-12 col-sm-6 col-md-4">
 		<i class="fas fa-code"> </i>
 		<h3>Middle Range cut</h3>
@@ -274,12 +273,8 @@
 		<h3>Super Cut</h3>
 		<p>Haircut, Shave, etc</p>
 	</div>
-
 </div>
-
 <hr class="my-4">
-
-
 </div>
 
 
@@ -333,23 +328,18 @@
 
 
 
-	<div class="col-md-3">
-		<div class="card">
-			<img class="card-img-top" src= "/updated_php_project/static/img/woman.jpg">
-			<div class="card-body">
-				<h4 class="card-title">Women Hair style</h4>
-				<p class="card-text">We also include women hair stylist to assist</p>
-				<a href="#" class="btn btn-outline-secondary">See profile</a>
-			</div>
+<div class="col-md-3">
+	<div class="card">
+		<img class="card-img-top" src= "/updated_php_project/static/img/woman.jpg">
+		<div class="card-body">
+			<h4 class="card-title">Women Hair style</h4>
+			<p class="card-text">We also include women hair stylist to assist</p>
+			<a href="#" class="btn btn-outline-secondary">See profile</a>
 		</div>
 	</div>
-
-
-
+    </div>
 </div>
 </div>
-
-
 <!--- Connect to social media icons -->
 
 
@@ -359,42 +349,40 @@
 	<dir class="container-fluid padding">
 		<div class="row text-center">
 			<div class="col-md-4">
-				<img src="/updated_php_project/static/img/icon2.png">
-				<hr class="light">
-				<p>909-572-5474</p>
-				<p>someemail@gmail.com</p>
-				<p>1988 W something Drive</p>
-				<p>Beverly Hills Ca, 92400</p>
-			</div>
+			<img src="/updated_php_project/static/img/icon2.png">
+			<hr class="light">
+			<p>909-572-5474</p>
+			<p>someemail@gmail.com</p>
+			<p>1988 W something Drive</p>
+			<p>Beverly Hills Ca, 92400</p>
+		</div>
 
-			<div class="col-md-4">
-				<hr class="light">
-				<h5>Our Hours</h5>
-				<hr class="light">
-				<p>Monday: 9am-6pm</p>
-				<p>Tuesday: 9am-6pm</p>
-				<p>Wednesday: 9am-6pm</p>
-				<p>Thursday: 9am-6pm</p>
-				<p>Friday: 9am-6pm</p>
-				<p>Saturday: 9am-6pm</p>
-				<p>Sunday: Closed</p>
+		<div class="col-md-4">
+			<hr class="light">
+			<h5>Our Hours</h5>
+			<hr class="light">
+			<p>Monday: 9am-6pm</p>
+			<p>Tuesday: 9am-6pm</p>
+			<p>Wednesday: 9am-6pm</p>
+			<p>Thursday: 9am-6pm</p>
+			<p>Friday: 9am-6pm</p>
+			<p>Saturday: 9am-6pm</p>
+			<p>Sunday: Closed</p>
 
-			</div>
+		</div>
 
 
-			<div class="col-md-4">
+		<div class="col-md-4">
 
-				<hr class="light">
-				<h5>Software Opportunities</h5>
-				<hr class="light">
-				<p>otfgonzalez@gmail.com</p>
-				<p>909-572-5474</p>
-
+			<hr class="light">
+			<h5>Software Opportunities</h5>
+			<hr class="light">
+			<p>otfgonzalez@gmail.com</p>
+			<p>909-572-5474</p>
 			</div>
 		</div>
 	</dir>
 </footer>
-
 </body>
 </html>
 
