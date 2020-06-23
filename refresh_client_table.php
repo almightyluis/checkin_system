@@ -40,10 +40,10 @@ $output .= '<table class="table table-hover">
 				break;
 			}
 			$output .= ' <tr>
-			<td>'.$itter++.'</td>
-			<td>'.$row['Name'].'</td>
-			<td>'.$row['Guest'].'</td>
-			<td><p class="text-success"> '.$current_status.' </p> </td>
+			<td><h4>'.$itter++.'</h4></td>
+			<td><h4>'.$row['Name'].'</h4></td>
+			<td><h4>'.$row['Guest'].'</h4></td>
+			<td><p class="text-success"> <h4>'.$current_status.'</h4></p></td>
 			</tr>';
 
 		}
