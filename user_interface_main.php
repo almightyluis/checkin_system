@@ -130,6 +130,11 @@ function reload_table() {
     }); 
 }
 
+/* setInterval(function() {
+    cache_clear()
+  }, 3000);
+*/
+
 // 1 min = 60000
 // 3 min = 180000
 // 5 min = 300000
@@ -137,22 +142,21 @@ $(function() {
   $("#holder :input").change(function() {
     switch(this.id){
       case "option1":
-        var increment = 60000;
-        setTimeout(reload_table, increment);
-      break;
+        var increment = 3000;
+        setInterval(function() {reload_table(); }, increment);
+        break;
       case "option2":
         var increment = 180000;
-        setTimeout(reload_table, increment);
+        setInterval(function() {reload_table(); }, increment);
       break;
         case "option3":
         var increment = 300000;
-        setTimeout(reload_table, increment);
+        setInterval(function() {reload_table(); }, increment);
       break;
     }
 
   });
 });
-
 
 $(function(){
     $(document).on('click','.remove',function(){

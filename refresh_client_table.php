@@ -43,7 +43,7 @@ $output .= '<table class="table table-hover">
 			<td><h4>'.$itter++.'</h4></td>
 			<td><h4>'.$row['Name'].'</h4></td>
 			<td><h4>'.$row['Guest'].'</h4></td>
-			<td><p class="text-success"> <h4>'.$current_status.'</h4></p></td>
+			<td><h4><p class="text-success"> <h4>'.$current_status.'</p></h4></td>
 			</tr>';
 
 		}

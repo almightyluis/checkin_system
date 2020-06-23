@@ -32,7 +32,7 @@ if(!isset($_GET['client_view_click'])){
 // 5 min = 300000
 
 $(document).ready(function(){
-     setTimeout(reload_table, 60000);
+     setInterval(reload_table, 60000);
 });
 
 function reload_table() {
