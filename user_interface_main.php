@@ -13,32 +13,6 @@ include('server_connect.php');
   date_default_timezone_set("America/Los_Angeles");
   $current_date = date("o-m-d");
 
-function check_invalid_dates(){
-  global $connection, $result, $current_date;
-  $instances = (array) null;
-  if( mysqli_num_rows($result) > 0){
-      while( $row = mysqli_fetch_assoc($result) ) {
-          $date = $row['Date'];
-          $time = $row['Time'];
-          $id = $row['id'];
-          if($row === $current_date){
-            array_push($instances, $id);
-          }else{
-            continue;
-          }
-        }
-
-    }
-    mysqli_close($connection);
-    exit();
-    return $instances;
-}
-
-
-     
-
- 
-
 ?>
 
 <!DOCTYPE html>
@@ -430,21 +404,6 @@ $(function() {
 	  <tbody>
 	  	<?php
 	  	  $itter = 1;
-
-      if(sizeof(check_invalid_dates()) > 0){
-        for ($i = 0; $i< sizeof(check_invalid_dates()) ; $i++){
-          $id_c = check_invalid_dates()[$i];
-          $remove = "DELETE FROM `client_information` WHERE id = '$id_c'; ";
-
-          if(!$result = mysqli_query($connection, $remove)){
-            echo 'Error removing repeating date';
-            mysqli_close($connection);
-          }
-        }
-      }
-
-
-
 	  		if( mysqli_num_rows($result) > 0){
 	  			while( $row = mysqli_fetch_assoc($result) ) {
 		  			$name = $row['Name'];

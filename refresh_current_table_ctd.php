@@ -6,17 +6,16 @@ $result = mysqli_query($connection , $stmt);
 
 
 
+
 if(!isset($_POST['value'])){
 	header("Location: error_restricted.html");
-	exit();
-}else if (isset($_POST['interval'])){
-	echo 'Rad';
 	exit();
 }
 
 if(!$result){
 	echo "Fatal Error, Refresh current table";
 }
+
 
 function return_list(){
 global $stmt;
@@ -74,7 +73,6 @@ $output .= '<table class="table table-hover">
 	$output .= '</tbody></table>';
 	return $output;
 }
-
 
 
 
