@@ -5,7 +5,7 @@
 
 	// Reqect time out of this time frame
 	$start_time = "08:00:00";
-	$end_time = "23:00:00";
+	$end_time = "21:00:00";
 	// Days off according to BClient
 	$day_off = array(6,7); 
 
@@ -39,7 +39,6 @@
 	<link href="/updated_php_project/static/style.css" rel="stylesheet">
 
 		<!-- The core Firebase JS SDK is always required and must be listed first -->
-
 
 </head>
 <body>
@@ -247,10 +246,6 @@
 </div>
 
 
-
-
-
-
 <!---   Need to handle if values are empty  --->
 
 <!--- This can be three items show off -->
@@ -313,8 +308,6 @@
 		</div>
 	</div>
 
-
-
 	<div class="col-md-3">
 		<div class="card">
 			<img class="card-img-top" src= "/updated_php_project/static/img/woman.jpg">
@@ -325,8 +318,6 @@
 			</div>
 		</div>
 	</div>
-
-
 
 <div class="col-md-3">
 	<div class="card">
