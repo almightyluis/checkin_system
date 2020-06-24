@@ -261,6 +261,30 @@ $(function() {
       });  
     });
 });
+
+// Check if DB is correct by date. 
+$(document).ready(function(){
+  var db_check = "db_check";
+  var xhr = $.ajax({
+    type: 'POST',
+    timeout: 5000,
+    url:"handle_clients.php",
+    data: {'db_check':db_check},
+    success:function (responce){
+      // Load the new table.
+      console.log(responce);
+      console.log("Success function")
+    },
+    error:function(error){
+      console.log("db_check Error");
+      console.log(error);
+    }
+
+  });
+     
+});
+
+
 </script>
 
 <div class="modal fade" id="timeout_error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

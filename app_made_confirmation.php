@@ -2,11 +2,11 @@
 
   session_start();
 
-    if(!isset($_SESSION['client-name'])) {
+  if(!isset($_SESSION['client-name'])) {
         echo "Error, trying to access a page without permissions,";
         echo "Page Session has not been meet";
         exit();
-   } 
+  } 
             
 
 ?>

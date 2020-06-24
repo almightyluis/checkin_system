@@ -33,6 +33,67 @@ if(isset($_POST['check_in'])){
 	}
 }
 
+// Checks if Database contains Dates other than the current date.
+// DB clean up.
+if(isset($_POST['db_check'])){
+	date_default_timezone_set("America/Los_Angeles");
+  	$current_date = date("o-m-d");
+  	$error_val = (array)null; 
+
+  	$stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
+	if ($result = mysqli_query($connection , $stmt) ){
+		if(mysqli_num_rows($result) > 0){
+			while($row = mysqli_fetch_assoc($result)){
+				$id = $row['id'];
+				$date = $row['Date'];
+				if( empty($id) || empty($date) ){
+					echo 'id or date Null';
+					exit();
+				}
+				if($current_date === $date){
+					continue;
+				}else{
+					array_push($error_val, $id);
+					continue;
+				} 
+			}
+
+		}else{
+			echo 'Error: Rows less than 0';
+			exit(0);
+		}
+
+	}else{
+		echo 'Error: DB ';
+		exit(0);
+	}
+
+	// Check size of array to delete rows.
+	if(sizeof($error_val) > 0){
+		$delStm = "DELETE FROM `client_information` WHERE id IN (";
+		for ($i = 0; $i < sizeof($error_val); $i++){
+			$delStm .= $error_val[$i];
+			if($i == sizeof($error_val) - 1){
+				$delStm .= ");";
+			}else{
+				$delStm .= ",";
+			}
+		}
+
+	if($del_result = mysqli_query($connection,$delStm)){
+		echo 'Success';
+		exit();
+
+	}else{
+		echo 'Error: query';
+		exit();
+	}
+	}else{
+		echo 'Success: No Changes';
+		exit(0);
+	}
+
+}
 
 
 if(isset($_POST['cc_id'])){
