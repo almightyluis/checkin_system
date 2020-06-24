@@ -250,6 +250,12 @@ $(function() {
       timeout: 5000,
       url: "refresh_current_table_ctd.php",
       data:{'value':value},
+      beforeSend: function(){
+        $("#spinner").show();
+      },
+      complete: function(){
+        $("#spinner").hide();
+      },
       success: function(responce){
          $("#table_id").html(responce);
          console.log("Reload success");
@@ -286,6 +292,13 @@ $(document).ready(function(){
 
 
 </script>
+
+
+<div class="text-center" id="spinner">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Cleaning database...</span>
+  </div>
+</div>
 
 <div class="modal fade" id="timeout_error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

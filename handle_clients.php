@@ -39,7 +39,6 @@ if(isset($_POST['db_check'])){
 	date_default_timezone_set("America/Los_Angeles");
   	$current_date = date("o-m-d");
   	$error_val = (array)null; 
-
   	$stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
 	if ($result = mysqli_query($connection , $stmt) ){
 		if(mysqli_num_rows($result) > 0){
@@ -57,7 +56,6 @@ if(isset($_POST['db_check'])){
 					continue;
 				} 
 			}
-
 		}else{
 			echo 'Error: Rows less than 0';
 			exit(0);
@@ -79,11 +77,9 @@ if(isset($_POST['db_check'])){
 				$delStm .= ",";
 			}
 		}
-
 	if($del_result = mysqli_query($connection,$delStm)){
 		echo 'Success';
 		exit();
-
 	}else{
 		echo 'Error: query';
 		exit();

@@ -5,8 +5,6 @@ $stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
 $result = mysqli_query($connection , $stmt);
 
 
-
-
 if(!isset($_POST['value'])){
 	header("Location: error_restricted.html");
 	exit();

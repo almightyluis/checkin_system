@@ -253,18 +253,18 @@
 <div class="container-fluid padding">
 <div class= "row text-center padding">
 	<div class="col-xs-12 col-sm-6 col-md-4">
-		<i class="fas fa-code"> </i>
+		<i class="fas fa-code"></i>
 		<h3>Normal Cut</h3>
 		<p>Simple hair cut no fade Etc..</p>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-4">
-		<i class="fas fa-code"> </i>
-		<h3>Middle Range cut</h3>
+		<i class="fas fa-code"></i>
+		<h3>Salon</h3>
 		<p>Hair cut with styling</p>
 	</div>
 
 	<div class="col-sm-12 col-md-4">
-		<i class="fas fa-code"> </i>
+		<i class="fas fa-code"></i>
 		<h3>Super Cut</h3>
 		<p>Haircut, Shave, etc</p>
 	</div>
@@ -277,7 +277,7 @@
 <div class="container-fluid padding">
 <div class="row Welcome text-center">
 	<div class="col-12">
-		<h1 class="display-4">What we offer.</h1>
+		<h1 class="display-4">What we offer</h1>
 	</div>
 	<hr>
 </div>
@@ -340,7 +340,8 @@
 	<dir class="container-fluid padding">
 		<div class="row text-center">
 			<div class="col-md-4">
-			<img src="/updated_php_project/static/img/icon2.png">
+			<hr class="light">
+			<h5>Store name here</h5>
 			<hr class="light">
 			<p>909-572-5474</p>
 			<p>someemail@gmail.com</p>
