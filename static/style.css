@@ -124,6 +124,11 @@ figure {
     padding: 1rem;
 }
 
+.card-img-top {
+    height: 15rem;
+    object-fit: cover;
+    width: 100%;
+    }
 
 
 

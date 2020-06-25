@@ -130,11 +130,6 @@ function reload_table() {
     }); 
 }
 
-/* setInterval(function() {
-    cache_clear()
-  }, 3000);
-*/
-
 // 1 min = 60000
 // 3 min = 180000
 // 5 min = 300000

@@ -37,10 +37,11 @@
 	<!-- Here is the link to the Style.css sheet(Note the PATH TO STYLE) -->
 	<link href="/updated_php_project/static/style.css" rel="stylesheet">
 	<!-- JS Code -->
-	<script src="/updated_php_project/js_script/design_script.js" type="text/javascript"></script>
+	
 
 </head>
 <body>
+<script src="/updated_php_project/js_script/design_script.js" type="text/javascript"></script>
 
 <!-- Navigation -->
 <nav class = "navbar navbar-expand-md navbar-light bg-light sticky-top">
@@ -166,22 +167,6 @@
   </div>
 </div>
 
-<!-- Popup modal Pictures -->
-
-
-<div class="modal fade" id= "picture_modal">
-	<div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Making Appointment</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-
-
-
-</div>
-
 
 <!--- Jumbotron -->
 
@@ -203,7 +188,8 @@
 			mysqli_close($connection);
 		
 		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
-			echo'<h2> Current wait time is <mark>'.$final.'</mark> mins.</h2>';
+			echo'<h2 style = "color: #5c3ac5;"> Save Time. Check In Online.</h2>'; // Change this color
+			echo '<h2>Current wait time is <mark>'.$final.'</mark> mins.</h2>';
 			echo '<p class="lead">We have a number of hair stylist working for us. Come on by and get a haircut!</p>';
 			echo '<p class = "lead">Accepting online appointments now.</p>';
 		} else {
@@ -325,11 +311,12 @@
 <div class="row padding">
 	<div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src= "/updated_php_project/static/img/woman.jpg">
+			<img class="card-img-top" src= "/updated_php_project/static/img/men_cut_0.jpg" style= "height: 15vw;
+    object-fit: cover; width: 100%;">
 			<div class="card-body">
-				<h4 class="card-title">Women Hair style</h4>
-				<p class="card-text">We also include women hair stylist to assist</p>
-				<a href="#" class="btn btn-outline-secondary">See profile</a>
+				<h4 class="card-title">Men Haircuts</h4>
+				<p class="card-text">Fades, Shaving Etc.</p>
+				<a href="#" class="btn btn-outline-secondary" onclick="show()">See Examples</a>
 			</div>
 		</div>
 	</div>
@@ -351,7 +338,7 @@
 			<div class="card-body">
 				<h4 class="card-title">Women Hair style</h4>
 				<p class="card-text">We also include women hair stylist to assist</p>
-				<a href="#" class="btn btn-outline-secondary">See profile</a>
+				<a href="#picture_modal" class="btn btn-outline-secondary">See profile</a>
 			</div>
 		</div>
 	</div>
@@ -360,15 +347,66 @@
 	<div class="card">
 		<img class="card-img-top" src= "/updated_php_project/static/img/woman.jpg">
 		<div class="card-body">
-			<h4 class="card-title">Women Hair style</h4>
-			<p class="card-text">We also include women hair stylist to assist</p>
-			<button href="#" class="btn btn-outline-secondary">See profile</button>
+			<h4 class="card-title">Women styling</h4>
+			<p class="card-text">From colors, wax, highlights, simple styling etc.</p>
+			<a onclick = "show()" class = "btn btn-outline-secondary">See Examples</a>
 		</div>
 	</div>
     </div>
 </div>
 </div>
 <!--- Connect to social media icons -->
+
+
+
+<!-- Popup modal Pictures -->
+
+
+<div class="modal fade bd-example-modal-lg" id= "picture_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-content">
+
+	<div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pictures</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick = "close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class = "modal-body">
+
+
+      	<div id="example" class="carousel slide" data-ride = "carousel">
+		<ul class ="carousel-indicators">
+			<li data-target="#example" data-slide-to="0" class = "active"></li>
+			<li data-target="#example" data-slide-to="1"> </li>
+			<li data-target="#example" data-slide-to="2"> </li>
+
+		</ul>
+ 	
+      	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<img src="/updated_php_project/static/img/barbershop.jpg"/>
+		</div>
+
+      		<div class="carousel-item">
+			<img src="/updated_php_project/static/img/storefront2.jpg"/>
+			</div>
+			<div class="carousel-item">
+			<img src="/updated_php_project/static/img/storefront.jpg"/>
+			</div>
+      	</div>
+
+
+      </div>
+      
+
+      </div>
+  </div>
+  </div>
+</div>
+
+
+
 
 
 <!--- Footer, With Client information and Job Opp -->
@@ -399,8 +437,6 @@
 			<p>Sunday: Closed</p>
 
 		</div>
-
-
 		<div class="col-md-4">
 
 			<hr class="light">
