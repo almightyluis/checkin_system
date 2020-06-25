@@ -34,11 +34,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-
 	<!-- Here is the link to the Style.css sheet(Note the PATH TO STYLE) -->
 	<link href="/updated_php_project/static/style.css" rel="stylesheet">
-
-		<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<!-- JS Code -->
+	<script src="/updated_php_project/js_script/design_script.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -165,6 +164,22 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- Popup modal Pictures -->
+
+
+<div class="modal fade" id= "picture_modal">
+	<div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Making Appointment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+
+
 </div>
 
 
@@ -347,7 +362,7 @@
 		<div class="card-body">
 			<h4 class="card-title">Women Hair style</h4>
 			<p class="card-text">We also include women hair stylist to assist</p>
-			<a href="#" class="btn btn-outline-secondary">See profile</a>
+			<button href="#" class="btn btn-outline-secondary">See profile</button>
 		</div>
 	</div>
     </div>
