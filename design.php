@@ -12,8 +12,8 @@
 
 	date_default_timezone_set('America/Los_Angeles');
 	$current_date_client = date("N");
-	$current_time_client = date("H:i");
-	$hour = date("H");
+	$current_time_client = date("G:i");
+	$hour = date("G");
 	$min = date("i");
 
 	$start_time_format = explode(":", $start_time);
@@ -88,16 +88,43 @@
 		<img src="/updated_php_project/static/img/barbershop.jpg"/>
 		<div class="carousel-caption">
 		<?php
-		
-		function check_date() {
-			global $day_off, $current_date_client;
-			if(in_array($current_date_client, $day_off)){
-				return TRUE;
-			}else{
-				return FALSE;
-			}
+		// Important Allow client to be able to make appointments 10 min before store opening.
+	function check_date() {
+		global $day_off, $current_date_client;
+		if(in_array($current_date_client, $day_off)){
+			return TRUE;
+		}else{
+			return FALSE;
 		}
-		 if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE){
+	}
+	function ten_minute_frame(){
+		global $start_time_format;
+		$frame_start = 14; // 15 minute window
+		$var = FALSE;
+		date_default_timezone_set('America/Los_Angeles');
+		$current_time_client = date("G:i"); // Current time Nonleading hour, leading zeros for minutes
+		$start_time_str = (int)ltrim($start_time_format[0],'0'); // Nonleading zeros for start time
+		$arr_time = explode(":", $current_time_client); // Array of time 0->Hour, 1->Min
+		$hour_client = (int)$arr_time[0];
+		$min_client = (int)ltrim($arr_time[1],'0');
+
+		if($hour_client == $start_time_str - 1){
+			// Anything greater than 45 puts you within the time frame
+			if($min_client >= $frame_start){
+				$var = TRUE;
+				return $var;
+			}else{
+				$var = FALSE;
+				return $var;
+			}
+		}else{
+			$var = FALSE;
+			return $var;
+		}
+		return $var;
+	}
+
+		 if( (int)$hour > (int)$start_time_format[0] && (int)$hour < (int)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
 		 		echo '<h1 class= "display-2">Reserve your place in line</h1>';
 				echo '<button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
 
@@ -106,9 +133,7 @@
 				<h2 class= "display-1" id= "closed_txt" style ="color: #d1000a;">Appointments are currently closed till open hours</h2>
 				<button type="button" class ="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>
 				';
-		}
-
-	 
+		}	 
 		?>
 		</div>
 	</div>
@@ -138,7 +163,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-  
       </div>
     </div>
   </div>
@@ -164,16 +188,14 @@
 			}
 			mysqli_close($connection);
 		
-		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE){
-
+		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
 			echo'<h2> Current wait time is <mark>'.$final.'</mark> mins.</h2>';
 			echo '<p class="lead">We have a number of hair stylist working for us. Come on by and get a haircut!</p>';
 			echo '<p class = "lead">Accepting online appointments now.</p>';
 		} else {
-
 			echo'<h2> Current wait time is <mark>0</mark> mins.</h2>';
 			echo '<p class="lead">We have a number of hair stylist working for us. Come on by and get a haircut!</p>';
-			echo '<p class = "lead"><mark>Current location is closed</mark>, you can make appointments during open hours.</p> ';
+			echo '<p class = "lead"><mark>Current location is closed</mark>, keep in mind we open up online appointments 15 minutes before open time! So come back and sign up 15 minutes before to be first.</p> ';
 		} 
 
 		?>
@@ -181,12 +203,11 @@
 	<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
 		<a href="#">
 		<?php 
-
-			if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE){
-				echo '<button type="button" class ="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
-			} else {
-				echo '<button type="button" class ="btn btn-outline-danger" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>';
-			}
+		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
+			echo '<button type="button" class ="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
+		} else {
+			echo '<button type="button" class ="btn btn-outline-danger" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>';
+		}
 		 ?>
 		</a>
 	</div>
