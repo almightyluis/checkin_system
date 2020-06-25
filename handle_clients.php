@@ -2,7 +2,7 @@
 
 include_once 'server_connect.php';
 
-// This would be considere the removal Proccess.
+// Removal based on id.
 if(isset($_POST['del_id'])){
 	$id = $_POST['del_id'];
 	$delete = "DELETE FROM `client_information` WHERE id = '$id'; ";
@@ -27,8 +27,9 @@ if(isset($_POST['check_in'])){
 		echo "YES";
 		die();
 	}else{
-		echo "Error Delete";
+		echo "Update Error";
 		mysqli_error($connection);
+		mysqli_close($connection);
 		die();
 	}
 }

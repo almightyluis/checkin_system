@@ -4,7 +4,7 @@ include_once 'server_connect.php';
 
 if(!isset($_GET['client_view_click'])){
 	echo 'No Click Error';
-	Header("Location: error_message_login.html");
+	Header("Location: error_restricted.html");
 	die();
 }else {
 

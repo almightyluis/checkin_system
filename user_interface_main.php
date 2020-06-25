@@ -175,7 +175,7 @@ $(function(){
               $ele.remove();
               reload_table();        
             }); 
-          	}else{
+          	}else if (responce == "Update Error"){
           		console.log("Error, PHP not able to add to remove or recived something other than YES");
           	}
          },
@@ -269,6 +269,8 @@ $(function() {
 });
 
 // Check if DB is correct by date. 
+// Modal shows if clients have been removed.
+// Imporovement:: show the list of removed users incase user want to keep them or add them.
 $(document).ready(function(){
   var db_check = "db_check";
   var xhr = $.ajax({
@@ -277,13 +279,22 @@ $(document).ready(function(){
     url:"handle_clients.php",
     data: {'db_check':db_check},
     success:function (responce){
-      // Load the new table.
-      console.log(responce);
-      console.log("Success function")
+      if(responce == "Success"){
+        console.log(responce);
+        console.log("DB CHECK: cleaned");
+        show_modal("Database cleanup", "We removed clients who remained in the list overnight.");
+        reload_table();
+
+      }else if (responce == "Success: No Changes"){
+        reload_table();
+      }else if (responce == "Error: query"){
+        show_modal("Database Cleanup", "Query Error Fatal");
+      }
     },
     error:function(error){
       console.log("db_check Error");
       console.log(error);
+      show_modal("Database cleanup", "Fatal error removing past clients.");
     }
 
   });
@@ -291,14 +302,38 @@ $(document).ready(function(){
 });
 
 
+function show_modal(title,body){
+  document.getElementById('title_config').innerHTML = title;
+  document.getElementById('body_config').innerHTML = body;
+  $("#configure_modal").modal("show");
+}
+
+
+
+
+
 </script>
 
 
-<div class="text-center" id="spinner">
-  <div class="spinner-border" role="status">
-    <span class="sr-only">Cleaning database...</span>
+<div class="modal fade" id="configure_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="title_config">Refresh Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id= "body_config">
+        Looks like we have a timeout error, please check if you are connected to the internet. Or try to refresh the entire page.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>
+
 
 <div class="modal fade" id="timeout_error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -325,7 +360,7 @@ $(document).ready(function(){
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Email Cannot be sent</h5>
+        <h5 class="modal-title" id="error_modal">Email Cannot be sent</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

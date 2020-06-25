@@ -17,11 +17,8 @@ include_once 'server_connect.php';
 
 // Check if the submit button was hit, prevent from people from just finding the /user_interface_main.html or user_login_attempt.php
 if( isset($_POST['click']) ) {
-
-
 	$username = $_POST['login'];
 	$password = $_POST['password'];
-
 	if(empty($username) || empty($password) ){
 		header("Location: error_message_login.html");
 		exit();
@@ -32,18 +29,12 @@ if( isset($_POST['click']) ) {
 		{
 			header("Location: error_message_login.html");
 			exit();
-
 		} else {
-
 			mysqli_stmt_bind_param($stmt, "s", $username);
-
 			mysqli_stmt_execute($stmt);
-
 			$result = mysqli_stmt_get_result($stmt);
 			$row = mysqli_fetch_assoc($result);
-			
 			if( mysqli_num_rows($result) > 0) {
-
 				if( $row['user_email'] == $username && $row['user_password'] == $password ) {
 					session_start();
 					header("Location: user_interface_main.php");
