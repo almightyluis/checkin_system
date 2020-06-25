@@ -40,7 +40,7 @@ $check_in = 0;
 		exit();
 	}else if(!$sqlResult) {
     // Send user back home display message to try again.
-		echo "Error DB inserting ";
+		header("Location: existing_client_error.html");
 		mysqli_error($connection);
 		mysqli_close($connection);
 		exit();

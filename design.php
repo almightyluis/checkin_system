@@ -72,7 +72,6 @@
 	</div>
 	</div>
 </nav>
-
 <!--- Image Slider -->
 
 <div id="slides" class="carousel slide" data-ride = "carousel">
@@ -220,12 +219,14 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Making Appointment</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
       <div class="modal-body">
         <form action ="send_to_buisness.php" method= "post">
           <div class="form-group">
@@ -237,7 +238,7 @@
             <input type="text" class="form-control" id="client-email" name="client-email" required>
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Phone Number:</label>
+            <label for="client-phone" class="col-form-label">Phone Number:</label>
             <input type="phone-number" class="form-control" id="client-phone" name = "client-phone" required>
           </div>
           <div class="form-group">
@@ -262,7 +263,7 @@
 		<input type="submit" value= "Confirm Appointment" name = "clicked" class = "btn btn-primary">
       </div>
   </form>
-    </div>
+	</div>
   </div>
 </div>
 
