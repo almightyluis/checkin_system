@@ -311,8 +311,7 @@
 <div class="row padding">
 	<div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src= "/updated_php_project/static/img/men_cut_0.jpg" style= "height: 15vw;
-    object-fit: cover; width: 100%;">
+			<img class="card-img-top" src= "/updated_php_project/static/img/men_cut_1.jpg">
 			<div class="card-body">
 				<h4 class="card-title">Men Haircuts</h4>
 				<p class="card-text">Fades, Shaving Etc.</p>

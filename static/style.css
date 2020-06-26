@@ -124,8 +124,9 @@ figure {
     padding: 1rem;
 }
 
-.card-img-top {
-    height: 15rem;
+/*--- Refrence the class of all card-img-top but call for images (img) --*/
+.card-img-top img {
+    height: 30rem;
     object-fit: cover;
     width: 100%;
     }
