@@ -126,11 +126,15 @@ figure {
 
 /*--- Refrence the class of all card-img-top but call for images (img) --*/
 .card-img-top img {
-    height: 30rem;
-    object-fit: cover;
-    width: 100%;
-    }
+    height: 15rem;
+    width: 50%;
 
+}
+.card-body h4 {
+  color: : #5c3ac5 ! important;
+  background-color: #5c3ac5 ! important;
+
+}
 
 
 
