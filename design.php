@@ -314,7 +314,7 @@
 			<img class="card-img-top" src= "/updated_php_project/static/img/men_cut_0.jpg">
 			<div class="card-body">
 				<h4 class="card-title">Men Haircuts</h4>
-				<p class="card-text">Fades, Shaving Etc.</p>
+				<p class="card-text" id="color">Fades, Shaving Etc.</p>
 				<a href="#" class="btn btn-outline-secondary" onclick="show()">See Examples</a>
 			</div>
 		</div>
