@@ -13,6 +13,11 @@
 @media (max-width: 576px) {
   
 }
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: fill;
+}
 
 #color {
   color: #5c3ac5 ! important;

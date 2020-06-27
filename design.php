@@ -315,29 +315,29 @@
 			<div class="card-body">
 				<h4 class="card-title">Men Haircuts</h4>
 				<p class="card-text" id="color">Fades, Shaving Etc.</p>
-				<a href="#" class="btn btn-outline-secondary" onclick="show()">See Examples</a>
+				<a href="#" class="btn btn-outline-secondary" onclick="show()">Show Work</a>
 			</div>
 		</div>
 	</div>
 
 <div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src= "/updated_php_project/static/img/woman.jpg">
+			<img class="card-img-top" src= "/updated_php_project/static/img/shave_0.jpg">
 			<div class="card-body">
-				<h4 class="card-title">Women Hair style</h4>
-				<p class="card-text">We also include women hair stylist to assist</p>
-				<a href="#" class="btn btn-outline-secondary">See profile</a>
+				<h4 class="card-title">Shave, Beard Trim</h4>
+				<p class="card-text">Hot Wax or Razor</p>
+				<a href="#" class="btn btn-outline-secondary">Show Work</a>
 			</div>
 		</div>
 	</div>
 
 	<div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src= "/updated_php_project/static/img/woman.jpg">
+			<img class="card-img-top" src= "/updated_php_project/static/img/color_woman_0.jpg">
 			<div class="card-body">
-				<h4 class="card-title">Women Hair style</h4>
+				<h4 class="card-title">Women Color</h4>
 				<p class="card-text">We also include women hair stylist to assist</p>
-				<a href="#picture_modal" class="btn btn-outline-secondary">See profile</a>
+				<a href="#picture_modal" class="btn btn-outline-secondary">Show Work</a>
 			</div>
 		</div>
 	</div>
@@ -346,9 +346,9 @@
 	<div class="card">
 		<img class="card-img-top" src= "/updated_php_project/static/img/woman.jpg">
 		<div class="card-body">
-			<h4 class="card-title">Women styling</h4>
+			<h4 class="card-title">Women Styling</h4>
 			<p class="card-text">From colors, wax, highlights, simple styling etc.</p>
-			<a onclick = "show()" class = "btn btn-outline-secondary">See Examples</a>
+			<a onclick = "show()" class = "btn btn-outline-secondary">Show Work</a>
 		</div>
 	</div>
     </div>
