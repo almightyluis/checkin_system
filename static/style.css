@@ -17,8 +17,8 @@
 
 .card-img-top {
   width: 100%;
-  height: 15vw;
-  object-fit: fill;
+  height: 18rem;
+  object-fit: cover;
 }
 .card-body a {
   background-color: #5c3ac5 ! important;
@@ -71,7 +71,16 @@
   border: 1px;
 }
 .col-md-4 p {
-  font-style: "Courier New";
+  
+}
+#jumbo_cont {
+  background-color: white ! important;
+  text-align: center;
+  height: auto;
+}
+.display_text {
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 
@@ -90,6 +99,7 @@ hr.light {
 
 .carousel-caption {
   position: absolute;
+  height: auto;
   top: 50%;
   transform: translateY(-50%);
 

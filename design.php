@@ -72,6 +72,19 @@
 	</div>
 	</div>
 </nav>
+
+
+<div class="jumbotron" id ="jumbo_cont">
+	<div class="display_text">
+		<h1 class= "display-5">Welcome, Store Name</h1>
+		<p class="lead">1922 W Maindrive Road, Beverlly Hills, CA.</p>
+		<hr class="my-3">
+	</div>
+</div>
+
+
+
+
 <!--- Image Slider -->
 
 <div id="slides" class="carousel slide" data-ride = "carousel">
@@ -281,7 +294,7 @@
 		<p>Simple hair cut no fade Etc..</p>
 	</div>
 	<div class="col-xs-12 col-sm-6 col-md-4">
-		<i class="fas fa-code"></i>
+		<i class="fas fa-scissors"></i>
 		<h3>Salon</h3>
 		<p>Hair cut with styling</p>
 	</div>
