@@ -5,7 +5,7 @@
 
 	// Reqect time out of this time frame
 	$start_time = "08:00:00";
-	$end_time = "21:00:00";
+	$end_time = "24:00:00";
 	// Days off according to BClient
 	$day_off = array(6,7); 
 
@@ -28,16 +28,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Complete Bootstrap 4 Website Layout</title>
+	<title>Company Name</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
 	<!-- Here is the link to the Style.css sheet(Note the PATH TO STYLE) -->
 	<link href="/updated_php_project/static/style.css" rel="stylesheet">
 	<!-- JS Code -->
-	
 
 </head>
 <body>
@@ -45,7 +46,6 @@
 
 <!-- Navigation -->
 <nav class = "navbar navbar-expand-md navbar-light bg-light sticky-top">
-
 	<div class="container-fluid">
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
 		<span class="navbar-toggler-icon"> </span>
@@ -56,13 +56,13 @@
 				<a class="nav-link" href="#">Home</a>
 			</li>
 			<li class="nav-item">
+				<a class="nav-link" href="meet_the_team.html">Team</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link" href="#">Find Location</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">About</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Software</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">Help</a>
@@ -73,17 +73,13 @@
 	</div>
 </nav>
 
-
 <div class="jumbotron" id ="jumbo_cont">
 	<div class="display_text">
 		<h1 class= "display-5">Welcome, Store Name</h1>
 		<p class="lead">1922 W Maindrive Road, Beverlly Hills, CA.</p>
-		<hr class="my-3">
+		<hr class="my-3" style="background-color: #c54a3a;">
 	</div>
 </div>
-
-
-
 
 <!--- Image Slider -->
 
@@ -137,12 +133,12 @@
 	}
 
 		 if( (int)$hour > (int)$start_time_format[0] && (int)$hour < (int)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
-		 		echo '<h1 class= "display-2">Reserve your place in line</h1>';
+		 		echo '<h1 class= "display-2" style="font-size: 5.2vw;">Reserve your place in line</h1>';
 				echo '<button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
 
 		 }else {
 				echo '
-				<h2 class= "display-1" id= "closed_txt" style ="color: #d1000a;">Appointments are currently closed till open hours</h2>
+				<h2 class= "display-2" id= "closed_txt" style ="color: #d1000a; font-size: 5.2vw;">Appointments are currently closed till open hours</h2>
 				<button type="button" class ="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>
 				';
 		}	 
@@ -170,7 +166,7 @@
       </div>
       <div class="modal-body">
         <p class="lead">We are currently closed </p>
-        <p class="lead">Appointments are opened up 5 minutes before opening time. Please make appointment at that time!</p>
+        <p class="lead">Appointments are opened up 15 minutes before opening time. Please make appointment at that time!</p>
 		<p>Thanks for understading.</p>
       </div>
       <div class="modal-footer">
@@ -288,24 +284,42 @@
 <!-- Might need to figure out how to change the icons, they are labeled as i class "fas fa-code" etc -->
 <div class="container-fluid padding">
 <div class= "row text-center padding">
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<i class="fas fa-code"></i>
-		<h3>Normal Cut</h3>
-		<p>Simple hair cut no fade Etc..</p>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-md-4">
+		<i class="fas fa-cut fa-5x"></i>
+		<h3>Haircut</h3>
+		<p>Low Fade, High Fade, any style!</p>
+		<p>Price: 15$</p>
 	</div>
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<i class="fas fa-scissors"></i>
-		<h3>Salon</h3>
-		<p>Hair cut with styling</p>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-md-4">
+		<i class="fas fa-tint fa-5x"></i>
+		<h3>Beard, Waxing</h3>
+		<p>Eyebrows, Beard hot shave etc.</p>
+		<p>Beard: 5$-10$, Waxing: 5$ - 20$ </p>
 	</div>
 
-	<div class="col-sm-12 col-md-4">
-		<i class="fas fa-code"></i>
-		<h3>Super Cut</h3>
-		<p>Haircut, Shave, etc</p>
+	<div class="col-xs-12 col-sm-6 col-md-4 col-md-4">
+		<i class="fas fa-anchor fa-5x"></i>
+		<h3>The Works</h3>
+		<p>Haircut, Beard and Shampoo.</p>
+		<p>Price: 30$ Flat</p>
 	</div>
+
+	<div class="col-xs-12 col-sm-6 col-md-4 col-md-4">
+		<i class="fas fa-chess-queen fa-5x"></i>
+		<h3>Salon Services</h3>
+		<p>Perming Services, Hair Extension Services</p>
+		<p>Price: 50$-70$</p>
+	</div>
+
+	<div class="col-xs-12 col-sm-6 col-md-4 col-md-4">
+		<i class="fas fa-paint-brush fa-5x"></i>
+		<h3>Salon Services</h3>
+		<p>Coloring Services</p>
+		<p>Price: 80$ Long hair avgerage</p>
+	</div>
+
 </div>
-<hr class="my-4">
+<hr class="my-4" style="background-color: #c54a3a ! important;">
 </div>
 
 
@@ -366,8 +380,35 @@
 	</div>
     </div>
 </div>
+<hr class="hr-4" style="background-color: #c54a3a ! important;">
 </div>
 <!--- Connect to social media icons -->
+
+<div class="container-fluid">
+	<h2 class= "display-5" style="text-align: center;">Follow us @</h2>
+	<hr class="hr-4" style="background-color: #c54a3a;">
+</div>
+
+<div class="container-fluid padding">
+	<div class="row text-center padding">
+		<div class="col-xs-12 col-md-4">
+		<img src="/updated_php_project/static/img/instagram_icon.png" style= "height: 50px; width: 50px; "/>
+		<a href="https://www.instagram.com">Instagram</a>
+		</div>
+		<div class="col-xs-12 col-md-4">
+		<img src="/updated_php_project/static/img/facebook_icon.png" style= "height: 50px; width: 50px; "/>
+		<a href="https://www.facebook.com">Facebook</a>
+		</div>
+		<div class="col-xs-12 col-md-4">
+		<img src="/updated_php_project/static/img/twitter_icon.png" style= "height: 50px; width: 50px; "/>
+		<a href="https://www.twitter.com">Twitter</a>
+		</div>
+
+
+
+	</div>
+</div>
+
 
 
 
