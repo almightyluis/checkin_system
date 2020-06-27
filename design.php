@@ -188,7 +188,7 @@
 			mysqli_close($connection);
 		
 		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
-			echo'<h2 style = "color: #5c3ac5;"> Save Time. Check In Online.</h2>'; // Change this color
+			echo'<h2 style = "color: #c54a3a;"> Save Time. Check In Online.</h2>'; // Change this color
 			echo '<h2>Current wait time is <mark>'.$final.'</mark> mins.</h2>';
 			echo '<p class="lead">We have a number of hair stylist working for us. Come on by and get a haircut!</p>';
 			echo '<p class = "lead">Accepting online appointments now.</p>';
@@ -311,11 +311,11 @@
 <div class="row padding">
 	<div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src= "/updated_php_project/static/img/men_cut_0.jpg">
+			<img class="card-img-top" src= "/updated_php_project/static/img/men_fade_0.jpg">
 			<div class="card-body">
 				<h4 class="card-title">Men Haircuts</h4>
 				<p class="card-text" id="color">Fades, Shaving Etc.</p>
-				<a href="#" class="btn btn-outline-secondary" onclick="show()">Show Work</a>
+				<a href="#" class="btn btn-outline-light" onclick="show()">Show Work</a>
 			</div>
 		</div>
 	</div>
@@ -326,7 +326,7 @@
 			<div class="card-body">
 				<h4 class="card-title">Shave, Beard Trim</h4>
 				<p class="card-text">Hot Wax or Razor</p>
-				<a href="#" class="btn btn-outline-secondary">Show Work</a>
+				<a href="#" class="btn btn-outline-light">Show Work</a>
 			</div>
 		</div>
 	</div>
@@ -337,7 +337,7 @@
 			<div class="card-body">
 				<h4 class="card-title">Women Color</h4>
 				<p class="card-text">We also include women hair stylist to assist</p>
-				<a href="#picture_modal" class="btn btn-outline-secondary">Show Work</a>
+				<a href="#picture_modal" class="btn btn-outline-light">Show Work</a>
 			</div>
 		</div>
 	</div>
@@ -348,7 +348,7 @@
 		<div class="card-body">
 			<h4 class="card-title">Women Styling</h4>
 			<p class="card-text">From colors, wax, highlights, simple styling etc.</p>
-			<a onclick = "show()" class = "btn btn-outline-secondary">Show Work</a>
+			<a href="#" onclick = "show()" class= "btn btn-outline-light">Show Work</a>
 		</div>
 	</div>
     </div>
