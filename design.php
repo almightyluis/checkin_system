@@ -338,7 +338,7 @@
 <div class="row padding">
 	<div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src= "/updated_php_project/static/img/men_fade_0.jpg">
+			<img class="card-img-top" src= "/updated_php_project/static/img/col_haircut/men_fade_0.jpg">
 			<div class="card-body">
 				<h4 class="card-title">Men Haircuts</h4>
 				<p class="card-text" id="color">Fades, Shaving Etc.</p>
@@ -349,7 +349,7 @@
 
 <div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src= "/updated_php_project/static/img/shave_0.jpg">
+			<img class="card-img-top" src= "/updated_php_project/static/img/col_shave/shave_0.jpg">
 			<div class="card-body">
 				<h4 class="card-title">Shave, Beard Trim</h4>
 				<p class="card-text">Hot Wax or Razor</p>
@@ -360,7 +360,7 @@
 
 	<div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src= "/updated_php_project/static/img/color_woman_0.jpg">
+			<img class="card-img-top" src= "/updated_php_project/static/img/col_color/color_woman_0.jpg">
 			<div class="card-body">
 				<h4 class="card-title">Women Color</h4>
 				<p class="card-text">We also include women hair stylist to assist</p>
@@ -371,7 +371,7 @@
 
 <div class="col-md-3">
 	<div class="card">
-		<img class="card-img-top" src= "/updated_php_project/static/img/woman.jpg">
+		<img class="card-img-top" src= "/updated_php_project/static/img/col_woman_style/woman.jpg">
 		<div class="card-body">
 			<h4 class="card-title">Women Styling</h4>
 			<p class="card-text">From colors, wax, highlights, simple styling etc.</p>
@@ -392,15 +392,15 @@
 <div class="container-fluid padding">
 	<div class="row text-center padding">
 		<div class="col-xs-12 col-md-4">
-		<img src="/updated_php_project/static/img/instagram_icon.png" style= "height: 50px; width: 50px; "/>
+		<img src="/updated_php_project/static/img/icons/instagram_icon.png" style= "height: 50px; width: 50px; "/>
 		<a href="https://www.instagram.com">Instagram</a>
 		</div>
 		<div class="col-xs-12 col-md-4">
-		<img src="/updated_php_project/static/img/facebook_icon.png" style= "height: 50px; width: 50px; "/>
+		<img src="/updated_php_project/static/img/icons/facebook_icon.png" style= "height: 50px; width: 50px; "/>
 		<a href="https://www.facebook.com">Facebook</a>
 		</div>
 		<div class="col-xs-12 col-md-4">
-		<img src="/updated_php_project/static/img/twitter_icon.png" style= "height: 50px; width: 50px; "/>
+		<img src="/updated_php_project/static/img/icons/twitter_icon.png" style= "height: 50px; width: 50px; "/>
 		<a href="https://www.twitter.com">Twitter</a>
 		</div>
 
@@ -408,8 +408,6 @@
 
 	</div>
 </div>
-
-
 
 
 <!-- Popup modal Pictures -->
@@ -428,25 +426,27 @@
       <div class = "modal-body">
 
 
-      	<div id="example" class="carousel slide" data-ride = "carousel">
+      	<div id="show_work" class="carousel slide" data-ride = "carousel">
 		<ul class ="carousel-indicators">
-			<li data-target="#example" data-slide-to="0" class = "active"></li>
-			<li data-target="#example" data-slide-to="1"> </li>
-			<li data-target="#example" data-slide-to="2"> </li>
+			<li data-target="#show_work" data-slide-to="0" class = "active"></li>
+			<li data-target="#show_work" data-slide-to="1"> </li>
+			<li data-target="#show_work" data-slide-to="2"> </li>
 
 		</ul>
  	
       	<div class="carousel-inner">
-		<div class="carousel-item active">
-			<img src="/updated_php_project/static/img/barbershop.jpg"/>
-		</div>
+			<div class="carousel-item active">
+				<img src="/updated_php_project/static/img/barbershop.jpg"/>
+			</div>
 
       		<div class="carousel-item">
-			<img src="/updated_php_project/static/img/storefront2.jpg"/>
+				<img src="/updated_php_project/static/img/storefront2.jpg"/>
 			</div>
+
 			<div class="carousel-item">
-			<img src="/updated_php_project/static/img/storefront.jpg"/>
+				<img src="/updated_php_project/static/img/storefront.jpg"/>
 			</div>
+
       	</div>
 
 
@@ -457,11 +457,6 @@
   </div>
   </div>
 </div>
-
-
-
-
-
 <!--- Footer, With Client information and Job Opp -->
 <footer>
 
