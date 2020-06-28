@@ -375,7 +375,7 @@
 		<div class="card-body">
 			<h4 class="card-title">Women Styling</h4>
 			<p class="card-text">From colors, wax, highlights, simple styling etc.</p>
-			<a href="#" onclick = "show()" class= "btn btn-outline-light">Show Work</a>
+			<a href="#"class= "btn btn-outline-light" onclick="w()">Show Work</a>
 		</div>
 	</div>
     </div>
@@ -431,20 +431,30 @@
 			<li data-target="#show_work" data-slide-to="0" class = "active"></li>
 			<li data-target="#show_work" data-slide-to="1"> </li>
 			<li data-target="#show_work" data-slide-to="2"> </li>
+			<li data-target="#show_work" data-slide-to="3"> </li>
+			<li data-target="#show_work" data-slide-to="4"> </li>
 
 		</ul>
  	
       	<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img src="/updated_php_project/static/img/barbershop.jpg"/>
+				<img src="/updated_php_project/static/img/barbershop.jpg" id="1"/>
 			</div>
 
       		<div class="carousel-item">
-				<img src="/updated_php_project/static/img/storefront2.jpg"/>
+				<img src="/updated_php_project/static/img/storefront2.jpg"id="2"/>
 			</div>
 
 			<div class="carousel-item">
-				<img src="/updated_php_project/static/img/storefront.jpg"/>
+				<img src="/updated_php_project/static/img/storefront.jpg" id="3"/>
+			</div>
+
+			<div class="carousel-item">
+				<img src="/updated_php_project/static/img/storefront.jpg" id="4"/>
+			</div>
+
+			<div class="carousel-item">
+				<img src="/updated_php_project/static/img/storefront.jpg" id="5"/>
 			</div>
 
       	</div>
