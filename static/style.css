@@ -28,8 +28,6 @@
   color: white;
 }
 
-
-
 .navbar {
   padding: .8rem;
   background-color: #5c3ac5 ! important;
@@ -44,7 +42,7 @@
 }
 
 .nav-link {
-  font-size: 1.1em ! important;
+  font-size: 1.0em ! important;
 }
 
 .carousel-inner img{

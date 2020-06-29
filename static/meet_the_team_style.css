@@ -1,0 +1,28 @@
+
+
+/*---Media Queries --*/
+@media (max-width: 992px) {
+
+  }
+@media (max-width: 768px) {
+  
+}
+@media (max-width: 576px) {
+  
+}
+
+.navbar {
+	padding: .8rem;
+	background-color: #5c3ac5 !important;
+}
+
+.navbar-nav li {
+  padding-right: 20px;
+}
+.nav-item a {
+  color: white ! important;
+}
+
+.nav-link {
+  font-size: 1.0em ! important;
+}

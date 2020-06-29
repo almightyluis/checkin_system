@@ -2,22 +2,18 @@
 <html>
 
 <head>
-
-
-
   <!--This meta is really important for PHONE VIEW -->
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <link href="/updated_php_project/static/meet_the_team_style.css" rel="stylesheet">
 
-  <link href="/updated_php_project/static/meet_team_style.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class = "navbar navbar-expand-md navbar-light bg-light sticky-top">
+  <nav class = "navbar navbar-expand-md navbar-light bg-light sticky-top" id="navbar_main">
   	<div class="container-fluid">
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
   		<span class="navbar-toggler-icon"> </span>
@@ -39,8 +35,7 @@
   	</div>
   </nav>
 
-
-<div class="jumbotron" id ="team_jumbo" style="background-color: white;">
+  <div class="jumbotron" id ="team_jumbo" style="background-color: white;">
   <div class="display_text">
     <h1 class= "display-4" style="text-align: center;">Meet The Team</h1>
     <hr class="my-4" style="background-color: #5c3ac5 ! important;">
@@ -49,76 +44,55 @@
 
 
 <div class="container-fluid padding">
-  <div class="row padding">
+  <div class="row">
+  <div class="col-sm-4">
+    <div class="card">
 
-    <div class="col-md-3">
-      <div class="card">
-        <img class="card-img-top" src="/updated_php_project/static/img/woman.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
+      <img class="card-img-top" src="/updated_php_project/static/img/col_woman_style/woman.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
     </div>
-
-    <div class="col-md-3">
-      <div class="card">
-        <img class="card-img-top" src="/updated_php_project/static/img/woman.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
     </div>
-
-    <div class="col-md-3">
-      <div class="card">
-        <img class="card-img-top" src="/updated_php_project/static/img/woman.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
+      
     </div>
-
-    <div class="col-md-3">
-      <div class="card">
-        <img class="card-img-top" src="/updated_php_project/static/img/woman.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="card">
-        <img class="card-img-top" src="/updated_php_project/static/img/woman.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3">
-      <div class="card">
-        <img class="card-img-top" src="/updated_php_project/static/img/woman.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-    </div>
-
   </div>
+
+  <div class="col-sm-4">
+    <img class="card-img-top" src="/updated_php_project/static/img/col_woman_style/woman.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+
+<div class="col-sm-4">
+    <div class="card">
+      <img class="card-img-top" src="/updated_php_project/static/img/col_woman_style/woman.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+    </div>
+  </div>
+
+
 </div>
+</div>
+<hr class="hr-4">
+
+
+
+
+
 
   
 
