@@ -34,6 +34,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<script type="text/javascript" src="/updated_php_project/js_script/design_script.js"></script>
 
 
 	<!-- Here is the link to the Style.css sheet(Note the PATH TO STYLE) -->
@@ -42,7 +43,32 @@
 
 </head>
 <body>
-<script src="/updated_php_project/js_script/design_script.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+		
+// Add the 
+// Try using Jquery for this 
+// Main error was linking errors
+
+document.getElementById("men_1").addEventListener("click", function() {
+	var SIZE = 4;
+	var iter = 1;
+	console.log("Hit");
+
+	for(i =0 ; i < SIZE;  i++){
+		var id = (i + 1).toString();
+		var value = "/updated_php_project/static/img/col_haricut/men_fade_"+i+".jpg";
+		document.getElementById(id).src = "/updated_php_project/static/img/col_haricut/men_fade_"+i+".jpg";
+		console.log(value);
+		console.log(id);
+	}
+	$("#picture_modal").modal('show');
+
+});
+
+
+
+</script>
 
 <!-- Navigation -->
 <nav class = "navbar navbar-expand-md navbar-light bg-light sticky-top">
@@ -403,11 +429,9 @@
 		<img src="/updated_php_project/static/img/icons/twitter_icon.png" style= "height: 50px; width: 50px; "/>
 		<a href="https://www.twitter.com">Twitter</a>
 		</div>
-
-
-
 	</div>
 </div>
+
 
 
 <!-- Popup modal Pictures -->
