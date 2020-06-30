@@ -44,31 +44,7 @@
 </head>
 <body>
 
-<script type="text/javascript">
-		
-// Add the 
-// Try using Jquery for this 
-// Main error was linking errors
 
-document.getElementById("men_1").addEventListener("click", function() {
-	var SIZE = 4;
-	var iter = 1;
-	console.log("Hit");
-
-	for(i =0 ; i < SIZE;  i++){
-		var id = (i + 1).toString();
-		var value = "/updated_php_project/static/img/col_haricut/men_fade_"+i+".jpg";
-		document.getElementById(id).src = "/updated_php_project/static/img/col_haricut/men_fade_"+i+".jpg";
-		console.log(value);
-		console.log(id);
-	}
-	$("#picture_modal").modal('show');
-
-});
-
-
-
-</script>
 
 <!-- Navigation -->
 <nav class = "navbar navbar-expand-md navbar-light bg-light sticky-top">
@@ -432,10 +408,7 @@ document.getElementById("men_1").addEventListener("click", function() {
 	</div>
 </div>
 
-
-
 <!-- Popup modal Pictures -->
-
 
 <div class="modal fade bd-example-modal-lg" id= "picture_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
@@ -447,34 +420,29 @@ document.getElementById("men_1").addEventListener("click", function() {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class = "modal-body">
-
-
+      <div class= "modal-body co-inner">
       	<div id="show_work" class="carousel slide" data-ride = "carousel">
 		<ul class ="carousel-indicators">
 			<li data-target="#show_work" data-slide-to="0" class = "active"></li>
 			<li data-target="#show_work" data-slide-to="1"> </li>
 			<li data-target="#show_work" data-slide-to="2"> </li>
 			<li data-target="#show_work" data-slide-to="3"> </li>
-			
-
 		</ul>
- 	
-      	<div class="carousel-inner">
+      	<div class="carousel-inner show">
 			<div class="carousel-item active">
-				<img src="/updated_php_project/static/img/barbershop.jpg" id="1"/>
+				<img src="/updated_php_project/static/img/barbershop.jpg" id="1" class="img-responsive"/>
 			</div>
 
       		<div class="carousel-item">
-				<img src="/updated_php_project/static/img/storefront2.jpg"id="2"/>
+				<img src="/updated_php_project/static/img/storefront2.jpg"id="2" class="img-responsive"/>
 			</div>
 
 			<div class="carousel-item">
-				<img src="/updated_php_project/static/img/storefront.jpg" id="3"/>
+				<img src="/updated_php_project/static/img/storefront.jpg" id="3" class="img-responsive"/>
 			</div>
 
 			<div class="carousel-item">
-				<img src="/updated_php_project/static/img/storefront.jpg" id="4"/>
+				<img src="/updated_php_project/static/img/storefront.jpg" id="4" class="img-responsive"/>
 			</div>
 
       	</div>
@@ -487,7 +455,72 @@ document.getElementById("men_1").addEventListener("click", function() {
   </div>
   </div>
 </div>
+
+<script type="text/javascript">
+
+// We assume all pictures are end in .jpg 
+// We do a check to see if url is valid
+// We assume to only have 4 photos 
+// 
+$(document).ready(function (){
+	$('#men_1').on('click', function(){
+		var path = "col_haircut";
+		var extention = "men_fade_";
+		load_images(path, extention);
+	});
+	$('#men_2').on('click', function(){
+		var path = "col_shave";
+		var extention = "shave_";
+		load_images(path, extention);
+	});
+
+	$('#woman_1').on('click', function() {
+		var path = "col_color";
+		var extention = "color_woman_";
+		load_images(path, extention);
+	});
+
+	$('#woman_2').on('click', function() {
+		var path = "col_woman_style";
+		var extention = "woman_style_";
+		load_images(path, extention);
+	});
+});
+
+// Load images based on max of 4
+// Given, Path & extention assume : jpg
+function load_images(path, ext){
+	var SIZE = 4;
+	var iter = 1;
+	for(i =0 ; i < SIZE;  i++){
+		var id = (i + 1).toString();
+		var pathToCheck = "/updated_php_project/static/img/"+path+"/"+ext+i+".jpg";
+		if(!UrlExists(pathToCheck)){
+			document.getElementById(id).src = "/updated_php_project/static/img/not_found.jpg";
+		}else{
+			document.getElementById(id).src = "/updated_php_project/static/img/"+path+"/"+ext+i+".jpg";
+		}
+	}
+	$("#picture_modal").modal('show');
+}
+
+
+function UrlExists(url) {
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    if(http.status == 404){
+    	return false;
+    }else if(http.status == 200){
+    	return true;
+    }
+    return false;
+}
+
+</script>
+
 <!--- Footer, With Client information and Job Opp -->
+
 <footer>
 
 	<dir class="container-fluid padding">
