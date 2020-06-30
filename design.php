@@ -338,11 +338,11 @@
 <div class="row padding">
 	<div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src= "/updated_php_project/static/img/col_haircut/men_fade_0.jpg">
+			<img class="card-img-top" src="/updated_php_project/static/img/col_haircut/men_fade_0.jpg">
 			<div class="card-body">
 				<h4 class="card-title">Men Haircuts</h4>
 				<p class="card-text" id="color">Fades, Shaving Etc.</p>
-				<a href="#" class="btn btn-outline-light" onclick="show()">Show Work</a>
+				<a href="#" class="btn btn-outline-light" id="men_1">Show Work</a>
 			</div>
 		</div>
 	</div>
@@ -353,7 +353,7 @@
 			<div class="card-body">
 				<h4 class="card-title">Shave, Beard Trim</h4>
 				<p class="card-text">Hot Wax or Razor</p>
-				<a href="#" class="btn btn-outline-light">Show Work</a>
+				<a href="#" class="btn btn-outline-light" id="men_2">Show Work</a>
 			</div>
 		</div>
 	</div>
@@ -364,7 +364,7 @@
 			<div class="card-body">
 				<h4 class="card-title">Women Color</h4>
 				<p class="card-text">We also include women hair stylist to assist</p>
-				<a href="#picture_modal" class="btn btn-outline-light">Show Work</a>
+				<a href="#" class="btn btn-outline-light" id="woman_1">Show Work</a>
 			</div>
 		</div>
 	</div>
@@ -375,7 +375,7 @@
 		<div class="card-body">
 			<h4 class="card-title">Women Styling</h4>
 			<p class="card-text">From colors, wax, highlights, simple styling etc.</p>
-			<a href="#"class= "btn btn-outline-light" onclick="w()">Show Work</a>
+			<a href="#"class= "btn btn-outline-light" id="woman_2" >Show Work</a>
 		</div>
 	</div>
     </div>
@@ -432,7 +432,7 @@
 			<li data-target="#show_work" data-slide-to="1"> </li>
 			<li data-target="#show_work" data-slide-to="2"> </li>
 			<li data-target="#show_work" data-slide-to="3"> </li>
-			<li data-target="#show_work" data-slide-to="4"> </li>
+			
 
 		</ul>
  	
@@ -451,10 +451,6 @@
 
 			<div class="carousel-item">
 				<img src="/updated_php_project/static/img/storefront.jpg" id="4"/>
-			</div>
-
-			<div class="carousel-item">
-				<img src="/updated_php_project/static/img/storefront.jpg" id="5"/>
 			</div>
 
       	</div>
