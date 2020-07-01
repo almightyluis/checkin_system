@@ -408,6 +408,14 @@
 	</div>
 </div>
 
+
+<!-- Instagram API -->
+
+https://api.instagram.com/oauth/authorize?client_id=2935584593335299&redirect_uri=http://192.168.64.2/updated_php_project/design.php/auth/&scope=user_profile,user_media&response_type=code
+
+
+<!-- API Setup, getting Error 400  -->
+
 <!-- Popup modal Pictures -->
 
 <div class="modal fade bd-example-modal-lg" id= "picture_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
