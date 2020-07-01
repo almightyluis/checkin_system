@@ -11,6 +11,13 @@
   
 }
 
+footer {
+  background-color: #3d3c3c;
+  color: #dedede;
+  padding-top: 2rem;
+  overflow: auto;
+}
+
 .navbar {
 	padding: .8rem;
 	background-color: #5c3ac5 !important;
@@ -26,3 +33,4 @@
 .nav-link {
   font-size: 1.0em ! important;
 }
+

@@ -279,8 +279,8 @@ $(document).ready(function(){
         console.log("DB CHECK: cleaned");
         show_modal("Database cleanup", "We removed clients who remained in the list overnight.");
         reload_table();
-
       }else if (responce == "Success: No Changes"){
+        console.log("No Changes");
         reload_table();
       }else if (responce == "Error: query"){
         show_modal("Database Cleanup", "Query Error Fatal");

@@ -35,8 +35,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<script type="text/javascript" src="/updated_php_project/js_script/design_script.js"></script>
-
-
 	<!-- Here is the link to the Style.css sheet(Note the PATH TO STYLE) -->
 	<link href="/updated_php_project/static/style.css" rel="stylesheet">
 	<!-- JS Code -->
@@ -79,7 +77,7 @@
 	<div class="display_text">
 		<h1 class= "display-5">Welcome, Store Name</h1>
 		<p class="lead">1922 W Maindrive Road, Beverlly Hills, CA.</p>
-		<hr class="my-3" style="background-color: #c54a3a;">
+		<hr class="my-3">
 	</div>
 </div>
 
@@ -186,18 +184,17 @@
 	<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
 		<?php 
 
-			$multiplier = 10;
-			$final = NULL;
-			if ( $result = mysqli_query($connection, $stmt) ){
-			$row_count = mysqli_num_rows($result);
-			if($row_count <= 2){
-				$final = "<10";
-			} else {
-				$final = $row_count * $multiplier;	
-				}
+		$multiplier = 10;
+		$final = NULL;
+		if ( $result = mysqli_query($connection, $stmt) ){
+		$row_count = mysqli_num_rows($result);
+		if($row_count <= 2){
+			$final = "<10";
+		} else {
+			$final = $row_count * $multiplier;	
 			}
-			mysqli_close($connection);
-		
+		}
+		mysqli_close($connection);
 		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
 			echo'<h2 style = "color: #c54a3a;"> Save Time. Check In Online.</h2>'; // Change this color
 			echo '<h2>Current wait time is <mark>'.$final.'</mark> mins.</h2>';
@@ -267,6 +264,9 @@
 		      <option value="4">Metro-PCS</option>
 		      <option value="5">Sprint</option>
 		      <option value="6">Boost-Mobile</option>
+		      <option value="7">Google-Fi</option>
+		      <option value="8">Cricket-Moblile</option>
+		      <option value="9">Virgin-Mobile</option>
 		    </select>
 		  </div>
       </div>
@@ -298,14 +298,12 @@
 		<p>Eyebrows, Beard hot shave etc.</p>
 		<p>Beard: 5$-10$, Waxing: 5$ - 20$ </p>
 	</div>
-
 	<div class="col-xs-12 col-sm-6 col-md-4 col-md-4">
 		<i class="fas fa-anchor fa-5x"></i>
 		<h3>The Works</h3>
 		<p>Haircut, Beard and Shampoo.</p>
 		<p>Price: 30$ Flat</p>
 	</div>
-
 	<div class="col-xs-12 col-sm-6 col-md-4 col-md-4">
 		<i class="fas fa-chess-queen fa-5x"></i>
 		<h3>Salon Services</h3>
@@ -321,7 +319,7 @@
 	</div>
 
 </div>
-<hr class="my-4" style="background-color: #c54a3a ! important;">
+<hr class="my-4">
 </div>
 
 
@@ -382,13 +380,13 @@
 	</div>
     </div>
 </div>
-<hr class="hr-4" style="background-color: #c54a3a ! important;">
+<hr class="hr-4">
 </div>
 <!--- Connect to social media icons -->
 
 <div class="container-fluid">
 	<h2 class= "display-5" style="text-align: center;">Follow us @</h2>
-	<hr class="hr-4" style="background-color: #c54a3a;">
+	<hr class="hr-4">
 </div>
 
 <div class="container-fluid padding">
@@ -531,7 +529,7 @@ function UrlExists(url) {
 
 <footer>
 
-	<dir class="container-fluid padding">
+	<div class="container-fluid padding">
 		<div class="row text-center">
 			<div class="col-md-4">
 			<hr class="light">
@@ -565,7 +563,7 @@ function UrlExists(url) {
 			<p>909-572-5474</p>
 			</div>
 		</div>
-	</dir>
+	</div>
 </footer>
 </body>
 </html>

@@ -19,6 +19,14 @@
        /* styles for mobile browsers smaller than 480px; (iPhone) */
 }
 
+
+.my-3 {
+  background-color: #c54a3a ! important;
+}
+.my-4 {
+  background-color: #c54a3a ! important;
+}
+
 .img-responsive {
   max-height: 600px ! important;
   object-fit: contain;

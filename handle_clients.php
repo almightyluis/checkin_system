@@ -92,18 +92,37 @@ if(isset($_POST['db_check'])){
 
 }
 
-
+/* 
+T-Moblie == 2
+Verizon == 3
+Metro-PCS == 4
+Sprint == 5
+Boost-mobile == 6
+*/ 
 if(isset($_POST['cc_id'])){
 
 	$cc_id = $_POST['cc_id'];
 	$find_stm = "SELECT * FROM `client_information` WHERE id = '$cc_id'; ";
+	$array_carrier = array(
+		2 => '@tmomail.net',
+		3 => '@vtext.com',
+		4 => '@mymetropcs.com',
+		5 => '@messaging.sprintpcs.com',
+		6 => '@sms.myboostmobile.com',
+		7 => 'number@msg.fi.google.com',
+		8 => '@sms.cricketwireless.net',
+		9 => '@vmobl.com',
+	);
 
 	if($result = mysqli_query($connection,$find_stm)){
 		if(mysqli_num_rows($result) == 1){
 			$row = mysqli_fetch_assoc($result);
 			$email = $row['Email'];
 			$name = $row['Name'];
-			send_email($email,$name);
+			$phone = $row['Phone'];
+			$carrier = $row['Carrier'];
+			$send_sms = $phone.$array_carrier[$carrier];
+			send_email($email,$name,$send_sms);
 
 		}else {
 			echo 'Error: Email is empty';
@@ -113,13 +132,13 @@ if(isset($_POST['cc_id'])){
 		echo 'Not found';
 		exit();
 	}
-
 } 
 
 // This error is in part of SMTP
 // Using a local host could be the problem of not being able to send.
-
-function send_email($address, $name) {
+// $carrier_em, send via email but it will produce a text sms.
+// Make this function return Boolean
+function send_email_phone($address, $name, $carrier_em) {
 	$body = '<h2>Welcome To The Best Online HTML Web Editor!</h2>
 	<p style="font-size: 1.5em;">Hi, <strong style="background-color: #317399; padding: 0 5px; color: #fff;">$name</strong> You are currently at the front of the virual line. Please make your way to the front counter. We can allow up to 10 min otherwise we are obligated to serve guest in attendance.</p>
 	<p style="font-size: 1.0em;">Thanks hope to see you soon.</p>';
@@ -129,9 +148,6 @@ function send_email($address, $name) {
     'Reply-To: NOREPLY' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
-
-
-
     $mail_st = mail($address, $subject, $body, $headers);
     if($mail_st){
     	echo 'Success';
@@ -140,7 +156,6 @@ function send_email($address, $name) {
     	echo 'Error: Email is empty';
     	die();
     }
-
 
 }
 
