@@ -1,16 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
 
 
 
+.jumbotron {
+  background-color: white !important;
+}
 
 .navbar {
   padding: .8rem;
-  color: #f4d35e;
-
+  background-color: #5c3ac5 !important;
 }
 
 .navbar-nav li {
   padding-right: 20px;
+}
+.nav-item a {
+  color: white ! important;
+}
+
+.nav-link {
+  font-size: 1.0em ! important;
 }
 
 footer {
@@ -26,18 +34,8 @@ hr.light {
   margin-top: .8rem;
 }
 
-.map-container{
-overflow:hidden;
-padding-bottom:56.25%;
-position:relative;
-height:0;
-left: 100px;
-}
-.map-container iframe{
-left:0;
-top:0;
-height:100%;
-width:100%;
-position:absolute;
-
+#map-container-google-1 iframe {
+  width: 100%;
+  overflow: hidden;
+  max-height: 500px;
 }

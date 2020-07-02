@@ -6,8 +6,6 @@
         echo "Page Session has not been meet";
         exit();
   } 
-            
-
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +16,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-  <link href= "/updated_php_project/static/confirmation_style.css" rel="stylesheet">
+  <link href= "/updated_php_project/static/confirmation_style.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -45,34 +43,43 @@
   	</div>
   </nav>
 
-  <div class="jumbotron">
+  <div class="jumbotron text-center">
   <h1 class="display-4">Appointment made!</h1>
 
     <?php   
-        echo '<p class="lead"> <mark>'.$_SESSION['client-name'].'</mark> Your appointment has been set, please head over to check into the line.</p>';    
+        echo '<p class="lead"> <mark>'.$_SESSION['client-name'].'</mark> your appointment has been set, please head over to check into the line.</p>';    
     ?>
-  <hr class="my-4">
   <?php include_once 'server_connect.php';
         $stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
         $result = mysqli_query($connection , $stmt);
         $number_rows = mysqli_num_rows($result) - 1;
-  echo '<p>Currently <mark>'.$number_rows.'</mark> customers ahead of you, thanks and hope to see you soon.</p> '; ?>
+  echo '<p>Currently <mark>'.$number_rows.'</mark> customers ahead of you, thanks, and hope to see you soon.</p> '; ?>
   <!-- Shop current Address Locaiton should be added here. -->
   <a class="btn btn-primary btn-lg" href="#" role="button">Directions</a>
   <a class="btn btn-primary btn-lg" href="design.php" role="button">Return Home</a>
 </div>
 
-<div class="container-fluid padding text-center">
-  <h1 class="display-4">Directions</h1>
+<div class="container-fluid padding">
+  <h1 class="display-4 text-center">Directions</h1>
   <hr class="my-4">
-  <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 350px">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.1068840124944!2d-118.17062788441348!3d34.06677422441096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c598119a5d59%3A0xda4a5ce481ad565e!2sCalifornia%20State%20University%2C%20Los%20Angeles!5e0!3m2!1sen!2sus!4v1593038444096!5m2!1sen!2sus" width="400" height="300" frameborder="0" style="border:0; left: 50px;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+  <div class=" container-fluid text-center">
+
+    <p class="lead" id="hover_click">Address: 900 University Ave, Riverside, CA 92521.</p>
   </div>
+  <div id="map-container-google-1" class="container-fluid">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.7326733675372!2d-117.33025308441519!3d33.97370992931135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcae4687aa9fb3%3A0x10050bdf47721d31!2sUniversity%20of%20California%2C%20Riverside!5e0!3m2!1sen!2sus!4v1593648387948!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+  </div>
+  <hr class="my-4">
 </div>
 
-<footer>
 
-  <dir class="container-fluid padding">
+<script type="text/javascript">
+  
+</script>
+
+<footer>
+  <div class="container-fluid padding">
     <div class="row text-center">
       <div class="col-md-4">
         <hr class="light">
@@ -112,7 +119,7 @@
 
       </div>
     </div>
-  </dir>
+  </div>
 </footer>
 
 </body>

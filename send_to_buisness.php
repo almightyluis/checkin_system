@@ -11,18 +11,16 @@ $current_date = date("o-m-d");
 
 // For the Var $connection
 
-if ( !isset($_POST['client-name']) || !isset($_POST['clicked']) ){
-	echo "Error Post fail";
-	exit();
-} 
+if ( isset($_POST['client-name']) || !isset($_POST['clicked']) ){
 
-$client_name = $_POST['client-name'];
-$client_email = $_POST['client-email'];
-$client_phone = $_POST['client-phone'];
-$client_guest = $_POST['client-guest'];
-$client_carrier = $_POST['carrier-id'];
 
-$check_in = 0;
+	$client_name = $_POST['client-name'];
+	$client_email = $_POST['client-email'];
+	$client_phone = $_POST['client-phone'];
+	$client_guest = $_POST['client-guest'];
+	$client_carrier = $_POST['carrier-id'];
+
+	$check_in = 0;
 
   if ( empty($client_name) || empty($client_email) || empty($client_phone) || empty($client_carrier) || empty($current_date) || empty($current_time) ){
     echo "Error Values Are Empty";
@@ -46,6 +44,14 @@ $check_in = 0;
 		exit();
 	}
   }
+} 
+
+
+
+header("Location: error_restricted.html");
+exit();
+
+
 
 
 

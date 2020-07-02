@@ -34,7 +34,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-	<script type="text/javascript" src="/updated_php_project/js_script/design_script.js"></script>
 	<!-- Here is the link to the Style.css sheet(Note the PATH TO STYLE) -->
 	<link href="/updated_php_project/static/style.css" rel="stylesheet">
 	<!-- JS Code -->
@@ -92,7 +91,7 @@
 
 <!-- Reference this class in Style.css-->
 <div class="carousel-inner">
-	<div class="carousel-item active">
+	<div class="carousel-item center active">
 		<img src="/updated_php_project/static/img/barbershop.jpg"/>
 		<div class="carousel-caption">
 		<?php
@@ -145,10 +144,10 @@
 		?>
 		</div>
 	</div>
-	<div class="carousel-item">
+	<div class="carousel-item center">
 		<img src="/updated_php_project/static/img/storefront2.jpg"/>
 	</div>
-	<div class="carousel-item">
+	<div class="carousel-item center">
 		<img src="/updated_php_project/static/img/storefront.jpg"/>
 	</div>
 </div>
@@ -239,19 +238,19 @@
       <div class="modal-body">
         <form action ="send_to_buisness.php" method= "post">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Name:</label>
+            <label for="recipient-name" class="col-form-label">Name</label>
             <input type="text" class="form-control" id="client-name" name = "client-name" required>
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Email:</label>
+            <label for="recipient-name" class="col-form-label">Email</label>
             <input type="text" class="form-control" id="client-email" name="client-email" required>
           </div>
           <div class="form-group">
-            <label for="client-phone" class="col-form-label">Phone Number:</label>
+            <label for="client-phone" class="col-form-label">Phone Number (10 digits no spaces)</label>
             <input type="phone-number" class="form-control" id="client-phone" name = "client-phone" required>
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label"> Number of guest (0 if it's just yourself :) </label>
+            <label for="recipient-name" class="col-form-label"> Number of guest (0 for yourself) </label>
             <input type="number" class ="form-control" id="client-guest" min="0"name= "client-guest">
           </div>
           <div class="form-group">
@@ -409,7 +408,7 @@
 
 <!-- Instagram API -->
 
-https://api.instagram.com/oauth/authorize?client_id=2935584593335299&redirect_uri=http://192.168.64.2/updated_php_project/design.php/auth/&scope=user_profile,user_media&response_type=code
+<!-- https://api.instagram.com/oauth/authorize?client_id=2935584593335299&redirect_uri=http://192.168.64.2/updated_php_project/design.php/auth/&scope=user_profile,user_media&response_type=code -->
 
 
 <!-- API Setup, getting Error 400  -->
