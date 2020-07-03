@@ -130,6 +130,7 @@ if(isset($_POST['cc_id'])){
 		}
 	}else {
 		echo 'Not found';
+		
 		exit();
 	}
 } 
