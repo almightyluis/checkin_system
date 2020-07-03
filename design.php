@@ -41,8 +41,6 @@
 </head>
 <body>
 
-
-
 <!-- Navigation -->
 <nav class = "navbar navbar-expand-md navbar-light bg-light sticky-top">
 	<div class="container-fluid">
@@ -104,9 +102,12 @@
 			return FALSE;
 		}
 	}
+	// Returns Boolean: True-> withing frame.
+	// VAR: frame_start: time frame counting down so ex: 15:00 -> 00:59 - :15- > :44 min mark
+	// False -> Out of range
 	function ten_minute_frame(){
 		global $start_time_format;
-		$frame_start = 14; // 15 minute window
+		$frame_start = 15; // 15 minute window
 		$var = FALSE;
 		date_default_timezone_set('America/Los_Angeles');
 		$current_time_client = date("G:i"); // Current time Nonleading hour, leading zeros for minutes
@@ -131,16 +132,16 @@
 		return $var;
 	}
 
-		 if( (int)$hour > (int)$start_time_format[0] && (int)$hour < (int)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
-		 		echo '<h1 class= "display-2" style="font-size: 5.2vw;">Reserve your place in line</h1>';
-				echo '<button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
+	 if( (int)$hour > (int)$start_time_format[0] && (int)$hour < (int)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
+	 		echo '<h1 class= "display-2" style="font-size: 5.2vw;">Reserve your place in line</h1>';
+			echo '<button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
 
-		 }else {
-				echo '
-				<h2 class= "display-2" id= "closed_txt" style ="color: #d1000a; font-size: 5.2vw;">Appointments are currently closed till open hours</h2>
-				<button type="button" class ="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>
-				';
-		}	 
+	 }else {
+			echo '
+			<h2 class= "display-2" id= "closed_txt" style ="color: #d1000a; font-size: 5.2vw;">Appointments are currently closed till open hours</h2>
+			<button type="button" class ="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>
+			';
+	}	 
 		?>
 		</div>
 	</div>
@@ -182,13 +183,14 @@
 <div class="row jumbotron">
 	<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
 		<?php 
-
+		// Allow or Disallow appoinments based on Los Angeles times.
+		// VAR: Multiplier: average time for a haircut.
 		$multiplier = 10;
 		$final = NULL;
 		if ( $result = mysqli_query($connection, $stmt) ){
 		$row_count = mysqli_num_rows($result);
 		if($row_count <= 2){
-			$final = "<10";
+			$final = "less than 10";
 		} else {
 			$final = $row_count * $multiplier;	
 			}
@@ -509,7 +511,8 @@ function load_images(path, ext){
 	$("#picture_modal").modal('show');
 }
 
-
+// Retuns Boolean: True-> 200 
+// Code cleanup : Switch case!
 function UrlExists(url) {
     var http = new XMLHttpRequest();
     http.open('HEAD', url, false);
@@ -518,6 +521,8 @@ function UrlExists(url) {
     	return false;
     }else if(http.status == 200){
     	return true;
+    }else{
+    	return false;
     }
     return false;
 }

@@ -33,6 +33,7 @@ html {
   display: flex;
   justify-content: center;
   background-color: #ECECEC;
+  margin-top: 10px;
 }
 .main_table table {
 	margin: 0 auto;

@@ -40,9 +40,22 @@ include('server_connect.php');
 	}
   if(isset($_GET['email_match'])){
     echo'<script type="text/javascript">
-        $(function() {
-        $("#err_mail").modal("show");
-         }); </script>';
+        $(function() { 
+          $("#err_mail").modal("show");
+         }); 
+
+        </script>';
+  }
+
+  if(isset($_GET['fatal_err'])){
+    echo'<script type="text/javascript">
+        $(function() { 
+          document.getElementById("exampleModalLabel").innerHTML = "Fatal Error: Adding client";
+          document.getElementById("body_err").innerHTML = "Try login out and login back in.";
+          $("#err_mail").modal("show");
+         }); 
+
+        </script>';
   }
 ?>
 
@@ -56,7 +69,7 @@ include('server_connect.php');
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id = "body_err">
        <mark>Email entered is already in the list.</mark> Please either remove the client from the list or use a different email.
       </div>
       <div class="modal-footer">
@@ -78,6 +91,9 @@ include('server_connect.php');
   			<li class="nav-item">
   				<a class="nav-link" href= "user_interface_main.php?logout_click=true" style = "color: #787B7C">Log out</a>
   			</li>
+        <li class="nav-item">
+          <a class="nav-link" href= "user_interface_main.php" style = "color: #787B7C">Reload Page</a>
+        </li>
   			<li class = "nav-item">
   				<a class = "nav-link" href= "client_view.php?client_view_click=true" target="_newtab" style = "color: #787B7C">Launch Client View</a>
   			</li>
@@ -137,7 +153,7 @@ $(function() {
   $("#holder :input").change(function() {
     switch(this.id){
       case "option1":
-        var increment = 3000;
+        var increment = 60000;
         setInterval(function() {reload_table(); }, increment);
         break;
       case "option2":
@@ -180,7 +196,7 @@ $(function(){
       });
     });
 });
-
+// Need to work on this once Server is live.
 $(function () {
   $(document).on('click', '.email_send', function() {
     var cc_id = $(this).attr('id');
@@ -220,13 +236,14 @@ $(function(){
         timeout: 5000,
         data:{'check_in':check_in},
         success: function(responce){
-          	if(responce == "YES"){
+          	if(responce == "Success"){
           		//$ele.closest("tr").remove();
           		$ele.closest('tr').find('td').fadeIn(1000, function(){
           		});
               reload_table();
-          	}else{
-          		console.log("Error, PHP not able to add to remove or recived something other than YES");
+          	}else if(responce == "Update Error"){
+          		console.log("Update Error");
+              show_modal("Update Error","Query to update status failed, try reloading the page and try again.");
           	}
          },
          error: function(){

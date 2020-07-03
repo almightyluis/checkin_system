@@ -38,11 +38,14 @@ $check_in = 0;
       if( check_repeating($client_email) ){
         header("Location: user_interface_main.php?email_match=true");  
         exit();
+      }else{
+        echo "Location: user_interface_main.php?fatal_err=true";
+        echo mysqli_error($connection);
+        mysqli_close($connection);
+        exit();
+
       }
-			echo "Error DB inserting Value";
-			echo mysqli_error($connection);
-			mysqli_close($connection);
-			exit();
+			
 			}
 		}
 
@@ -55,7 +58,6 @@ $check_in = 0;
     $result = mysqli_query($connection, $check_stm);
     if($result){
       $row = mysqli_fetch_assoc($result);
-      echo $row['Email'];
       return true;
     }else {
       return false;

@@ -24,7 +24,7 @@ if(isset($_POST['check_in'])){
 	$update = "UPDATE `client_information` SET Status = '$cc_ee' WHERE id = '$id'; ";
 	
 	if ($result = mysqli_query($connection, $update) ) {
-		echo "YES";
+		echo "Success";
 		die();
 	}else{
 		echo "Update Error";

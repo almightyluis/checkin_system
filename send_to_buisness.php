@@ -11,8 +11,7 @@ $current_date = date("o-m-d");
 
 // For the Var $connection
 
-if ( isset($_POST['client-name']) || !isset($_POST['clicked']) ){
-
+if ( isset($_POST['client-name']) || isset($_POST['clicked']) ){
 
 	$client_name = $_POST['client-name'];
 	$client_email = $_POST['client-email'];
