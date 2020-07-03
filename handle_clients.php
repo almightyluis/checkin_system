@@ -161,6 +161,6 @@ function send_email_phone($address, $name, $carrier_em) {
 
 
 
-header("Location: error_restricted.php");
+header("Location: error_restricted.html");
 echo 'Error fatal';
 die();

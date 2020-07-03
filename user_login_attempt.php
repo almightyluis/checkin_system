@@ -49,7 +49,7 @@ if( isset($_POST['click']) ) {
 				}
 
 			} else {
-				echo "Error";
+				header("Location: error_message_login.html");
 				exit();
 			}
 			// placing into Assosiative array
@@ -57,7 +57,7 @@ if( isset($_POST['click']) ) {
 	}
 
 } else {
-	header("Location: error_message_login.html");
+	header("Location: error_restricted.html");
 	exit();
 }
 

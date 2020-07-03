@@ -59,10 +59,10 @@
 				<a class="nav-link" href="#">Find Location</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">About</a>
+				<a class="nav-link" href="#" id="about">About</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Help</a>
+				<a class="nav-link" href="#"id="help">Help</a>
 			</li>
 
 		</ul>
@@ -453,11 +453,7 @@
 			</div>
 
       	</div>
-
-
       </div>
-      
-
       </div>
   </div>
   </div>
@@ -527,7 +523,64 @@ function UrlExists(url) {
     return false;
 }
 
+
+$(document).ready(function() {
+	$('#about').on('click', function() {
+	about();
+	});
+	$('#help').on('click', function() {
+	help();
+	});
+});
+
+function help() {
+	var title = "Help";
+	var body = "For any questions or concerns about the website please email: l.gonzalez9778@student.sbccd.edu. ";
+	document.getElementById('img_about').src = "/updated_php_project/static/img/help.png";
+	document.getElementById('title_config').innerHTML = title;
+  	document.getElementById('body_message').innerHTML = body;
+	$('#configure_modal').modal('show');
+}
+
+
+
+
+
+function about() {
+	var title = "About";
+	var body = "Small Company founded in 2020, delivering quality service. If for some reason you are not satisfied please feel free to contact the manager or owner using the TEAM tab. ";
+	document.getElementById('img_about').src = "/updated_php_project/static/img/barbershop.jpg";
+	document.getElementById('title_config').innerHTML = title;
+  	document.getElementById('body_message').innerHTML = body;
+	$('#configure_modal').modal('show');
+}
+
 </script>
+
+<div class="modal fade" id="configure_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="title_config">Refresh Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id= "body_config"> 
+      	<img src="/updated_php_project/static/img/barbershop.jpg" id="img_about" style="height: 300px; margin-right: auto; margin-left: auto; display:block;">
+     
+        <p class="lead text-center" id="body_message" style="padding-top: 7px;">Looks like we have a timeout error, please check if you are connected to the internet. Or try to refresh the entire page.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 <!--- Footer, With Client information and Job Opp -->
 

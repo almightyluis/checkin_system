@@ -20,6 +20,12 @@
 }
 
 
+#img_about {
+  width: 200px;
+  height: 200px;
+}
+
+
 .my-3 {
   background-color: #c54a3a ! important;
 }
