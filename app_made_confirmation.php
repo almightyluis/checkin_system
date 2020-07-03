@@ -6,7 +6,20 @@
         echo "Page Session has not been meet";
         header("Location: error_restricted.html");
         exit();
-  } 
+  }
+
+
+if(isset($_GET['home_k'])){
+  session_destroy();
+  unset($_SESSION);
+  header("Location: design.php");
+}
+if(isset($_GET['team_k'])){
+  session_destroy();
+  unset($_SESSION);
+  header("Location: meet_the_team.html");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -30,10 +43,10 @@
   	<div class="collapse navbar-collapse" id ="navbarResponsive">
   		<ul class="navbar-nav ml-auto">
   			<li class="nav-item">
-  				<a class="nav-link" href="design.php" id="home">Home</a>
+  				<a class="nav-link" href="app_made_confirmation.php?home_k=true" id="home">Home</a>
   			</li>
   			<li class="nav-item">
-  				<a class="nav-link" href="meet_the_team.html" id="team">Team</a>
+  				<a class="nav-link" href="app_made_confirmation.php?team_k=true" id="team">Team</a>
   			</li>
         <li class="nav-item">
           <a class="nav-link" href="#" id="about">About</a>
@@ -92,14 +105,15 @@
 
 
   $(document).ready(function() {
-    $('#home', '#about', '#team').on('click', function(){
-      destroy_session();
+    $('#home','#about','#team').on('click', function(){
+      console.log("Clicked");
+      //destroy_session();
     });
   });
 
   function destroy_session(){
     var xhr = $.ajax({
-      type: 'POST',
+      type: 'GET',
       timeout: 5000,
       url: 'kill_sess.php',
       data: {'kill_sess': 'kill_sess'},
@@ -117,9 +131,6 @@
         console.log("Error Func called");
       }
     });
-
-
-    xhr.abort();
   }
 
   function about() {
