@@ -4,6 +4,7 @@
   if(!isset($_SESSION['client-name'])) {
         echo "Error, trying to access a page without permissions,";
         echo "Page Session has not been meet";
+        header("Location: error_restricted.html");
         exit();
   } 
 ?>
@@ -29,13 +30,16 @@
   	<div class="collapse navbar-collapse" id ="navbarResponsive">
   		<ul class="navbar-nav ml-auto">
   			<li class="nav-item">
-  				<a class="nav-link" href="design.php">Return Home</a>
+  				<a class="nav-link" href="design.php" id="home">Home</a>
   			</li>
   			<li class="nav-item">
-  				<a class="nav-link" href="#">Find Location</a>
+  				<a class="nav-link" href="meet_the_team.html" id="team">Team</a>
   			</li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="about">About</a>
+        </li>
   			<li class="nav-item">
-  				<a class="nav-link" href="#">Help</a>
+  				<a class="nav-link" href="#" id="help">Help</a>
   			</li>
 
   		</ul>
@@ -47,20 +51,21 @@
   <h1 class="display-4">Appointment made!</h1>
 
     <?php   
-        echo '<p class="lead"> <mark>'.$_SESSION['client-name'].'</mark> your appointment has been set, please head over to check into the line.</p>';    
+        echo '<p class="lead"> <mark>'.htmlentities($_SESSION['client-name']).'</mark> your appointment has been set, please head over to check into the line.</p>';    
     ?>
   <?php include_once 'server_connect.php';
         $stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
         $result = mysqli_query($connection , $stmt);
-        $number_rows = mysqli_num_rows($result) - 1;
-  echo '<p>Currently <mark>'.$number_rows.'</mark> customers ahead of you, thanks, and hope to see you soon.</p> '; ?>
+        $number_rows = htmlentities(mysqli_num_rows($result) - 1);
+  echo '<p>Currently <mark>'.$number_rows.'</mark> customers ahead of you, thanks, and hope to see you soon.</p> ';
+  mysqli_close($connection);
+   ?>
   <!-- Shop current Address Locaiton should be added here. -->
-  <a class="btn btn-primary btn-lg" href="#" role="button">Directions</a>
-  <a class="btn btn-primary btn-lg" href="design.php" role="button">Return Home</a>
+
 </div>
 
 <div class="container-fluid padding">
-  <h1 class="display-4 text-center">Directions</h1>
+  
   <hr class="my-4">
 
   <div class=" container-fluid text-center">
@@ -75,8 +80,92 @@
 
 
 <script type="text/javascript">
+
+  $(document).ready(function() {
+    $('#help').on('click', function() {
+    help();
+  });
+    $('#about').on('click', function() {
+      about();
+    });
+});
+
+
+  $(document).ready(function() {
+    $('#home', '#about', '#team').on('click', function(){
+      destroy_session();
+    });
+  });
+
+  function destroy_session(){
+    var xhr = $.ajax({
+      type: 'POST',
+      timeout: 5000,
+      url: 'kill_sess.php',
+      data: {'kill_sess': 'kill_sess'},
+      success: function (responce) {
+        if(responce == "Session: Destroyed"){
+          console.log("Session-Destroyed");
+        }else if(responce == "Session: Not Destroyed"){
+          console.log("Session: Not Destroyed");
+        }else{
+          console.log("Fatal Error");
+        }
+
+      },
+      error: function() { 
+        console.log("Error Func called");
+      }
+    });
+
+
+    xhr.abort();
+  }
+
+  function about() {
+  var title = "About";
+  var body = "Small Company founded in 2020, delivering quality service. If for some reason you are not satisfied please feel free to contact the manager or owner using the TEAM tab. ";
+  document.getElementById('img_about').src = "/updated_php_project/static/img/barbershop.jpg";
+  document.getElementById('title_config').innerHTML = title;
+  document.getElementById('body_message').innerHTML = body;
+  $('#configure_modal').modal('show');
+  }
+
+  function help() {
+  var title = "Help";
+  var body = "For any questions or concerns about the website please email: l.gonzalez9778@student.sbccd.edu. ";
+  document.getElementById('img_about').src = "/updated_php_project/static/img/help.png";
+  document.getElementById('title_config').innerHTML = title;
+    document.getElementById('body_message').innerHTML = body;
+  $('#configure_modal').modal('show');
+}
+
+
   
 </script>
+
+
+
+<div class="modal fade" id="configure_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="title_config">Refresh Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id= "body_config"> 
+        <img src="/updated_php_project/static/img/barbershop.jpg" id="img_about" style="height: 300px; margin-right: auto; margin-left: auto; display:block;">
+     
+        <p class="lead text-center" id="body_message" style="padding-top: 7px;">Looks like we have a timeout error, please check if you are connected to the internet. Or try to refresh the entire page.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="container-fluid padding">

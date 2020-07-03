@@ -30,7 +30,7 @@ $output .= '<table class="table table-hover">
 	$itter = 1;
 	if( mysqli_num_rows($result) > 0){
 		while( $row = mysqli_fetch_assoc($result) ) {
-			$status = $row['Status'];
+			$status = htmlentities($row['Status']);
 			if($status == 1){
 				$current_status = "Checked in";
 			}else if($status == 0){
@@ -40,9 +40,9 @@ $output .= '<table class="table table-hover">
 				break;
 			}
 			$output .= ' <tr>
-			<td><h4>'.$itter++.'</h4></td>
-			<td><h4>'.$row['Name'].'</h4></td>
-			<td><h4>'.$row['Guest'].'</h4></td>
+			<td><h4>'.htmlentities($itter++).'</h4></td>
+			<td><h4>'.htmlentities($row['Name']).'</h4></td>
+			<td><h4>'.htmlentities($row['Guest']).'</h4></td>
 			<td><h4><p class="text-success"> <h4>'.$current_status.'</p></h4></td>
 			</tr>';
 

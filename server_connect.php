@@ -11,6 +11,7 @@ $connection = mysqli_connect($db_servername, $db_username, $db_password, $db_nam
  if(!$connection) {
  	// Hanlde Errors via User Interface
  	die("Connection failed: " . mysqli_connect_error());
+ 	header("Location: error_restricted.html");
  }
 
 

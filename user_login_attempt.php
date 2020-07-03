@@ -7,15 +7,6 @@ include_once 'server_connect.php';
 // Table : user_login_permissions
 // col : 1. id 2. user_email 3.user_password
 
-
-// html 
-// 1. login
-// 2. password
-// 3. Button ->click
-
-// Redirect to user_interface_main.html
-
-// Check if the submit button was hit, prevent from people from just finding the /user_interface_main.html or user_login_attempt.php
 if( isset($_POST['click']) ) {
 	$username = $_POST['login'];
 	$password = $_POST['password'];

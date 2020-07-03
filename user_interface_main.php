@@ -31,6 +31,8 @@ include('server_connect.php');
 
 <?php
 	function exit_user() {
+    $_SESSION=array();
+    unset($_SESSION);
 		session_destroy();
 		header('Location: user_login_page.html');
 	}

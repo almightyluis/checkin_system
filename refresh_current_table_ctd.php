@@ -48,12 +48,12 @@ $output .= '<table class="table table-hover">
 				break;
 			}
 			$output .= ' <tr>
-			<td>'.$itter++.'</td>
-			<td>'.$row['Name'].'</td>
-			<td>'.$row['Phone'].'</td>
-			<td>'.$row['Guest'].'</td>
-			<td>'.$row['Email'].'</td>
-			<td><p class="text-success"> '.$current_status.' </p> </td>
+			<td>'.htmlentities($itter++).'</td>
+			<td>'.htmlentities($row['Name']).'</td>
+			<td>'.htmlentities($row['Phone']).'</td>
+			<td>'.htmlentities($row['Guest']).'</td>
+			<td>'.htmlentities($row['Email']).'</td>
+			<td><p class="text-success"> '.htmlentities($current_status).' </p> </td>
 			<td>
 			<input type = "submit" class = "check btn btn-success btn-sm" id ='.$row['id'].' name = "check" value = "Check-in">
 			<input type = "submit" value ="Send Email" name = "email_send" id = '.$row['id'].' class = "email_send btn btn-info btn-sm">
