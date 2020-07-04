@@ -21,16 +21,22 @@
 
 
 #img_about {
-  width: 200px;
-  height: 200px;
+  height: 300px; 
+  margin-right: auto; 
+  margin-left: auto; 
+  display:block;
 }
 
+.card {
+  border-color: #5c3ac5;
+  border-style: solid;
+}
 
 .my-3 {
-  background-color: #c54a3a ! important;
+  background-color: #6b55ac ! important;
 }
 .my-4 {
-  background-color: #c54a3a ! important;
+  background-color: #6b55ac ! important;
 }
 
 .img-responsive {
@@ -46,6 +52,10 @@
   width: 100%;
   height: 18rem;
   object-fit: cover;
+}
+
+.card .card-body {
+  background-color: #fcfaf8;
 }
 
 .card-body a {

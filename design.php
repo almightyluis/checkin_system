@@ -5,7 +5,7 @@
 
 	// Reqect time out of this time frame
 	$start_time = "08:00:00";
-	$end_time = "24:00:00";
+	$end_time = "18:00:00";
 	// Days off according to BClient
 	$day_off = array(6,7); 
 
@@ -56,7 +56,7 @@
 				<a class="nav-link" href="meet_the_team.html">Team</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Find Location</a>
+				<a class="nav-link" href="#"id="location">Find Location</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#" id="about">About</a>
@@ -197,7 +197,7 @@
 		}
 		mysqli_close($connection);
 		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
-			echo'<h2 style = "color: #c54a3a;"> Save Time. Check In Online.</h2>'; // Change this color
+			echo'<h2 style = "color: #d41350;"> Save Time. Check In Online.</h2>'; // Change this color
 			echo '<h2>Current wait time is <mark>'.$final.'</mark> mins.</h2>';
 			echo '<p class="lead">We have a number of hair stylist working for us. Come on by and get a haircut!</p>';
 			echo '<p class = "lead">Accepting online appointments now.</p>';
@@ -281,6 +281,17 @@
 </div>
 
 
+<div class="container-fluid padding">
+<div class="row Welcome text-center">
+	<div class="col-12">
+		<h1 class="display-4">Pricing</h1>
+	</div>
+	<hr>
+</div>
+<hr class="my-4">
+</div>
+
+
 <!---   Need to handle if values are empty  --->
 
 <!--- This can be three items show off -->
@@ -328,7 +339,7 @@
 <div class="container-fluid padding">
 <div class="row Welcome text-center">
 	<div class="col-12">
-		<h1 class="display-4">What we offer</h1>
+		<h1 class="display-4">Take a look</h1>
 	</div>
 	<hr>
 </div>
@@ -531,7 +542,13 @@ $(document).ready(function() {
 	$('#help').on('click', function() {
 	help();
 	});
+	$('#location').on('click', function(){
+		location();
+	});
 });
+function location(){
+	$('#location_modal').modal('show');
+}
 
 function help() {
 	var title = "Help";
@@ -541,9 +558,6 @@ function help() {
   	document.getElementById('body_message').innerHTML = body;
 	$('#configure_modal').modal('show');
 }
-
-
-
 
 
 function about() {
@@ -567,12 +581,37 @@ function about() {
         </button>
       </div>
       <div class="modal-body" id= "body_config"> 
-      	<img src="/updated_php_project/static/img/barbershop.jpg" id="img_about" style="height: 300px; margin-right: auto; margin-left: auto; display:block;">
+      	<img src="/updated_php_project/static/img/barbershop.jpg" id="img_about">
      
         <p class="lead text-center" id="body_message" style="padding-top: 7px;">Looks like we have a timeout error, please check if you are connected to the internet. Or try to refresh the entire page.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="location_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="error_modal">Find Location</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+        Address: 1234 W mark st Hollywood Ca, 92000;
+      </div>
+      <div class="modal-body text-center">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.2613412453115!2d-117.88911478478953!3d33.88292258065241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcd5ce8cc61391%3A0x2b9810bbb94af355!2sCalifornia%20State%20University%2C%20Fullerton!5e0!3m2!1sen!2sus!4v1593842850490!5m2!1sen!2sus" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

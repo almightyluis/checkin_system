@@ -23,10 +23,10 @@
   				<a class="nav-link" href="design.php">Return Home</a>
   			</li>
   			<li class="nav-item">
-  				<a class="nav-link" href="#">Find Location</a>
+  				<a class="nav-link" href="#" id="location">Find Location</a>
   			</li>
   			<li class="nav-item">
-  				<a class="nav-link" href="#">Help</a>
+  				<a class="nav-link" href="#" id="help">Help</a>
   			</li>
 
   		</ul>
@@ -34,16 +34,13 @@
   	</div>
   </nav>
 
-  <div class="jumbotron" id ="team_jumbo" style="background-color: white;">
+  <div class="jumbotron" id ="team_jumbo">
   <div class="display_text">
-    <h1 class= "display-4" style="text-align: center;">Meet The Team</h1>
+    <h1 class= "display-4" style="text-align: left;">Meet The Team</h1>
+    <p class="lead text-left">Meet the team responcable for our great work!</p>
   </div>
 </div>
-
 <hr class="hr-4" style="background-color: #5c3ac5;">
-
-
-
 
 <div class="container-fluid padding">
   <div class="row">
@@ -127,9 +124,100 @@
 
 
 </div>
+<hr class="hr-4">
 </div>
 
-<hr class="hr-4" style="background-color: #5c3ac5;"/>
+<div class="container-fluid">
+  <h2 class= "display-5 text-center" id="follow_tag">Follow us @</h2>
+  <hr class="hr-4">
+</div>
+
+<div class="container-fluid padding" id="social">
+  <div class="row text-center padding">
+    <div class="col-xs-12 col-md-4">
+    <img src="/updated_php_project/static/img/icons/instagram_icon.png"/>
+    <a href="https://www.instagram.com">Instagram</a>
+    </div>
+    <div class="col-xs-12 col-md-4">
+    <img src="/updated_php_project/static/img/icons/facebook_icon.png"/>
+    <a href="https://www.facebook.com">Facebook</a>
+    </div>
+    <div class="col-xs-12 col-md-4">
+    <img src="/updated_php_project/static/img/icons/twitter_icon.png"/>
+    <a href="https://www.twitter.com">Twitter</a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  
+  $(document).ready(function() {
+    $('#help').on('click', function() {
+      help();
+    });
+    $('#location').on('click', function(){
+      location();
+    });
+  });
+
+  function help() {
+  var title = "Help";
+  var body = "For any questions or concerns about the website please email: l.gonzalez9778@student.sbccd.edu. ";
+  document.getElementById('title_config').innerHTML = title;
+    document.getElementById('body_message').innerHTML = body;
+  $('#configure_modal').modal('show');
+}
+
+  function location(){
+  $('#location_modal').modal('show');
+  }
+</script>
+
+
+
+<div class="modal fade" id="location_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="error_modal">Find Location</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-left">
+        Address: 1234 W mark st Hollywood Ca, 92000;
+      </div>
+      <div class="modal-body text-center">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.2613412453115!2d-117.88911478478953!3d33.88292258065241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dcd5ce8cc61391%3A0x2b9810bbb94af355!2sCalifornia%20State%20University%2C%20Fullerton!5e0!3m2!1sen!2sus!4v1593842850490!5m2!1sen!2sus" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="configure_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="title_config">Refresh Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id= "body_config">      
+        <p class="lead text-center" id="body_message" style="padding-top: 7px;">Looks like we have a timeout error, please check if you are connected to the internet. Or try to refresh the entire page.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <footer>

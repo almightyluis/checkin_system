@@ -11,6 +11,32 @@
   
 }
 
+#team_jumbo{
+  background-color: white ! important; 
+}
+.jumbotron {
+  border-radius: 0 ! important;
+  background-size: fill;
+}
+.card {
+  border-color: #5c3ac5;
+  border-style: solid;
+}
+
+#social{
+  margin-bottom: 10px;
+}
+
+.col-xs-12 img {
+  height: 50px ! important;
+  width: 50px ! important;
+}
+
+#follow_tag h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
 footer {
   background-color: #3d3c3c;
   color: #dedede;

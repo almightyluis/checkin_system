@@ -89,7 +89,7 @@ function reload_table() {
   				<td> <h4>'.$itter++.' </h4></td>
   				<td> <h4>'.$row['Name'].' </h4></td>
   				<td> <h4>'.$row['Guest'].'</h4></td>
-  				<td> <h4><p class="text-success">'.$current_status.'</p> </h4> </td>
+  				<td> <h4><p class="text-success">'.$current_status.'</p></h4></td>
   			</tr>';
   			}
   		} else {

@@ -16,7 +16,7 @@ if(!$result){
 	echo 'Fatal Error, Refresh current table';
 }
 $output = '';  
-$output .= '<table class="table table-hover">
+$output .= '<table class="table table-striped">
 	  <thead class="thead-light">
 	    <tr>
 	      <th scope="col">Order</th>
@@ -43,7 +43,7 @@ $output .= '<table class="table table-hover">
 			<td><h4>'.htmlentities($itter++).'</h4></td>
 			<td><h4>'.htmlentities($row['Name']).'</h4></td>
 			<td><h4>'.htmlentities($row['Guest']).'</h4></td>
-			<td><h4><p class="text-success"> <h4>'.$current_status.'</p></h4></td>
+			<td><h4><p class="text-success">'.$current_status.'</p></h4></td>
 			</tr>';
 
 		}
