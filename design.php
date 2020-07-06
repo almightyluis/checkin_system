@@ -1,7 +1,7 @@
 <?php
 
 	include_once 'server_connect.php';
-	$stmt = "SELECT * FROM `client_information` WHERE 1; ";
+	
 
 	// Reqect time out of this time frame
 	$start_time = "08:00:00";
@@ -30,10 +30,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Company Name</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>   
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.js"></script>             
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" />
 	<!-- Here is the link to the Style.css sheet(Note the PATH TO STYLE) -->
 	<link href="/updated_php_project/static/style.css" rel="stylesheet">
 	<!-- JS Code -->
@@ -134,7 +136,7 @@
 
 	 if( (int)$hour > (int)$start_time_format[0] && (int)$hour < (int)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
 	 		echo '<h1 class= "display-2" style="font-size: 5.2vw;">Reserve your place in line</h1>';
-			echo '<button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
+			echo '<button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Make Appointment</button>';
 
 	 }else {
 			echo '
@@ -183,6 +185,7 @@
 <div class="row jumbotron">
 	<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
 		<?php 
+		$stmt = "SELECT * FROM `client_information` WHERE 1; ";
 		// Allow or Disallow appoinments based on Los Angeles times.
 		// VAR: Multiplier: average time for a haircut.
 		$multiplier = 10;
@@ -213,7 +216,7 @@
 		<a href="#">
 		<?php 
 		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
-			echo '<button type="button" class ="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Make Appointment</button>';
+			echo '<button type="button" class ="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Make Appointment</button>';
 		} else {
 			echo '<button type="button" class ="btn btn-outline-danger" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>';
 		}
@@ -226,59 +229,67 @@
 
 <!---Modal Handle Appointments-->
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
 
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Making Appointment</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
 
-      <div class="modal-body">
-        <form action ="send_to_buisness.php" method= "post">
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Name</label>
-            <input type="text" class="form-control" id="client-name" name = "client-name" required>
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Email</label>
-            <input type="text" class="form-control" id="client-email" name="client-email" required>
-          </div>
-          <div class="form-group">
-            <label for="client-phone" class="col-form-label">Phone Number (10 digits no spaces)</label>
-            <input type="phone-number" class="form-control" id="client-phone" name = "client-phone" required>
-          </div>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label"> Number of guest (0 for yourself) </label>
-            <input type="number" class ="form-control" id="client-guest" min="0"name= "client-guest">
-          </div>
-          <div class="form-group">
-		    <label for="carrier_id">Mobile Phone Carrier</label>
-		    <select class="form-control" id="carrier-id" name="carrier-id" required="">
-		      <option value="">Please select</option>
-		      <option value="1">AT&T</option>
-		      <option value="2">T-Mobile</option>
-		      <option value="3">Verizon</option>
-		      <option value="4">Metro-PCS</option>
-		      <option value="5">Sprint</option>
-		      <option value="6">Boost-Mobile</option>
-		      <option value="7">Google-Fi</option>
-		      <option value="8">Cricket-Moblile</option>
-		      <option value="9">Virgin-Mobile</option>
-		    </select>
-		  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		<input type="submit" value= "Confirm Appointment" name = "clicked" class = "btn btn-primary">
-      </div>
-  </form>
+
+
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role= "dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Making Appointment</h5>
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          		<span aria-hidden="true">&times;</span>
+        		</button>
+			</div>
+			<form action ="send_to_buisness.php" method="post">
+				<div class="modal-body">
+					<div class="form-group">
+            			<label for="client-name" class="control-label">Name</label>
+            			<input type="text" class="form-control" id="client-name" name="client-name" required>
+          			</div>
+          			<div class="form-group">
+            			<label for="client-email" class="control-label">Email:</label>
+            			<input type="text" class="form-control" id="client-email" name="client-email" required>
+          			</div>
+          			<div class="form-group">
+            			<label for="client-phone" class="control-label">Phone Number (10 digits no spaces)</label>
+            			<input type="phone-number" class="form-control" id="client-phone" name = "client-phone" required>
+          			</div>
+
+          			<div class="form-group">
+            			<label for="client-guest" class="control-label"> Number of guest (0 for yourself) </label>
+            			<input class ="form-control" id="client-guest" type="number" min="0" max="7" name="client-guest">
+          			</div>
+
+          			<div class="form-group">
+        				<label for="carrier_id">Mobile Phone Carrier</label>
+	          			<select class="form-control" id="carrier-id" name="carrier-id" required="">
+					        <option value="">Please select</option>
+					        <option value="1">AT&T</option>
+					        <option value="2">T-Mobile</option>
+					        <option value="3">Verizon</option>
+					        <option value="4">Metro-PCS</option>
+					        <option value="5">Sprint</option>
+					        <option value="6">Boost-Mobile</option>
+					        <option value="7">Google-Fi</option>
+					        <option value="8">Cricket-Moblile</option>
+					        <option value="9">Virgin-Mobile</option>
+	            		</select>
+        			</div>
+        		</div>
+        		<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<input type="submit" value= "Confirm Appointment" name = "clicked" class = "btn btn-primary">
+        		</div>
+        	</form>
+
+				</div>
+			</form>
+		</div>
 	</div>
-  </div>
-</div>
+</div>  
 
 
 <div class="container-fluid padding">

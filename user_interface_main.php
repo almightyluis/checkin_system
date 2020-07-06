@@ -424,20 +424,20 @@ function show_modal(title,body){
       <div class="modal-body">
         <form action ="interface_request.php" method= "post">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Name:</label>
+            <label for="recipient-name" class="control-label">Name:</label>
             <input type="text" class="form-control" id="client-name" name ="client-name" required>
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Email:</label>
+            <label for="recipient-name" class="control-label">Email:</label>
             <input type="text" class="form-control" id="client-email" name="client-email" required>
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Phone Number:</label>
+            <label for="recipient-name" class="control-label">Phone Number:</label>
             <input type="phone-number" class="form-control" id="client-phone" name ="client-phone" required>
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label"> Number of guest: </label>
-            <input type="number" class = "form-control" id="client-guest" min="0" name="client-guest" required>
+            <label for="message-text" class="control-label"> Number of guest: </label>
+            <input type="number" class = "form-control" id="client-guest" min="0" max="7" name="client-guest" required>
           </div>
           <div class="form-group">
         <label for="carrier_id">Mobile Phone Carrier</label>
@@ -449,7 +449,10 @@ function show_modal(title,body){
             <option value="4">Metro-PCS</option>
             <option value="5">Sprint</option>
             <option value="6">Boost-Mobile</option>
-          </select>
+            <option value="7">Google-Fi</option>
+            <option value="8">Cricket-Moblile</option>
+            <option value="9">Virgin-Mobile</option>
+            </select>
         </div>
       </div>
       <div class="modal-footer">
@@ -458,6 +461,7 @@ function show_modal(title,body){
       </div>
       </form>
     </div>
+  </div>
   </div>
 </div>
 
