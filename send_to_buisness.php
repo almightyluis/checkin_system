@@ -43,7 +43,40 @@ if ( isset($_POST['client-name']) || isset($_POST['clicked']) ){
 		exit();
 	}
   }
-} 
+}
+
+
+if(isset($_POST['ee_mm_mail'])){
+	$ee_mm = $_POST['ee_mm_mail'];
+	$found_id = 0;
+	$stmt = "SELECT * FROM `client_information` ORDER BY `Time` ASC; ";
+	if ($result = mysqli_query($connection , $stmt) ){
+		if(mysqli_num_rows($result) > 0){
+			while($row = mysqli_fetch_assoc($result)){
+				$id = $row['id'];
+				$email = $row['Email'];
+				if($ee_mm === $email){
+				 	$found_id = $id;
+				 	break;
+				}else{
+					continue;
+				} 
+			}
+		}
+	}
+
+	
+	$rem = "DELETE FROM `client_information` WHERE id = '$found_id'; ";
+	if($res = mysqli_query($connection, $rem)){
+		echo 'Success';
+		exit();
+	}else{
+		echo 'Error: DNE';
+		exit();
+	}
+	
+	
+}
 
 
 

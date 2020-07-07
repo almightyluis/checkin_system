@@ -2,6 +2,7 @@
 
 include_once 'server_connect.php';
 
+
 // Removal based on id.
 if(isset($_POST['del_id'])){
 	$id = $_POST['del_id'];

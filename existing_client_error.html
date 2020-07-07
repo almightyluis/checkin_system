@@ -36,15 +36,12 @@
   	</div>
   </nav>
 
-  <div id="page-content">
+  <div id="page-content" class="container-fluid">
     <div class="container text-center">
-      <div class="row justify-content-center">
-        <div class="col-md-7">
+        <div class="text-center">
           <h1 class="font-weight-light mt-4 text-black">Looks like your email or phone number is listed on our appointment queue.</h1>
-          <p class="lead text-black-50">If this is an error and have not signed up, please call the number listed below to have yourself removed from queue.</p>
           <p class="lead text-black-50">Otherwise, you are in line based on the email provided, See you soon!.</p>
         </div>
-      </div>
     </div>
      <hr class="my-4">
   </div>
@@ -52,8 +49,168 @@
 
   <div class="container-fluid text-center">
     <img src="/updated_php_project/static/img/confused_robot_1.png" id= "center_image">
-
+    <div class="container-fluid padding">
+      <p class="lead text-black-50">If this is an error and have not scheduled an appointment please ignore the message! If you wish to cancell your appoinment<a href="#" id="click"> click here.</a></p>
+    </div>
   </div>
+
+
+<script type="text/javascript">
+  
+
+$(document).ready(function() {
+
+  $('#click').on('click', function() {
+    $('#check_existing').modal('show');
+
+
+    $('input#submitButton').click( function() {
+      var email = $('#client-email').val();
+      console.log(email);
+      if(email == ''){
+        $('#check_existing').modal('hide');
+        $('#email_error').modal('show');
+        console.log(email);
+      }
+
+    $.ajax({
+        url: 'send_to_buisness.php',
+        type: 'post',
+        timeout: 5000,
+        data: {'ee_mm_mail':email},
+        success: function(data) {
+          if(data == "Success"){
+            console.log("Success");
+            $('#check_existing').modal('hide');
+            $('#success_modal').modal('show');
+
+            $('#closeCross', '#closeBtn').on('click', function() {
+                 window.location.href='design.php';
+                 return false;
+            });
+          }else if(data == "Error: DNE"){
+            console.log("DNE");
+            $('#check_existing').modal('hide');
+            $('#cannot_find').modal('show');
+
+          }else if(data == "Error: query"){
+            $('#check_existing').modal('hide');
+            $('#cannot_find').modal('show');
+            console.log("Query");
+
+          }else {
+            $('#check_existing').modal('hide');
+            $('#cannot_find').modal('show');
+            console.log(data);
+          }
+
+        },
+        error: function(err){
+            console.log("Error Func");
+            console.log(err);
+            $('#check_existing').modal('hide');
+            $('#cannot_find').modal('show');
+        }
+    });
+
+
+   
+});
+
+
+  });
+});  
+
+
+
+</script>
+
+<div class="modal fade" id="check_existing" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Remove Myself From Appointment List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="send_to_buisness.php" method="post">
+            <div class="form-group">
+                  <label for="client-email" class="control-label">Enter Email(case sensitive)</label>
+                  <input type="text" class="form-control" id="client-email" name="client-email" required = "" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}">
+            </div>
+        </form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input type="submit" value= "Confirm Appointment" name="remove_client" class = "btn btn-primary" id="submitButton">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="email_error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="error_modal">Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Please fill out all fields!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="success_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="error_modal">Removed!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeCross">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        We where able to find yourself under the email proveided. You have now been removed successfully.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" id="closeBtn">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="cannot_find" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="error_modal">Error</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Seems like we cannot find you based on your email. Try another one you might have used!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

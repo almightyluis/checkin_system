@@ -1,4 +1,22 @@
-<?php 
+<?php
+
+
+
+
+/*
+// How to handle timeout request
+// Please Add THIS!!!!!
+error: function(xmlhttprequest, textstatus, message) {
+        if(textstatus==="timeout") {
+            alert("got timeout");
+        } else {
+            alert(textstatus);
+        }
+    }
+
+
+
+*/ 
 
 session_start();
 if(!isset($_SESSION['user-login-success'])){
