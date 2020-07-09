@@ -295,7 +295,7 @@
 <div class="container-fluid padding">
 <div class="row Welcome text-center">
 	<div class="col-12">
-		<h1 class="display-4">Pricing</h1>
+		<h1 class="display-4">Services Offered</h1>
 	</div>
 	<hr>
 </div>
@@ -342,11 +342,15 @@
 	</div>
 
 </div>
-<hr class="my-4">
 </div>
 
 
 <!--- This can be the types of cuts to offer -->
+
+
+<!--- Containers Cards -->
+<div class="container-fluid padding" id="cards">
+
 <div class="container-fluid padding">
 <div class="row Welcome text-center">
 	<div class="col-12">
@@ -356,8 +360,6 @@
 </div>
 </div>
 
-<!--- Containers Cards -->
-<div class="container-fluid padding">
 <div class="row padding">
 	<div class="col-md-3">
 		<div class="card">
@@ -403,12 +405,12 @@
 	</div>
     </div>
 </div>
-<hr class="hr-4">
+
 </div>
 <!--- Connect to social media icons -->
 
 <div class="container-fluid">
-	<h2 class= "display-5" style="text-align: center;">Follow us @</h2>
+	<h2 class= "display-5" style="text-align: center; padding-top: 10px;">Follow us @</h2>
 	<hr class="hr-4">
 </div>
 

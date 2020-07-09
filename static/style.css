@@ -20,6 +20,14 @@
 }
 
 
+
+#cards{
+  background-color: #eee !important;
+}
+
+
+
+
 #img_about {
   height: 300px; 
   margin-right: auto; 
@@ -39,10 +47,6 @@
   background-color: #6b55ac ! important;
 }
 
-.navbar-toggler-icon {
-  background-color: white ! important;
-  border-color: white ! important;
-}
 
 .img-responsive {
   max-height: 600px ! important;
