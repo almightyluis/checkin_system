@@ -43,7 +43,7 @@ include('server_connect.php');
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.js"></script>             
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" />
-  <link href="/updated_php_project/static/user_main_interface_style.css" rel="stylesheet">
+  <link href="/store_name/static/user_main_interface_style.css" rel="stylesheet">
 
 </head>
 
