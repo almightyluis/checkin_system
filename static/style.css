@@ -39,6 +39,11 @@
   background-color: #6b55ac ! important;
 }
 
+.navbar-toggler-icon {
+  background-color: white ! important;
+  border-color: white ! important;
+}
+
 .img-responsive {
   max-height: 600px ! important;
   object-fit: contain;
@@ -107,6 +112,8 @@
 .carousel-caption button {
   background-color: #5c3ac5;
   border: 1px;
+  height: auto;
+  width: auto;
 }
 
 #jumbo_cont {

@@ -140,7 +140,7 @@
 
 	 }else {
 			echo '
-			<h2 class= "display-2" id= "closed_txt" style ="color: #d1000a; font-size: 5.2vw;">Appointments are currently closed till open hours</h2>
+			<h2 class= "display-2" id= "closed_txt" style ="color: #d1000a; font-size: 6.2vw;">Location is closed</h2>
 			<button type="button" class ="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>
 			';
 	}	 
