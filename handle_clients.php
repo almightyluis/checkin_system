@@ -137,22 +137,26 @@ if(isset($_POST['cc_id'])){
 	}
 } 
 
-// This error is in part of SMTP
-// Using a local host could be the problem of not being able to send.
-// $carrier_em, send via email but it will produce a text sms.
-// Make this function return Boolean
 function send_email_phone($address, $name, $carrier_em) {
-	$body = '<h2>Welcome To The Best Online HTML Web Editor!</h2>
-	<p style="font-size: 1.5em;">Hi, <strong style="background-color: #317399; padding: 0 5px; color: #fff;">$name</strong> You are currently at the front of the virual line. Please make your way to the front counter. We can allow up to 10 min otherwise we are obligated to serve guest in attendance.</p>
-	<p style="font-size: 1.0em;">Thanks hope to see you soon.</p>';
-	$subject = "You are next in line!";
+	$body = 'Hello! Looks like you are next in line. Please make your way to our shop! Please act fast dont loose your place in line!';
+	$subject = "You Are Next In Line!";
 
-	$headers = 'From: otfgonzalez@gmail.com' . "\r\n" .
+	
+	$sms_body = 'Hello! Looks like you are next in line. Please make your way to our shop!.Please act fast dont loose your place in line!';
+	
+
+	// Keep a different Email per guest
+	$headers = 'From: store_name_1@checkinservice.net' . "\r\n" .
+    'Reply-To: NOREPLY' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+    
+    $sms_header = 
+    'From: store_name_1@checkinservice.net' . "\r\n" .
     'Reply-To: NOREPLY' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
     $mail_st = mail($address, $subject, $body, $headers);
-    $sms = mail($carrier_em, $subject, $body, $headers);
+    $sms = mail($carrier_em, $subject, $sms_body, $sms_header);
 
     if($mail_st || $sms){
     	echo 'Success: SMS & Email';
@@ -166,7 +170,7 @@ function send_email_phone($address, $name, $carrier_em) {
     	exit();
     }
     else {
-    	echo 'Error: Email is empty';
+    	echo 'Error: Email & SMS';
     	die();
     }
 
