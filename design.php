@@ -37,7 +37,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.js"></script>             
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" />
 	<!-- Here is the link to the Style.css sheet(Note the PATH TO STYLE) -->
-	<link href="/store_name/static/style.css" rel="stylesheet">
+	<link href="/updated_php_project/static/style.css" rel="stylesheet">
 	<!-- JS Code -->
 
 </head>
@@ -92,7 +92,7 @@
 <!-- Reference this class in Style.css-->
 <div class="carousel-inner">
 	<div class="carousel-item center active">
-		<img src="/store_name/static/img/barbershop.jpg"/>
+		<img src="/updated_php_project/static/img/barbershop.jpg"/>
 		<div class="carousel-caption">
 		<?php
 		// Important Allow client to be able to make appointments 10 min before store opening.
@@ -148,10 +148,10 @@
 		</div>
 	</div>
 	<div class="carousel-item center">
-		<img src="/store_name/static/img/storefront2.jpg"/>
+		<img src="/updated_php_project/static/img/storefront2.jpg"/>
 	</div>
 	<div class="carousel-item center">
-		<img src="/store_name/static/img/storefront.jpg"/>
+		<img src="/updated_php_project/static/img/storefront.jpg"/>
 	</div>
 </div>
 </div>
@@ -207,7 +207,7 @@
 		} else {
 			echo'<h2> Current wait time is <mark>0</mark> mins.</h2>';
 			echo '<p class="lead">We have a number of hair stylist working for us. Come on by and get a haircut!</p>';
-			echo '<p class = "lead"><mark>Current location is closed</mark>, keep in mind we open up online appointments 15 minutes before open time! So come back and sign up 15 minutes before to be first.</p> ';
+			echo '<p class ="lead"><mark>Current location is closed</mark>, keep in mind we open up online appointments 15 minutes before open time! So come back and sign up 15 minutes before to be first.</p> ';
 		} 
 
 		?>
@@ -363,7 +363,7 @@
 <div class="row padding">
 	<div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src="/store_name/static/img/col_haircut/men_fade_0.jpg">
+			<img class="card-img-top" src="/updated_php_project/static/img/col_haircut/men_fade_0.jpg">
 			<div class="card-body">
 				<h4 class="card-title">Men Haircuts</h4>
 				<p class="card-text" id="color">Fades, Shaving Etc.</p>
@@ -374,7 +374,7 @@
 
 <div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src= "/store_name/static/img/col_shave/shave_0.jpg">
+			<img class="card-img-top" src= "/updated_php_project/static/img/col_shave/shave_0.jpg">
 			<div class="card-body">
 				<h4 class="card-title">Shave, Beard Trim</h4>
 				<p class="card-text">Hot Wax or Razor</p>
@@ -385,7 +385,7 @@
 
 	<div class="col-md-3">
 		<div class="card">
-			<img class="card-img-top" src= "/store_name/static/img/col_color/color_woman_0.jpg">
+			<img class="card-img-top" src= "/updated_php_project/static/img/col_color/color_woman_0.jpg">
 			<div class="card-body">
 				<h4 class="card-title">Women Color</h4>
 				<p class="card-text">We also include women hair stylist to assist</p>
@@ -396,7 +396,7 @@
 
 <div class="col-md-3">
 	<div class="card">
-		<img class="card-img-top" src= "/store_name/static/img/col_woman_style/woman.jpg">
+		<img class="card-img-top" src= "/updated_php_project/static/img/col_woman_style/woman.jpg">
 		<div class="card-body">
 			<h4 class="card-title">Women Styling</h4>
 			<p class="card-text">From colors, wax, highlights, simple styling etc.</p>
@@ -417,15 +417,15 @@
 <div class="container-fluid padding">
 	<div class="row text-center padding">
 		<div class="col-xs-12 col-md-4">
-		<img src="/store_name/static/img/icons/instagram_icon.png" style= "height: 50px; width: 50px; "/>
+		<img src="/updated_php_project/static/img/icons/instagram_icon.png" style= "height: 50px; width: 50px; "/>
 		<a href="https://www.instagram.com">Instagram</a>
 		</div>
 		<div class="col-xs-12 col-md-4">
-		<img src="/store_name/static/img/icons/facebook_icon.png" style= "height: 50px; width: 50px; "/>
+		<img src="/updated_php_project/static/img/icons/facebook_icon.png" style= "height: 50px; width: 50px; "/>
 		<a href="https://www.facebook.com">Facebook</a>
 		</div>
 		<div class="col-xs-12 col-md-4">
-		<img src="/store_name/static/img/icons/twitter_icon.png" style= "height: 50px; width: 50px; "/>
+		<img src="/updated_php_project/static/img/icons/twitter_icon.png" style= "height: 50px; width: 50px; "/>
 		<a href="https://www.twitter.com">Twitter</a>
 		</div>
 	</div>
@@ -434,7 +434,7 @@
 
 <!-- Instagram API -->
 
-<!-- https://api.instagram.com/oauth/authorize?client_id=2935584593335299&redirect_uri=http://192.168.64.2/store_name/design.php/auth/&scope=user_profile,user_media&response_type=code -->
+<!-- https://api.instagram.com/oauth/authorize?client_id=2935584593335299&redirect_uri=http://192.168.64.2/updated_php_project/design.php/auth/&scope=user_profile,user_media&response_type=code -->
 
 
 <!-- API Setup, getting Error 400  -->
@@ -461,19 +461,19 @@
 		</ul>
       	<div class="carousel-inner show">
 			<div class="carousel-item active">
-				<img src="/store_name/static/img/barbershop.jpg" id="1" class="img-responsive"/>
+				<img src="/updated_php_project/static/img/barbershop.jpg" id="1" class="img-responsive"/>
 			</div>
 
       		<div class="carousel-item">
-				<img src="/store_name/static/img/storefront2.jpg"id="2" class="img-responsive"/>
+				<img src="/updated_php_project/static/img/storefront2.jpg"id="2" class="img-responsive"/>
 			</div>
 
 			<div class="carousel-item">
-				<img src="/store_name/static/img/storefront.jpg" id="3" class="img-responsive"/>
+				<img src="/updated_php_project/static/img/storefront.jpg" id="3" class="img-responsive"/>
 			</div>
 
 			<div class="carousel-item">
-				<img src="/store_name/static/img/storefront.jpg" id="4" class="img-responsive"/>
+				<img src="/updated_php_project/static/img/storefront.jpg" id="4" class="img-responsive"/>
 			</div>
 
       	</div>
@@ -521,11 +521,11 @@ function load_images(path, ext){
 	var iter = 1;
 	for(i =0 ; i < SIZE;  i++){
 		var id = (i + 1).toString();
-		var pathToCheck = "/store_name/static/img/"+path+"/"+ext+i+".jpg";
+		var pathToCheck = "/updated_php_project/static/img/"+path+"/"+ext+i+".jpg";
 		if(!UrlExists(pathToCheck)){
-			document.getElementById(id).src = "/store_name/static/img/not_found.jpg";
+			document.getElementById(id).src = "/updated_php_project/static/img/not_found.jpg";
 		}else{
-			document.getElementById(id).src = "/store_name/static/img/"+path+"/"+ext+i+".jpg";
+			document.getElementById(id).src = "/updated_php_project/static/img/"+path+"/"+ext+i+".jpg";
 		}
 	}
 	$("#picture_modal").modal('show');
@@ -566,7 +566,7 @@ function location(){
 function help() {
 	var title = "Help";
 	var body = "For any questions or concerns about the website please email: l.gonzalez9778@student.sbccd.edu. ";
-	document.getElementById('img_about').src = "/store_name/static/img/help.png";
+	document.getElementById('img_about').src = "/updated_php_project/static/img/help.png";
 	document.getElementById('title_config').innerHTML = title;
   	document.getElementById('body_message').innerHTML = body;
 	$('#configure_modal').modal('show');
@@ -576,7 +576,7 @@ function help() {
 function about() {
 	var title = "About";
 	var body = "Small Company founded in 2020, delivering quality service. If for some reason you are not satisfied please feel free to contact the manager or owner using the TEAM tab. ";
-	document.getElementById('img_about').src = "/store_name/static/img/barbershop.jpg";
+	document.getElementById('img_about').src = "/updated_php_project/static/img/barbershop.jpg";
 	document.getElementById('title_config').innerHTML = title;
   	document.getElementById('body_message').innerHTML = body;
 	$('#configure_modal').modal('show');
@@ -594,7 +594,7 @@ function about() {
         </button>
       </div>
       <div class="modal-body" id= "body_config"> 
-      	<img src="/store_name/static/img/barbershop.jpg" id="img_about">
+      	<img src="/updated_php_project/static/img/barbershop.jpg" id="img_about">
      
         <p class="lead text-center" id="body_message" style="padding-top: 7px;">Looks like we have a timeout error, please check if you are connected to the internet. Or try to refresh the entire page.</p>
       </div>
@@ -636,24 +636,22 @@ function about() {
 
 <!--- Footer, With Client information and Job Opp -->
 
-<footer>
-
+   <footer>
 	<div class="container-fluid padding">
 		<div class="row text-center">
-			<div class="col-md-4">
-			<hr class="light">
-			<h5>Store name here</h5>
-			<hr class="light">
+			<div class="col-md-3">
+			<h5 class="footer_title">Have Questions?</h5>
+			<hr class="small_hr">
 			<p>909-572-5474</p>
 			<p>someemail@gmail.com</p>
 			<p>1988 W something Drive</p>
 			<p>Beverly Hills Ca, 92400</p>
+			<hr class="small_hr">
 		</div>
 
-		<div class="col-md-4">
-			<hr class="light">
-			<h5>Our Hours</h5>
-			<hr class="light">
+		<div class="col-md-3">
+			<h5 class="footer_title">Our Hours</h5>
+			<hr class="small_hr">
 			<p>Monday: 9am-6pm</p>
 			<p>Tuesday: 9am-6pm</p>
 			<p>Wednesday: 9am-6pm</p>
@@ -661,19 +659,37 @@ function about() {
 			<p>Friday: 9am-6pm</p>
 			<p>Saturday: 9am-6pm</p>
 			<p>Sunday: Closed</p>
+			<hr class="small_hr">
 
 		</div>
-		<div class="col-md-4">
-
-			<hr class="light">
-			<h5>Software Opportunities</h5>
-			<hr class="light">
-			<p>otfgonzalez@gmail.com</p>
+		<div class="col-md-3">
+			<h5 class="footer_title">Help With Website?</h5>
+			<hr class="small_hr">
+			<p>example@gmail.com</p>
 			<p>909-572-5474</p>
-			</div>
+			<hr class="small_hr">
+		</div>
+
+		<div class="col-md-3">
+            <div class="container text-center">
+              <h2 class="footer_title">About Us</h2>
+              <hr class="small_hr">
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            	<hr class="small_hr">
+                <a href="#"><img src="static/img/icons/twitter_icon.png" style="height: 50px; width: 50px;"></a>
+                <a href="#"><img src="static/img/icons/facebook_icon.png" style="height: 50px; width: 50px;"></a>
+                <a href="#"><img src="static/img/icons/instagram_icon.png" style="height: 50px; width: 50px;"></a>
+            
+            </div>
+            <hr class="small_hr">
+          </div>
+
+
 		</div>
 	</div>
 </footer>
+
+
 </body>
 </html>
 

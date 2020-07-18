@@ -43,7 +43,7 @@ include('server_connect.php');
 	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.min.js"></script>             
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-bootgrid/1.3.1/jquery.bootgrid.css" />
-  <link href="/store_name/static/user_main_interface_style.css" rel="stylesheet">
+  <link href="/updated_php_project/static/user_main_interface_style.css" rel="stylesheet">
 
 </head>
 
@@ -470,6 +470,7 @@ function show_modal(title,body){
             <option value="7">Google-Fi</option>
             <option value="8">Cricket-Moblile</option>
             <option value="9">Virgin-Mobile</option>
+            <option value="10">Not Available</option>
             </select>
         </div>
       </div>

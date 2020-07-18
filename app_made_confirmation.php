@@ -181,43 +181,52 @@ if(isset($_GET['team_k'])){
 <footer>
   <div class="container-fluid padding">
     <div class="row text-center">
-      <div class="col-md-4">
-        <hr class="light">
-        <h5>Store name here</h5>
-        <hr class="light">
-        <p>909-572-5474</p>
-        <p>someemail@gmail.com</p>
-        <p>1988 W something Drive</p>
-        <p>Beverly Hills Ca, 92400</p>
-      </div>
+      <div class="col-md-3">
+      <h5 class="footer_title">Have Questions?</h5>
+      <hr class="small_hr">
+      <p>909-572-5474</p>
+      <p>someemail@gmail.com</p>
+      <p>1988 W something Drive</p>
+      <p>Beverly Hills Ca, 92400</p>
+      <hr class="small_hr">
+    </div>
+
+    <div class="col-md-3">
+      <h5 class="footer_title">Our Hours</h5>
+      <hr class="small_hr">
+      <p>Monday: 9am-6pm</p>
+      <p>Tuesday: 9am-6pm</p>
+      <p>Wednesday: 9am-6pm</p>
+      <p>Thursday: 9am-6pm</p>
+      <p>Friday: 9am-6pm</p>
+      <p>Saturday: 9am-6pm</p>
+      <p>Sunday: Closed</p>
+      <hr class="small_hr">
+
+    </div>
+    <div class="col-md-3">
+      <h5 class="footer_title">Help With Website?</h5>
+      <hr class="small_hr">
+      <p>example@gmail.com</p>
+      <p>909-572-5474</p>
+      <hr class="small_hr">
+    </div>
+
+    <div class="col-md-3">
+            <div class="container text-center">
+              <h2 class="footer_title">About Us</h2>
+              <hr class="small_hr">
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <hr class="small_hr">
+                <a href="#"><img src="static/img/icons/twitter_icon.png" style="height: 50px; width: 50px;"></a>
+                <a href="#"><img src="static/img/icons/facebook_icon.png" style="height: 50px; width: 50px;"></a>
+                <a href="#"><img src="static/img/icons/instagram_icon.png" style="height: 50px; width: 50px;"></a>
+            
+            </div>
+            <hr class="small_hr">
+          </div>
 
 
-
-      <div class="col-md-4">
-
-        <hr class="light">
-        <h5>Our Hours</h5>
-        <hr class="light">
-        <p>Monday: 9am-10pm</p>
-        <p>Tuesday: 9am-10pm</p>
-        <p>Wednesday: 9am-10pm</p>
-        <p>Thursday: 9am-10pm</p>
-        <p>Friday: 9am-10pm</p>
-        <p>Saturday: 9am-10pm</p>
-        <p>Sunday: OFF</p>
-
-      </div>
-
-
-      <div class="col-md-4">
-
-        <hr class="light">
-        <h5>Software Opportunities</h5>
-        <hr class="light">
-        <p>otfgonzalez@gmail.com</p>
-        <p>909-572-5474</p>
-
-      </div>
     </div>
   </div>
 </footer>
