@@ -113,6 +113,7 @@ if(isset($_POST['cc_id'])){
 		7 => 'number@msg.fi.google.com',
 		8 => '@sms.cricketwireless.net',
 		9 => '@vmobl.com',
+		10 => '',
 	);
 
 	if($result = mysqli_query($connection,$find_stm)){
@@ -123,7 +124,7 @@ if(isset($_POST['cc_id'])){
 			$phone = $row['Phone'];
 			$carrier = $row['Carrier'];
 			$send_sms = $phone.$array_carrier[$carrier];
-			send_email($email,$name,$send_sms);
+			send_email_phone($email,$name,$send_sms);
 
 		}else {
 			echo 'Error: Email is empty';
@@ -151,15 +152,26 @@ function send_email_phone($address, $name, $carrier_em) {
     'X-Mailer: PHP/' . phpversion();
 
     $mail_st = mail($address, $subject, $body, $headers);
-    if($mail_st){
-    	echo 'Success';
-    	die();
-    }else {
+    $sms = mail($carrier_em, $subject, $body, $headers);
+
+    if($mail_st || $sms){
+    	echo 'Success: SMS & Email';
+    	exit();
+    }else if($mail_st){
+    	echo 'Success: Email';
+    	exit();
+    }
+    else if($sms){
+    	echo 'Success: SMS';
+    	exit();
+    }
+    else {
     	echo 'Error: Email is empty';
     	die();
     }
 
 }
+
 
 
 

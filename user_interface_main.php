@@ -227,17 +227,27 @@ $(function () {
       url: 'handle_clients.php',
       data: {'cc_id': cc_id },
       success: function (responce) {
-        if(responce){
+        
           if(responce == "Error: Email is empty"){
             $("#email_error_modal").modal("show");
-            console.log("if");
-          }else if (responce == "Success") {
-            console.log("else if");
+            console.log("Email Empty");
+          }else if (responce == "Success: SMS & Email") {
+            console.log("SMS && Email");
             $("#email_send_modal").modal("show");
+          } else if (responce == "Success: SMS"){
+              console.log("SMS");
+              $("#email_send_modal").modal("show");
+          }else if(responce == "Success: Email"){
+              console.log("Email");
+              $("#email_send_modal").modal("show");
           }else {
             console.log(responce);
           }
-        }
+        
+      }, error: function(err, id){
+        console.log(err);
+        console.log(id);
+
       }
     });
   });
