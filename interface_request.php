@@ -10,7 +10,7 @@ $current_time = date("H:i:s");
 $current_date = date("o-m-d");
 
 if ( !isset($_POST['client-name']) || !isset($_POST['clicked']) ){
-	echo "Error Post fail";
+  echo "Error Post fail";
 	exit();
 } 
 $client_name = $_POST['client-name'];
@@ -63,5 +63,7 @@ $check_in = 0;
       return false;
     }
 }
+
+
 
 

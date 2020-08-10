@@ -691,12 +691,7 @@ function show_modal(title,body){
 }  
 
 function about() {
-	var title = "About";
-	var body = "Small Company founded in 2020, delivering quality service. If for some reason you are not satisfied please feel free to contact the manager or owner using the TEAM tab. ";
-	document.getElementById('img_about').src = "/updated_php_project/static/img/barbershop.jpg";
-	document.getElementById('title_config').innerHTML = title;
-  	document.getElementById('body_message').innerHTML = body;
-	$('#configure_modal').modal('show');
+	$('#about_modal').modal('toggle');
 }
 
 </script>
@@ -807,6 +802,23 @@ function about() {
       </div>
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="about_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="static/img/storefront.jpg" class="img-responsive" style="max-width: 100%;">
+        </div>
+        <div class="modal-body" id = "body_err">
+            <p class="header text-center">About Us</p>
+            <p class="sub_header text-center">We are a small company located on 988 W something Drive, Beverly hills Ca, 90000. Our promise to our clients is to ensure every service is to the highest standard.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
 </div>
 
 

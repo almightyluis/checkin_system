@@ -29,7 +29,6 @@ if ( isset($_POST['client-name']) || isset($_POST['clicked']) ){
 
 	if ($sqlResult = mysqli_query($connection, $sqlStr)) {
 		session_start();
-		echo "Recorded Successfully";
 		header("Location: app_made_confirmation.php");
 		$_SESSION['client-name'] = $client_name;
 		$_SESSION['number-guest'] = mysqli_num_rows($sqlResult);
