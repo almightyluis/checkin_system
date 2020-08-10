@@ -1,23 +1,17 @@
 <?php
-
 	include_once 'server_connect.php';
 	
-
+	// Using OOP We might be able to fix this
+	// We can use strtotime() to be able to compare times
+	// This can fix the start time aand end time 
+	date_default_timezone_set('America/Los_Angeles');
 	// Reqect time out of this time frame
 	$start_time = "08:00:00";
-	$end_time = "18:00:00";
+	$end_time = "24:00:00";
+	$current_time= date("G:i");
 	// Days off according to BClient
-	$day_off = array(6,7); 
+	$day_off = array(5,6); 	
 
-
-	date_default_timezone_set('America/Los_Angeles');
-	$current_date_client = date("N");
-	$current_time_client = date("G:i");
-	$hour = date("G");
-	$min = date("i");
-
-	$start_time_format = explode(":", $start_time);
-	$end_time_format = explode(":", $end_time);
 ?>
 
 <!-- Email and phone number should now be able to match to current DB list -->
@@ -94,7 +88,7 @@
 	<div class="carousel-item center active">
 		<img src="/updated_php_project/static/img/barbershop.jpg"/>
 		<div class="carousel-caption">
-		<?php
+<?php
 		// Important Allow client to be able to make appointments 10 min before store opening.
 	function check_date() {
 		global $day_off, $current_date_client;
@@ -104,41 +98,46 @@
 			return FALSE;
 		}
 	}
-	// Returns Boolean: True-> withing frame.
-	// VAR: frame_start: time frame counting down so ex: 15:00 -> 00:59 - :15- > :44 min mark
-	// False -> Out of range
-	function ten_minute_frame(){
-		global $start_time_format;
-		$frame_start = 15; // 15 minute window
-		$var = FALSE;
-		date_default_timezone_set('America/Los_Angeles');
-		$current_time_client = date("G:i"); // Current time Nonleading hour, leading zeros for minutes
-		$start_time_str = (int)ltrim($start_time_format[0],'0'); // Nonleading zeros for start time
-		$arr_time = explode(":", $current_time_client); // Array of time 0->Hour, 1->Min
-		$hour_client = (int)$arr_time[0];
-		$min_client = (int)ltrim($arr_time[1],'0');
-
-		if($hour_client == $start_time_str - 1){
-			// Anything greater than 45 puts you within the time frame
-			if($min_client >= $frame_start){
-				$var = TRUE;
-				return $var;
-			}else{
-				$var = FALSE;
-				return $var;
-			}
+	function within_time(){
+		global $current_time;
+		global $start_time;
+		global $end_time;
+		$upper_time = date('G:i', strtotime('-25 minutes', strtotime($end_time)));
+		if(strtotime($current_time) > strtotime($start_time) && strtotime($current_time) < strtotime($upper_time)){
+			return TRUE;
 		}else{
-			$var = FALSE;
-			return $var;
+		    return FALSE;
 		}
-		return $var;
 	}
 
-	 if( (int)$hour > (int)$start_time_format[0] && (int)$hour < (int)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
+	function check_frame(){
+	    // check both start and finish
+	    global $start_time;
+	    global $end_time;
+	    global $current_time;
+	    $lower_time = date('G:i', strtotime('-10 minutes', strtotime($start_time)));
+	    $upper_time = date('G:i', strtotime('-20 minutes', strtotime($end_time)));
+
+	    if(strtotime($current_time) > strtotime($lower_time) && strtotime($current_time) < strtotime($start_time) ){
+	        // You are within 10 minutues of opening
+	        return 0;
+	    }
+	    if(strtotime($current_time) > strtotime($upper_time) && strtotime($current_time) < strtotime($end_time)){
+	        // We are within the the last 25 minutes
+	        return 1;
+		}
+		
+		// Otherwise return 2;
+		return 2;
+	}
+
+	if( within_time() == TRUE && check_date() == FALSE|| check_frame() == 0){
 	 		echo '<h1 class= "display-2" style="font-size: 5.2vw;">Reserve your place in line</h1>';
 			echo '<button class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Make Appointment</button>';
-
-	 }else {
+	}else if( check_frame() == 1 && check_date() == FALSE && within_time() == FALSE ){
+		echo '<h2 class= "display-2" id= "closed_txt" style ="color: #d1000a; font-size: 6.2vw;">Closing soon.</h2>';
+		echo '<p class="lead" style="color: red; font-size: 2.2vw;"> Please try a walk in appoinment since we cannot ensure you will be seen today!<p>';
+	}else {
 			echo '
 			<h2 class= "display-2" id= "closed_txt" style ="color: #d1000a; font-size: 6.2vw;">Location is closed</h2>
 			<button type="button" class ="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>
@@ -199,24 +198,31 @@
 			}
 		}
 		mysqli_close($connection);
-		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
+		if( within_time() == TRUE && check_date() == FALSE|| check_frame() == 0 ){
 			echo'<h2 style = "color: #d41350;"> Save Time. Check In Online.</h2>'; // Change this color
 			echo '<h2>Current wait time is <mark>'.$final.'</mark> mins.</h2>';
 			echo '<p class="lead">We have a number of hair stylist working for us. Come on by and get a haircut!</p>';
 			echo '<p class = "lead">Accepting online appointments now.</p>';
+		} 
+		else if(check_frame() == 1 && check_date() == FALSE && within_time() == FALSE){
+			echo'<h2> Current wait time is <mark>0</mark> mins.</h2>';
+			echo '<p class="lead">We have a number of hair stylist working for us. Come on by and get a haircut!</p>';
+			echo '<p class ="lead"><mark>Current location is closing soon</mark>, keep in mind we open up online appointments 15 minutes before open time! So come back and sign up 15 minutes before to be first.</p> ';
+			echo '<p class="lead" style="color: red;"> Please try a walk in appoinment since we cannot ensure you will be seen today!<p>';
 		} else {
 			echo'<h2> Current wait time is <mark>0</mark> mins.</h2>';
 			echo '<p class="lead">We have a number of hair stylist working for us. Come on by and get a haircut!</p>';
 			echo '<p class ="lead"><mark>Current location is closed</mark>, keep in mind we open up online appointments 15 minutes before open time! So come back and sign up 15 minutes before to be first.</p> ';
 		} 
-
 		?>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
 		<a href="#">
 		<?php 
-		if( (float)$hour > (float)$start_time_format[0] && (float)$hour < (float)$end_time_format[0] && check_date() == FALSE || ten_minute_frame() == TRUE){
+		if( within_time() == TRUE && check_date() == FALSE|| check_frame() == 0 ){
 			echo '<button type="button" class ="btn btn-outline-success" data-toggle="modal" data-target="#exampleModal1" data-whatever="@getbootstrap">Make Appointment</button>';
+		} else if(check_frame() == 1 && check_date() == FALSE && within_time() == FALSE) {
+			echo '<button type="button" class ="btn btn-outline-danger" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Closing Soon</button>';
 		} else {
 			echo '<button type="button" class ="btn btn-outline-danger" data-toggle="modal" data-target="#error_modal" data-whatever="@getbootstrap">Currently not open</button>';
 		}
@@ -228,10 +234,6 @@
 </div>
 
 <!---Modal Handle Appointments-->
-
-
-
-
 
 
 <div class="modal fade" id="exampleModal1" tabindex="-1" role= "dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -568,15 +570,125 @@ function location_func(){
 	$('#location_modal').modal('show');
 }
 
-function help() {
-	var title = "Help";
-	var body = "For any questions or concerns about the website please email: l.gonzalez9778@student.sbccd.edu. ";
-	document.getElementById('img_about').src = "/updated_php_project/static/img/help.png";
-	document.getElementById('title_config').innerHTML = title;
-  	document.getElementById('body_message').innerHTML = body;
-	$('#configure_modal').modal('show');
+
+function clearField() {
+	$('#show_data').collapse('hide');
+	$('check_app_cancell').val('');
 }
 
+$(document).ready(function(){
+	$('#submitButton').on('click', function() {
+		// get input box on click
+		// make request
+		var em = $('#check_app_cancell').val();
+		console.log(em);
+		make_request(em);
+	});
+
+	$('#remove_me').on('click', function (){
+		var rem_emm = $("#i-email").text();
+		var final_string = rem_emm.replace('Email: ','');
+		console.log(final_string);
+		remove_based_email(final_string);
+	});
+});
+
+
+
+function remove_based_email(email){
+	var xhr = $.ajax({
+	type:'POST',
+	url:'handle_clients.php',
+	timeout: 5000,
+	data:{'email': email},
+	success: function(rdata) {
+		console.log(rdata);
+		if(rdata == "YES"){
+			$('#show_data').collapse('toggle');
+			$('#check_existing').modal('toggle');
+			show_modal("Removal Success", "You have successfully removed yourself from the appointment line. Thanks have a good day!");
+		}else {
+			console.log("Err");
+			$('#show_data').collapse('toggle');
+			$('#check_existing').modal('toggle');
+			show_modal("Fatal Error", "We where not able to remove you from the line, please try later");
+		}
+	}, 
+	error: function(err, code) {
+		console.log(err);
+		console.log(code);
+		$('#time_out').modal('toggle');
+		
+		
+	}
+});	
+}
+
+
+function make_request(user_email){
+	var xhr = $.ajax({
+	type:'POST',
+	url:'handle_clients.php',
+	timeout: 5000,
+	dataType: 'json',
+	data:{'user_email':user_email },
+	success: function(rdata) {
+		if(rdata["responseText"] == "Not Found"){
+			$('#check_existing').modal('toggle');
+			show_modal("Cannot Be found", "The email used cannot be found in our system. Tip: this field is case sensitive so be exact!");
+			xhr.abort();
+		}else if(rdata["responseText"] == "SQL:Error"){
+			console.log('Fatal');
+			$('#check_existing').modal('toggle');
+			show_modal("Cannot Be found", "SQL Error was found. Please reload the page or call the buisness number to check your appointment manualy.");
+			xhr.abort();
+		}else if(rdata["responseText"] == "Error Fatal"){
+			console.log('Rows');
+			$('#check_existing').modal('toggle');
+			show_modal("Cannot Be found", "Error Fatal");	
+			xhr.abort();
+		}else {
+			load_data(rdata);
+		}
+	}, 
+	error: function(err, code, dd) {
+		console.log(err);
+		console.log(code);
+		console.log(dd);
+		
+	}
+});	
+}
+
+function load_data(rdata){
+	document.getElementById('i-name').innerHTML = 'Name: ' + rdata['Name'];
+	document.getElementById('i-time').innerHTML = 'Time: ' + rdata['Time'];
+	document.getElementById('i-date').innerHTML = 'Date: ' +rdata['Date'];
+	document.getElementById('i-stylist').innerHTML = 'Stylist: ' +rdata['Per_stylist'];
+	document.getElementById('i-email').innerHTML = 'Email: ' +rdata['Email'];
+	$('#show_data').collapse('toggle');
+}
+
+function cancell_click(){
+	$(document).ready(function(){
+		$('#check_existing').modal('toggle');
+	});
+}
+
+function help() {
+	$('#help_modal').modal('show');
+}
+function cancell_click(){
+	$(document).ready(function(){
+		$('#check_existing').modal('toggle');
+	});
+}
+
+function show_modal(title,body){
+	document.getElementById('title_config').innerHTML = title;
+	document.getElementById('body_message').innerHTML = body;
+	$("#configure_modal").modal("toggle");
+}  
 
 function about() {
 	var title = "About";
@@ -589,6 +701,69 @@ function about() {
 
 </script>
 
+
+<div class="modal fade" id="check_existing" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="title">Check Or Remove Appointment</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearField();">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <div class="form-group" id="remove_group">
+                  <label for="client-email" class="control-label">Enter Email (case sensitive)</label>
+                  <input type="text" class="form-control" name="client-email" required = "" pattern="[^@]+@[^@]+\.[a-zA-Z]{2,}" id="check_app_cancell" autocomplete="off">
+			</div>
+
+			<div class="collapse" id="show_data">
+  				<div class="card card-body">
+					<div class="card card-title" id="time_title_message">
+						<h2 class="header" id="av_title">Appointment Details</h2>
+					</div>
+					<div class="row btn-group d-flex" id="inner_row">	
+						<div class="btn-group-vertical" role="group" id="inner_data" aria-label="Basic example">
+							<p id="i-name"></p>
+							<p id="i-date"></p>
+							<p id="i-time"></p>
+							<p id="i-stylist"></p>
+							<p id="i-email"></p>
+							<input type="submit" value="Remove Me" id="remove_me" class="btn btn-danger">
+						</div>	
+					</div>
+ 			 	</div>
+			</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="clearField();">Close</button>
+        <input type="submit" value= "View/Remove" name="remove_client" class = "btn btn-warning" id="submitButton">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="help_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+        </div>
+        <div class="modal-body" id = "body_err">
+            <p class="header text-center">Salon Help</p>
+            <p class="sub_header text-center">If you need help with salon services please feel free to call the establishment via: 909-XXX-XXXX.</p>
+            <hr class="hr">
+            <p class="header text-center">Website Help</p>
+            <p class="sub_header text-center">If you need help with anything related to this website, please feel free to email use at: lag.webservices@gmail.com</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
 <div class="modal fade" id="configure_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -597,11 +772,10 @@ function about() {
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body" id= "body_config"> 
-      	<img src="/updated_php_project/static/img/barbershop.jpg" id="img_about">
-     
-        <p class="lead text-center" id="body_message" style="padding-top: 7px;">Looks like we have a timeout error, please check if you are connected to the internet. Or try to refresh the entire page.</p>
+	  </div>
+	  <img class="img_about" src ="/updated_php_project/static/img/barbershop.jpg">
+      <div class="modal-body" id= "body_config">      
+        <p class="lead text-center" id="body_message">Looks like we have a timeout error, please check if you are connected to the internet. Or try to refresh the entire page.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -634,8 +808,6 @@ function about() {
     </div>
   </div>
 </div>
-
-
 
 
 
@@ -679,7 +851,8 @@ function about() {
             <div class="container text-center">
               <h2 class="footer_title">About Us</h2>
               <hr class="small_hr">
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+			  <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+			  <p style="color: #4ed9f7;"> View OR Cancell Appoinment <a onclick="cancell_click();">Click Me</p>
             	<hr class="small_hr">
                 <a href="#"><img src="static/img/icons/twitter_icon.png" style="height: 50px; width: 50px;"></a>
                 <a href="#"><img src="static/img/icons/facebook_icon.png" style="height: 50px; width: 50px;"></a>

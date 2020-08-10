@@ -2,6 +2,44 @@
 
 include_once 'server_connect.php';
 
+// Part 1 (Check DB if user exist)
+if(isset($_POST['user_email'])){
+	$emm = $_POST['user_email'];
+	$find_stm = "SELECT * FROM `client_information` WHERE Email = '$emm'; ";
+	if($result = mysqli_query($connection, $find_stm)){
+
+		if(mysqli_num_rows($result) > 0 ){
+			$arr = mysqli_fetch_assoc($result);
+			echo (json_encode($arr));
+			exit();
+		}else{
+			$a = array('responseText' => 'Not Found');
+			echo json_encode($a);
+			exit();
+		}
+	}else{
+		$a = array('responseText' => 'SQL:Error');
+		echo json_encode($a);
+		exit();
+	}
+
+}
+// Part 2 (Remove from DB)
+if(isset($_POST['email'])) {
+	$em = $_POST['email'];
+	$find = "DELETE FROM `client_upgrade` WHERE Email = '$em'; ";
+	if ($result = mysqli_query($connection, $find) ) {
+		echo "YES";
+		exit();
+	}else{
+		echo "Error Delete";
+		mysqli_error($connection);
+		exit();
+	}
+
+
+}
+
 
 // Removal based on id.
 if(isset($_POST['del_id'])){
