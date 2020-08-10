@@ -13,8 +13,28 @@
   
 }
 
+
+#row_list {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.specialty{
+  font-family: 'Raleway', sans-serif;
+  font-style: initial;
+  color: crimson;
+}
+
+.av {
+  font-family: 'Raleway', sans-serif;
+  font-weight: lighter;
+  font-style: initial;
+  color: lightslategrey;
+}
+
 #team_jumbo{
   background-color: white ! important; 
+  padding-top: 30px;
 }
 .jumbotron {
   border-radius: 0 ! important;
@@ -24,9 +44,31 @@
   border-color: white;
   
 }
+.card_size_img {
+  max-width: 200px !important;
+  max-height: 200px !important;
+}
 
 #social{
   margin-bottom: 10px;
+}
+
+.header_text {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: inherit;
+}
+.sub_header_text {
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: lighter;
+}
+
+.hr_small_blk {
+  width: 300px;
+  max-width: 300px;
+  color: lightgray !important;
+  background-color: lightgray ! important;
 }
 
 .col-xs-12 img {
@@ -40,7 +82,7 @@
 }
 
 footer {
-  background-color: #3d3c3c;
+  background-color: #212529;
   color: #dedede;
   padding-top: 2rem;
 }
@@ -74,12 +116,18 @@ hr.light {
 
 p {
   font-family: 'Raleway', sans-serif;
+  font-weight: lighter;
 }
 h5 {
   font-family: 'Raleway', sans-serif;
   font-weight: bold;
 }
 
+.display-4 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 28px;
+  font-weight: initial;
+}
 
 .display-5 {
   font-family: 'Raleway', sans-serif;
@@ -88,6 +136,7 @@ h5 {
 .lead {
   font-family: 'Raleway', sans-serif;
   font-weight: lighter;
+  font-size: 22px;
 }
 
 a {
@@ -121,7 +170,7 @@ h4 {
 }
 
 .footer_title {
-  padding-top: 30px;
+  padding-top: 20px;
   font-size: 18px;
   color: white;
   font-weight: lighter;

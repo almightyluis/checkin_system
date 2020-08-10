@@ -327,6 +327,12 @@
 		<p>Haircut, Beard and Shampoo.</p>
 		<p>Price: 30$ Flat</p>
 	</div>
+</div>
+</div>
+
+<div class="container-fluid padding">
+	<div class="row padding justify-content-center text-center">
+
 	<div class="col-xs-12 col-sm-6 col-md-4 col-md-4">
 		<i class="fas fa-chess-queen fa-5x"></i>
 		<h3>Salon Services</h3>
@@ -340,8 +346,7 @@
 		<p>Coloring Services</p>
 		<p>Price: 80$ Long hair avgerage</p>
 	</div>
-
-</div>
+	</div>
 </div>
 
 
