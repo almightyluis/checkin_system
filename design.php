@@ -70,7 +70,7 @@
 	<div class="display_text">
 		<h1 class= "display-5">Welcome, Store Name</h1>
 		<p class="lead">1922 W Maindrive Road, Beverlly Hills, CA.</p>
-		<hr class="my-3">
+		<hr class="hr">
 	</div>
 </div>
 
@@ -301,7 +301,7 @@
 	</div>
 	<hr>
 </div>
-<hr class="my-4">
+<hr class="hr">
 </div>
 
 
@@ -353,6 +353,52 @@
 
 
 <!--- This can be the types of cuts to offer -->
+
+
+<div class="container-fluid" id="cost">
+<h2 class="title_w text-center" id="header_padd">Our pricing</h2>
+	<hr class="small_hr">
+	<div class="row d-flex justify-content-center text-center">	
+		<div class="col-md-12">
+			<div class="row d-flex justify-content-center">
+				<div class="col-md-3">
+					<h3 class="title_w">Men</h3>
+					<hr class="small_hr">
+					<p class="lead_w">Regular: 10$</p>
+					<p class="lead_w">Fade: 20$</p>
+					<p class="lead_w">Beard: +5$</p>
+					<p class="lead_w">Hot Shave: +7$</p>
+				</div>
+			
+				<div class="col-md-3">
+					<h3 class="title_w">Women</h3>
+					<hr class="small_hr">
+					<p class="lead_w">Ladies Cut: 80$</p>
+					<p class="lead_w">Color: 90$</p>
+					<p class="lead_w">Styling: 40$</p>
+					<p class="lead_w">Wax: 10$</p>
+					<p class="lead_w">Full Face Wax: +20$</p>
+				</div>
+
+				<div class="col-md-3">
+					<h3 class="title_w">Kids</h3>
+					<hr class="small_hr">
+					<p class="lead_w">Regular: 10$</p>
+					<p class="lead_w">Fade: 15$</p>
+				</div>
+				
+				<div class="col-md-3">
+					<h3 class="title_w">Extras</h3>
+					<hr class="small_hr">
+					<p class="lead_w">Extra Cost: 10$</p>
+					<p class="lead_w">Fade: 15$</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+</div>
 
 
 <!--- Containers Cards -->

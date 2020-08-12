@@ -158,6 +158,37 @@ h4 {
   color: #040404;
 }
 
+#header_padd {
+  padding-top: 10px;
+}
+
+#cost {
+  background-color: #212529 ! important;
+  color: #212529 ! important;
+}
+
+.title_w{
+  color :white !important;
+  font-weight: normal !important;
+  font-family: 'Raleway', sans-serif;
+}
+
+.lead_w {
+  color :white !important;
+  font-weight: lighter !important;
+  font-family: 'Raleway', sans-serif;
+}
+
+.vl {
+    border-left: 2px solid white;
+    height: 300px;
+}
+
+.hr_mm {
+  width: 300px;
+  border-right: 2px solid white;
+}
+
 .carousel-caption button {
   background-color: #5c3ac5;
   border: 1px;

@@ -27,7 +27,7 @@ if(isset($_POST['user_email'])){
 // Part 2 (Remove from DB)
 if(isset($_POST['email'])) {
 	$em = $_POST['email'];
-	$find = "DELETE FROM `client_upgrade` WHERE Email = '$em'; ";
+	$find = "DELETE FROM `client_information` WHERE Email = '$em'; ";
 	if ($result = mysqli_query($connection, $find) ) {
 		echo "YES";
 		exit();
